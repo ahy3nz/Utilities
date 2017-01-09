@@ -1,0 +1,2507 @@
+Log file opened on Fri Dec  9 14:45:35 2016
+Host: filey.vuse.vanderbilt.edu  pid: 99216  rank ID: 0  number of ranks:  1
+                   :-) GROMACS - gmx mdrun, VERSION 5.1.2 (-:
+
+                            GROMACS is written by:
+     Emile Apol      Rossen Apostolov  Herman J.C. Berendsen    Par Bjelkmar   
+ Aldert van Buuren   Rudi van Drunen     Anton Feenstra   Sebastian Fritsch 
+  Gerrit Groenhof   Christoph Junghans   Anca Hamuraru    Vincent Hindriksen
+ Dimitrios Karkoulis    Peter Kasson        Jiri Kraus      Carsten Kutzner  
+    Per Larsson      Justin A. Lemkul   Magnus Lundborg   Pieter Meulenhoff 
+   Erik Marklund      Teemu Murtola       Szilard Pall       Sander Pronk   
+   Roland Schulz     Alexey Shvetsov     Michael Shirts     Alfons Sijbers  
+   Peter Tieleman    Teemu Virolainen  Christian Wennberg    Maarten Wolf   
+                           and the project leaders:
+        Mark Abraham, Berk Hess, Erik Lindahl, and David van der Spoel
+
+Copyright (c) 1991-2000, University of Groningen, The Netherlands.
+Copyright (c) 2001-2015, The GROMACS development team at
+Uppsala University, Stockholm University and
+the Royal Institute of Technology, Sweden.
+check out http://www.gromacs.org for more information.
+
+GROMACS is free software; you can redistribute it and/or modify it
+under the terms of the GNU Lesser General Public License
+as published by the Free Software Foundation; either version 2.1
+of the License, or (at your option) any later version.
+
+GROMACS:      gmx mdrun, VERSION 5.1.2
+Executable:   /usr/local/gromacs/bin//gmx
+Data prefix:  /usr/local/gromacs
+Command line:
+  gmx mdrun -deffnm em1_DSPC-34_alc22-33_acd22-33_1209 -nt 1
+
+GROMACS version:    VERSION 5.1.2
+Precision:          single
+Memory model:       64 bit
+MPI library:        thread_mpi
+OpenMP support:     disabled
+GPU support:        enabled
+OpenCL support:     disabled
+invsqrt routine:    gmx_software_invsqrt(x)
+SIMD instructions:  SSE4.1
+FFT library:        fftw-3.3.4-sse2
+RDTSCP usage:       enabled
+C++11 compilation:  disabled
+TNG support:        enabled
+Tracing support:    disabled
+Built on:           Tue May 31 09:28:24 CDT 2016
+Built by:           leonhaac@filey.vuse.vanderbilt.edu [CMAKE]
+Build OS/arch:      Darwin 10.8.0 x86_64
+Build CPU vendor:   GenuineIntel
+Build CPU brand:    Intel(R) Xeon(R) CPU           X5650  @ 2.67GHz
+Build CPU family:   6   Model: 44   Stepping: 2
+Build CPU features: aes apic clfsh cmov cx8 cx16 htt lahf_lm mmx msr nonstop_tsc pcid pclmuldq pdcm pdpe1gb popcnt pse rdtscp sse2 sse3 sse4.1 sse4.2 ssse3
+C compiler:         /Developer/usr/bin/cc GNU 4.2.1
+C compiler flags:    -msse4.1    -Wextra -Wno-missing-field-initializers -Wno-sign-compare -Wpointer-arith -Wall -Wno-unused -Wunused-value -Wunused-parameter -Wno-unknown-pragmas  -O3 -DNDEBUG -funroll-all-loops  
+C++ compiler:       /Developer/usr/bin/c++ GNU 4.2.1
+C++ compiler flags:  -msse4.1    -Wextra -Wno-missing-field-initializers -Wpointer-arith -Wall -Wno-unused-function -Wno-unknown-pragmas  -O3 -DNDEBUG -funroll-all-loops  
+Boost version:      1.55.0 (internal)
+CUDA compiler:      /usr/local/cuda/bin/nvcc nvcc: NVIDIA (R) Cuda compiler driver;Copyright (c) 2005-2011 NVIDIA Corporation;Built on Fri_May_13_01:54:22_PDT_2011;Cuda compilation tools, release 4.0, V0.2.1221
+CUDA compiler flags:-gencode;arch=compute_20,code=sm_20;-gencode;arch=compute_20,code=compute_20;-use_fast_math;-D__STRICT_ANSI__; ;-msse4.1;-Wextra;-Wno-missing-field-initializers;-Wpointer-arith;-Wall;-Wno-unused-function;-Wno-unknown-pragmas;-O3;-DNDEBUG;-funroll-all-loops;
+CUDA driver:        0.0
+CUDA runtime:       0.0
+
+
+NOTE: Error occurred during GPU detection:
+      no CUDA-capable device is detected
+      Can not use GPU acceleration, will fall back to CPU kernels.
+
+
+Running on 1 node with total 24 logical cores, 0 compatible GPUs
+Hardware detected:
+  CPU info:
+    Vendor: GenuineIntel
+    Brand:  Intel(R) Xeon(R) CPU           X5650  @ 2.67GHz
+    Family:  6  model: 44  stepping:  2
+    CPU features: aes apic clfsh cmov cx8 cx16 htt lahf_lm mmx msr nonstop_tsc pcid pclmuldq pdcm pdpe1gb popcnt pse rdtscp sse2 sse3 sse4.1 sse4.2 ssse3
+    SIMD instructions most likely to fit this hardware: SSE4.1
+    SIMD instructions selected at GROMACS compile time: SSE4.1
+
+
+++++ PLEASE READ AND CITE THE FOLLOWING REFERENCE ++++
+M. J. Abraham, T. Murtola, R. Schulz, S. Páll, J. C. Smith, B. Hess, E.
+Lindahl
+GROMACS: High performance molecular simulations through multi-level
+parallelism from laptops to supercomputers
+SoftwareX 1 (2015) pp. 19-25
+-------- -------- --- Thank You --- -------- --------
+
+
+++++ PLEASE READ AND CITE THE FOLLOWING REFERENCE ++++
+S. Páll, M. J. Abraham, C. Kutzner, B. Hess, E. Lindahl
+Tackling Exascale Software Challenges in Molecular Dynamics Simulations with
+GROMACS
+In S. Markidis & E. Laure (Eds.), Solving Software Challenges for Exascale 8759 (2015) pp. 3-27
+-------- -------- --- Thank You --- -------- --------
+
+
+++++ PLEASE READ AND CITE THE FOLLOWING REFERENCE ++++
+S. Pronk, S. Páll, R. Schulz, P. Larsson, P. Bjelkmar, R. Apostolov, M. R.
+Shirts, J. C. Smith, P. M. Kasson, D. van der Spoel, B. Hess, and E. Lindahl
+GROMACS 4.5: a high-throughput and highly parallel open source molecular
+simulation toolkit
+Bioinformatics 29 (2013) pp. 845-54
+-------- -------- --- Thank You --- -------- --------
+
+
+++++ PLEASE READ AND CITE THE FOLLOWING REFERENCE ++++
+B. Hess and C. Kutzner and D. van der Spoel and E. Lindahl
+GROMACS 4: Algorithms for highly efficient, load-balanced, and scalable
+molecular simulation
+J. Chem. Theory Comput. 4 (2008) pp. 435-447
+-------- -------- --- Thank You --- -------- --------
+
+
+++++ PLEASE READ AND CITE THE FOLLOWING REFERENCE ++++
+D. van der Spoel, E. Lindahl, B. Hess, G. Groenhof, A. E. Mark and H. J. C.
+Berendsen
+GROMACS: Fast, Flexible and Free
+J. Comp. Chem. 26 (2005) pp. 1701-1719
+-------- -------- --- Thank You --- -------- --------
+
+
+++++ PLEASE READ AND CITE THE FOLLOWING REFERENCE ++++
+E. Lindahl and B. Hess and D. van der Spoel
+GROMACS 3.0: A package for molecular simulation and trajectory analysis
+J. Mol. Mod. 7 (2001) pp. 306-317
+-------- -------- --- Thank You --- -------- --------
+
+
+++++ PLEASE READ AND CITE THE FOLLOWING REFERENCE ++++
+H. J. C. Berendsen, D. van der Spoel and R. van Drunen
+GROMACS: A message-passing parallel molecular dynamics implementation
+Comp. Phys. Comm. 91 (1995) pp. 43-56
+-------- -------- --- Thank You --- -------- --------
+
+Input Parameters:
+   integrator                     = steep
+   tinit                          = 0
+   dt                             = 0.001
+   nsteps                         = 50000
+   init-step                      = 0
+   simulation-part                = 1
+   comm-mode                      = Linear
+   nstcomm                        = 100
+   bd-fric                        = 0
+   ld-seed                        = 3121352130
+   emtol                          = 1000
+   emstep                         = 0.01
+   niter                          = 20
+   fcstep                         = 0
+   nstcgsteep                     = 1000
+   nbfgscorr                      = 10
+   rtpi                           = 0.05
+   nstxout                        = 0
+   nstvout                        = 0
+   nstfout                        = 0
+   nstlog                         = 1000
+   nstcalcenergy                  = 100
+   nstenergy                      = 1000
+   nstxout-compressed             = 0
+   compressed-x-precision         = 1000
+   cutoff-scheme                  = Verlet
+   nstlist                        = 1
+   ns-type                        = Grid
+   pbc                            = xyz
+   periodic-molecules             = FALSE
+   verlet-buffer-tolerance        = 0.005
+   rlist                          = 1.2
+   rlistlong                      = 1.2
+   nstcalclr                      = 1
+   coulombtype                    = PME
+   coulomb-modifier               = Potential-shift
+   rcoulomb-switch                = 0
+   rcoulomb                       = 1.2
+   epsilon-r                      = 1
+   epsilon-rf                     = inf
+   vdw-type                       = Cut-off
+   vdw-modifier                   = Potential-shift
+   rvdw-switch                    = 1
+   rvdw                           = 1.2
+   DispCorr                       = EnerPres
+   table-extension                = 1
+   fourierspacing                 = 0.12
+   fourier-nx                     = 32
+   fourier-ny                     = 32
+   fourier-nz                     = 100
+   pme-order                      = 6
+   ewald-rtol                     = 1e-06
+   ewald-rtol-lj                  = 0.001
+   lj-pme-comb-rule               = Geometric
+   ewald-geometry                 = 0
+   epsilon-surface                = 0
+   implicit-solvent               = No
+   gb-algorithm                   = Still
+   nstgbradii                     = 1
+   rgbradii                       = 1
+   gb-epsilon-solvent             = 80
+   gb-saltconc                    = 0
+   gb-obc-alpha                   = 1
+   gb-obc-beta                    = 0.8
+   gb-obc-gamma                   = 4.85
+   gb-dielectric-offset           = 0.009
+   sa-algorithm                   = Ace-approximation
+   sa-surface-tension             = 2.05016
+   tcoupl                         = No
+   nsttcouple                     = -1
+   nh-chain-length                = 0
+   print-nose-hoover-chain-variables = FALSE
+   pcoupl                         = No
+   pcoupltype                     = Isotropic
+   nstpcouple                     = -1
+   tau-p                          = 1
+   compressibility (3x3):
+      compressibility[    0]={ 0.00000e+00,  0.00000e+00,  0.00000e+00}
+      compressibility[    1]={ 0.00000e+00,  0.00000e+00,  0.00000e+00}
+      compressibility[    2]={ 0.00000e+00,  0.00000e+00,  0.00000e+00}
+   ref-p (3x3):
+      ref-p[    0]={ 0.00000e+00,  0.00000e+00,  0.00000e+00}
+      ref-p[    1]={ 0.00000e+00,  0.00000e+00,  0.00000e+00}
+      ref-p[    2]={ 0.00000e+00,  0.00000e+00,  0.00000e+00}
+   refcoord-scaling               = No
+   posres-com (3):
+      posres-com[0]= 0.00000e+00
+      posres-com[1]= 0.00000e+00
+      posres-com[2]= 0.00000e+00
+   posres-comB (3):
+      posres-comB[0]= 0.00000e+00
+      posres-comB[1]= 0.00000e+00
+      posres-comB[2]= 0.00000e+00
+   QMMM                           = FALSE
+   QMconstraints                  = 0
+   QMMMscheme                     = 0
+   MMChargeScaleFactor            = 1
+qm-opts:
+   ngQM                           = 0
+   constraint-algorithm           = Lincs
+   continuation                   = FALSE
+   Shake-SOR                      = FALSE
+   shake-tol                      = 0.0001
+   lincs-order                    = 12
+   lincs-iter                     = 1
+   lincs-warnangle                = 30
+   nwall                          = 0
+   wall-type                      = 9-3
+   wall-r-linpot                  = -1
+   wall-atomtype[0]               = -1
+   wall-atomtype[1]               = -1
+   wall-density[0]                = 0
+   wall-density[1]                = 0
+   wall-ewald-zfac                = 3
+   pull                           = FALSE
+   rotation                       = FALSE
+   interactiveMD                  = FALSE
+   disre                          = No
+   disre-weighting                = Conservative
+   disre-mixed                    = FALSE
+   dr-fc                          = 1000
+   dr-tau                         = 0
+   nstdisreout                    = 100
+   orire-fc                       = 0
+   orire-tau                      = 0
+   nstorireout                    = 100
+   free-energy                    = yes
+   init-lambda                    = -1
+   init-lambda-state              = 1
+   delta-lambda                   = 0
+   nstdhdl                        = 1000
+   n-lambdas                      = 3
+   separate-dvdl:
+       fep-lambdas =   FALSE
+      mass-lambdas =   TRUE
+      coul-lambdas =   TRUE
+       vdw-lambdas =   TRUE
+    bonded-lambdas =   TRUE
+ restraint-lambdas =   TRUE
+temperature-lambdas =   FALSE
+all-lambdas:
+       fep-lambdas =            0           0           0
+      mass-lambdas =            0           0           0
+      coul-lambdas =            0           0           0
+       vdw-lambdas =            1         0.5        0.25
+    bonded-lambdas =            0           0           0
+ restraint-lambdas =            0           0           0
+temperature-lambdas =            0           0           0
+   calc-lambda-neighbors          = 1
+   dhdl-print-energy              = no
+   sc-alpha                       = 0.5
+   sc-power                       = 1
+   sc-r-power                     = 6
+   sc-sigma                       = 0.3
+   sc-sigma-min                   = 0.3
+   sc-coul                        = FALSE
+   dh-hist-size                   = 0
+   dh-hist-spacing                = 0.1
+   separate-dhdl-file             = yes
+   dhdl-derivatives               = yes
+   cos-acceleration               = 0
+   deform (3x3):
+      deform[    0]={ 0.00000e+00,  0.00000e+00,  0.00000e+00}
+      deform[    1]={ 0.00000e+00,  0.00000e+00,  0.00000e+00}
+      deform[    2]={ 0.00000e+00,  0.00000e+00,  0.00000e+00}
+   simulated-tempering            = FALSE
+   E-x:
+      n = 0
+   E-xt:
+      n = 0
+   E-y:
+      n = 0
+   E-yt:
+      n = 0
+   E-z:
+      n = 0
+   E-zt:
+      n = 0
+   swapcoords                     = no
+   adress                         = FALSE
+   userint1                       = 0
+   userint2                       = 0
+   userint3                       = 0
+   userint4                       = 0
+   userreal1                      = 0
+   userreal2                      = 0
+   userreal3                      = 0
+   userreal4                      = 0
+grpopts:
+   nrdf:       28575
+   ref-t:           0
+   tau-t:           0
+annealing:          No
+annealing-npoints:           0
+   acc:	           0           0           0
+   nfreeze:           N           N           N
+   energygrp-flags[  0]: 0
+
+Using 1 MPI thread
+Will do PME sum in reciprocal space for electrostatic interactions.
+
+++++ PLEASE READ AND CITE THE FOLLOWING REFERENCE ++++
+U. Essmann, L. Perera, M. L. Berkowitz, T. Darden, H. Lee and L. G. Pedersen 
+A smooth particle mesh Ewald method
+J. Chem. Phys. 103 (1995) pp. 8577-8592
+-------- -------- --- Thank You --- -------- --------
+
+Will do ordinary reciprocal space Ewald sum.
+Using a Gaussian width (1/beta) of 0.34693 nm for Ewald
+Cut-off's:   NS: 1.2   Coulomb: 1.2   LJ: 1.2
+Long Range LJ corr.: <C6> 1.6068e-03
+System total charge, top. A: 0.000 top. B: 0.000
+Generated table with 1100 data points for Ewald.
+Tabscale = 500 points/nm
+Generated table with 1100 data points for LJ6.
+Tabscale = 500 points/nm
+Generated table with 1100 data points for LJ12.
+Tabscale = 500 points/nm
+Generated table with 1100 data points for 1-4 COUL.
+Tabscale = 500 points/nm
+Generated table with 1100 data points for 1-4 LJ6.
+Tabscale = 500 points/nm
+Generated table with 1100 data points for 1-4 LJ12.
+Tabscale = 500 points/nm
+Potential shift: LJ r^-12: -1.122e-01 r^-6: -3.349e-01, Ewald -1.000e-06
+Initialized non-bonded Ewald correction tables, spacing: 9.71e-04 size: 1237
+
+
+Using SSE4.1 4x4 non-bonded kernels
+
+Using full Lennard-Jones parameter combination matrix
+
+There are 12114 atoms and 0 charges for free energy perturbation
+Removing pbc first time
+
+Initializing LINear Constraint Solver
+
+++++ PLEASE READ AND CITE THE FOLLOWING REFERENCE ++++
+B. Hess and H. Bekker and H. J. C. Berendsen and J. G. E. M. Fraaije
+LINCS: A Linear Constraint Solver for molecular simulations
+J. Comp. Chem. 18 (1997) pp. 1463-1472
+-------- -------- --- Thank You --- -------- --------
+
+The number of constraints is 84
+
+++++ PLEASE READ AND CITE THE FOLLOWING REFERENCE ++++
+S. Miyamoto and P. A. Kollman
+SETTLE: An Analytical Version of the SHAKE and RATTLE Algorithms for Rigid
+Water Models
+J. Comp. Chem. 13 (1992) pp. 952-962
+-------- -------- --- Thank You --- -------- --------
+
+Initiating Steepest Descents
+Initial vector of lambda components:[     0.0000     0.0000     0.0000     0.5000     0.0000     0.0000     0.0000 ]
+   Rel. Constraint Deviation:  RMS         MAX     between atoms
+       Before LINCS          0.003955    0.010054   3809   3810
+        After LINCS          0.000003    0.000006   2900   2901
+
+Started Steepest Descents on rank 0 Fri Dec  9 14:45:35 2016
+
+Steepest Descents:
+   Tolerance (Fmax)   =  1.00000e+03
+   Number of steps    =        50000
+           Step           Time         Lambda
+              0        0.00000        0.00000
+
+   Energies (kJ/mol)
+        G96Bond       G96Angle    Proper Dih.  Improper Dih.        LJ (SR)
+    3.43238e+03    8.91133e+03    5.83883e+03    1.37658e+02    3.76555e+04
+  Disper. corr.   Coulomb (SR)   Coul. recip.      Potential Pres. DC (bar)
+   -1.69588e+03    0.00000e+00    0.00000e+00    5.42798e+04    0.00000e+00
+ Pressure (bar)       dEkin/dl      dVcoul/dl       dVvdw/dl    dVbonded/dl
+   -1.70529e+02    0.00000e+00    0.00000e+00   -3.02084e+05    0.00000e+00
+ dVrestraint/dl   Constr. rmsd
+    0.00000e+00    2.50810e-06
+
+           Step           Time         Lambda
+              1        1.00000        0.00000
+
+           Step           Time         Lambda
+              2        2.00000        0.00000
+
+   Energies (kJ/mol)
+        G96Bond       G96Angle    Proper Dih.  Improper Dih.        LJ (SR)
+    3.84362e+03    8.96063e+03    5.83149e+03    1.36148e+02    3.71911e+04
+  Disper. corr.   Coulomb (SR)   Coul. recip.      Potential Pres. DC (bar)
+   -1.69588e+03    0.00000e+00    0.00000e+00    5.42671e+04    0.00000e+00
+ Pressure (bar)       dEkin/dl      dVcoul/dl       dVvdw/dl    dVbonded/dl
+   -1.69223e+02    0.00000e+00    0.00000e+00   -2.98879e+05    0.00000e+00
+ dVrestraint/dl   Constr. rmsd
+    0.00000e+00    3.52371e-06
+
+           Step           Time         Lambda
+              3        3.00000        0.00000
+
+   Energies (kJ/mol)
+        G96Bond       G96Angle    Proper Dih.  Improper Dih.        LJ (SR)
+    3.24297e+03    8.87298e+03    5.82903e+03    1.36084e+02    3.71015e+04
+  Disper. corr.   Coulomb (SR)   Coul. recip.      Potential Pres. DC (bar)
+   -1.69588e+03    0.00000e+00    0.00000e+00    5.34867e+04    0.00000e+00
+ Pressure (bar)       dEkin/dl      dVcoul/dl       dVvdw/dl    dVbonded/dl
+   -1.69475e+02    0.00000e+00    0.00000e+00   -2.98292e+05    0.00000e+00
+ dVrestraint/dl   Constr. rmsd
+    0.00000e+00    2.87905e-06
+
+           Step           Time         Lambda
+              4        4.00000        0.00000
+
+   Energies (kJ/mol)
+        G96Bond       G96Angle    Proper Dih.  Improper Dih.        LJ (SR)
+    3.34040e+03    8.82963e+03    5.82449e+03    1.35126e+02    3.68473e+04
+  Disper. corr.   Coulomb (SR)   Coul. recip.      Potential Pres. DC (bar)
+   -1.69588e+03    0.00000e+00    0.00000e+00    5.32810e+04    0.00000e+00
+ Pressure (bar)       dEkin/dl      dVcoul/dl       dVvdw/dl    dVbonded/dl
+   -1.69226e+02    0.00000e+00    0.00000e+00   -2.96563e+05    0.00000e+00
+ dVrestraint/dl   Constr. rmsd
+    0.00000e+00    2.86571e-06
+
+           Step           Time         Lambda
+              5        5.00000        0.00000
+
+   Energies (kJ/mol)
+        G96Bond       G96Angle    Proper Dih.  Improper Dih.        LJ (SR)
+    3.24669e+03    8.77521e+03    5.82161e+03    1.34600e+02    3.67238e+04
+  Disper. corr.   Coulomb (SR)   Coul. recip.      Potential Pres. DC (bar)
+   -1.69588e+03    0.00000e+00    0.00000e+00    5.30061e+04    0.00000e+00
+ Pressure (bar)       dEkin/dl      dVcoul/dl       dVvdw/dl    dVbonded/dl
+   -1.69217e+02    0.00000e+00    0.00000e+00   -2.95730e+05    0.00000e+00
+ dVrestraint/dl   Constr. rmsd
+    0.00000e+00    2.73156e-06
+
+           Step           Time         Lambda
+              6        6.00000        0.00000
+
+   Energies (kJ/mol)
+        G96Bond       G96Angle    Proper Dih.  Improper Dih.        LJ (SR)
+    3.36135e+03    8.78896e+03    5.81828e+03    1.34421e+02    3.65045e+04
+  Disper. corr.   Coulomb (SR)   Coul. recip.      Potential Pres. DC (bar)
+   -1.69588e+03    0.00000e+00    0.00000e+00    5.29116e+04    0.00000e+00
+ Pressure (bar)       dEkin/dl      dVcoul/dl       dVvdw/dl    dVbonded/dl
+   -1.69058e+02    0.00000e+00    0.00000e+00   -2.94251e+05    0.00000e+00
+ dVrestraint/dl   Constr. rmsd
+    0.00000e+00    2.79456e-06
+
+           Step           Time         Lambda
+              7        7.00000        0.00000
+
+   Energies (kJ/mol)
+        G96Bond       G96Angle    Proper Dih.  Improper Dih.        LJ (SR)
+    3.29280e+03    8.71734e+03    5.81473e+03    1.33913e+02    3.63807e+04
+  Disper. corr.   Coulomb (SR)   Coul. recip.      Potential Pres. DC (bar)
+   -1.69588e+03    0.00000e+00    0.00000e+00    5.26436e+04    0.00000e+00
+ Pressure (bar)       dEkin/dl      dVcoul/dl       dVvdw/dl    dVbonded/dl
+   -1.69085e+02    0.00000e+00    0.00000e+00   -2.93398e+05    0.00000e+00
+ dVrestraint/dl   Constr. rmsd
+    0.00000e+00    2.63950e-06
+
+           Step           Time         Lambda
+              8        8.00000        0.00000
+
+           Step           Time         Lambda
+              9        9.00000        0.00000
+
+   Energies (kJ/mol)
+        G96Bond       G96Angle    Proper Dih.  Improper Dih.        LJ (SR)
+    3.13363e+03    8.71991e+03    5.81345e+03    1.33831e+02    3.62819e+04
+  Disper. corr.   Coulomb (SR)   Coul. recip.      Potential Pres. DC (bar)
+   -1.69588e+03    0.00000e+00    0.00000e+00    5.23869e+04    0.00000e+00
+ Pressure (bar)       dEkin/dl      dVcoul/dl       dVvdw/dl    dVbonded/dl
+   -1.69022e+02    0.00000e+00    0.00000e+00   -2.92749e+05    0.00000e+00
+ dVrestraint/dl   Constr. rmsd
+    0.00000e+00    2.26014e-06
+
+           Step           Time         Lambda
+             10       10.00000        0.00000
+
+   Energies (kJ/mol)
+        G96Bond       G96Angle    Proper Dih.  Improper Dih.        LJ (SR)
+    3.35464e+03    8.64314e+03    5.80622e+03    1.32703e+02    3.59474e+04
+  Disper. corr.   Coulomb (SR)   Coul. recip.      Potential Pres. DC (bar)
+   -1.69588e+03    0.00000e+00    0.00000e+00    5.21882e+04    0.00000e+00
+ Pressure (bar)       dEkin/dl      dVcoul/dl       dVvdw/dl    dVbonded/dl
+   -1.68991e+02    0.00000e+00    0.00000e+00   -2.90494e+05    0.00000e+00
+ dVrestraint/dl   Constr. rmsd
+    0.00000e+00    3.14802e-06
+
+           Step           Time         Lambda
+             11       11.00000        0.00000
+
+   Energies (kJ/mol)
+        G96Bond       G96Angle    Proper Dih.  Improper Dih.        LJ (SR)
+    3.13560e+03    8.65040e+03    5.80518e+03    1.33105e+02    3.58424e+04
+  Disper. corr.   Coulomb (SR)   Coul. recip.      Potential Pres. DC (bar)
+   -1.69588e+03    0.00000e+00    0.00000e+00    5.18708e+04    0.00000e+00
+ Pressure (bar)       dEkin/dl      dVcoul/dl       dVvdw/dl    dVbonded/dl
+   -1.68911e+02    0.00000e+00    0.00000e+00   -2.89794e+05    0.00000e+00
+ dVrestraint/dl   Constr. rmsd
+    0.00000e+00    2.46355e-06
+
+           Step           Time         Lambda
+             12       12.00000        0.00000
+
+           Step           Time         Lambda
+             13       13.00000        0.00000
+
+   Energies (kJ/mol)
+        G96Bond       G96Angle    Proper Dih.  Improper Dih.        LJ (SR)
+    3.11035e+03    8.61150e+03    5.80220e+03    1.32500e+02    3.57250e+04
+  Disper. corr.   Coulomb (SR)   Coul. recip.      Potential Pres. DC (bar)
+   -1.69588e+03    0.00000e+00    0.00000e+00    5.16856e+04    0.00000e+00
+ Pressure (bar)       dEkin/dl      dVcoul/dl       dVvdw/dl    dVbonded/dl
+   -1.68916e+02    0.00000e+00    0.00000e+00   -2.89004e+05    0.00000e+00
+ dVrestraint/dl   Constr. rmsd
+    0.00000e+00    2.36867e-06
+
+           Step           Time         Lambda
+             14       14.00000        0.00000
+
+   Energies (kJ/mol)
+        G96Bond       G96Angle    Proper Dih.  Improper Dih.        LJ (SR)
+    3.15910e+03    8.60423e+03    5.79934e+03    1.32574e+02    3.55243e+04
+  Disper. corr.   Coulomb (SR)   Coul. recip.      Potential Pres. DC (bar)
+   -1.69588e+03    0.00000e+00    0.00000e+00    5.15237e+04    0.00000e+00
+ Pressure (bar)       dEkin/dl      dVcoul/dl       dVvdw/dl    dVbonded/dl
+   -1.68867e+02    0.00000e+00    0.00000e+00   -2.87669e+05    0.00000e+00
+ dVrestraint/dl   Constr. rmsd
+    0.00000e+00    2.53659e-06
+
+           Step           Time         Lambda
+             15       15.00000        0.00000
+
+   Energies (kJ/mol)
+        G96Bond       G96Angle    Proper Dih.  Improper Dih.        LJ (SR)
+    3.12650e+03    8.55626e+03    5.79595e+03    1.32028e+02    3.54055e+04
+  Disper. corr.   Coulomb (SR)   Coul. recip.      Potential Pres. DC (bar)
+   -1.69588e+03    0.00000e+00    0.00000e+00    5.13204e+04    0.00000e+00
+ Pressure (bar)       dEkin/dl      dVcoul/dl       dVvdw/dl    dVbonded/dl
+   -1.68878e+02    0.00000e+00    0.00000e+00   -2.86860e+05    0.00000e+00
+ dVrestraint/dl   Constr. rmsd
+    0.00000e+00    2.42099e-06
+
+           Step           Time         Lambda
+             16       16.00000        0.00000
+
+   Energies (kJ/mol)
+        G96Bond       G96Angle    Proper Dih.  Improper Dih.        LJ (SR)
+    3.22272e+03    8.56844e+03    5.79391e+03    1.32312e+02    3.52230e+04
+  Disper. corr.   Coulomb (SR)   Coul. recip.      Potential Pres. DC (bar)
+   -1.69588e+03    0.00000e+00    0.00000e+00    5.12445e+04    0.00000e+00
+ Pressure (bar)       dEkin/dl      dVcoul/dl       dVvdw/dl    dVbonded/dl
+   -1.68840e+02    0.00000e+00    0.00000e+00   -2.85651e+05    0.00000e+00
+ dVrestraint/dl   Constr. rmsd
+    0.00000e+00    2.14840e-06
+
+           Step           Time         Lambda
+             17       17.00000        0.00000
+
+   Energies (kJ/mol)
+        G96Bond       G96Angle    Proper Dih.  Improper Dih.        LJ (SR)
+    3.19916e+03    8.50690e+03    5.78998e+03    1.31770e+02    3.51018e+04
+  Disper. corr.   Coulomb (SR)   Coul. recip.      Potential Pres. DC (bar)
+   -1.69588e+03    0.00000e+00    0.00000e+00    5.10338e+04    0.00000e+00
+ Pressure (bar)       dEkin/dl      dVcoul/dl       dVvdw/dl    dVbonded/dl
+   -1.68859e+02    0.00000e+00    0.00000e+00   -2.84812e+05    0.00000e+00
+ dVrestraint/dl   Constr. rmsd
+    0.00000e+00    2.32150e-06
+
+           Step           Time         Lambda
+             18       18.00000        0.00000
+
+           Step           Time         Lambda
+             19       19.00000        0.00000
+
+   Energies (kJ/mol)
+        G96Bond       G96Angle    Proper Dih.  Improper Dih.        LJ (SR)
+    3.00412e+03    8.50755e+03    5.78931e+03    1.31794e+02    3.50145e+04
+  Disper. corr.   Coulomb (SR)   Coul. recip.      Potential Pres. DC (bar)
+   -1.69588e+03    0.00000e+00    0.00000e+00    5.07513e+04    0.00000e+00
+ Pressure (bar)       dEkin/dl      dVcoul/dl       dVvdw/dl    dVbonded/dl
+   -1.68845e+02    0.00000e+00    0.00000e+00   -2.84248e+05    0.00000e+00
+ dVrestraint/dl   Constr. rmsd
+    0.00000e+00    1.99445e-06
+
+           Step           Time         Lambda
+             20       20.00000        0.00000
+
+   Energies (kJ/mol)
+        G96Bond       G96Angle    Proper Dih.  Improper Dih.        LJ (SR)
+    3.28497e+03    8.43262e+03    5.78166e+03    1.30552e+02    3.46487e+04
+  Disper. corr.   Coulomb (SR)   Coul. recip.      Potential Pres. DC (bar)
+   -1.69588e+03    0.00000e+00    0.00000e+00    5.05826e+04    0.00000e+00
+ Pressure (bar)       dEkin/dl      dVcoul/dl       dVvdw/dl    dVbonded/dl
+   -1.68854e+02    0.00000e+00    0.00000e+00   -2.81809e+05    0.00000e+00
+ dVrestraint/dl   Constr. rmsd
+    0.00000e+00    2.46354e-06
+
+           Step           Time         Lambda
+             21       21.00000        0.00000
+
+   Energies (kJ/mol)
+        G96Bond       G96Angle    Proper Dih.  Improper Dih.        LJ (SR)
+    3.01006e+03    8.43408e+03    5.78126e+03    1.31171e+02    3.45556e+04
+  Disper. corr.   Coulomb (SR)   Coul. recip.      Potential Pres. DC (bar)
+   -1.69588e+03    0.00000e+00    0.00000e+00    5.02163e+04    0.00000e+00
+ Pressure (bar)       dEkin/dl      dVcoul/dl       dVvdw/dl    dVbonded/dl
+   -1.68841e+02    0.00000e+00    0.00000e+00   -2.81187e+05    0.00000e+00
+ dVrestraint/dl   Constr. rmsd
+    0.00000e+00    2.19692e-06
+
+           Step           Time         Lambda
+             22       22.00000        0.00000
+
+           Step           Time         Lambda
+             23       23.00000        0.00000
+
+   Energies (kJ/mol)
+        G96Bond       G96Angle    Proper Dih.  Improper Dih.        LJ (SR)
+    2.99239e+03    8.39983e+03    5.77828e+03    1.30519e+02    3.44379e+04
+  Disper. corr.   Coulomb (SR)   Coul. recip.      Potential Pres. DC (bar)
+   -1.69588e+03    0.00000e+00    0.00000e+00    5.00430e+04    0.00000e+00
+ Pressure (bar)       dEkin/dl      dVcoul/dl       dVvdw/dl    dVbonded/dl
+   -1.68848e+02    0.00000e+00    0.00000e+00   -2.80400e+05    0.00000e+00
+ dVrestraint/dl   Constr. rmsd
+    0.00000e+00    2.10491e-06
+
+           Step           Time         Lambda
+             24       24.00000        0.00000
+
+   Energies (kJ/mol)
+        G96Bond       G96Angle    Proper Dih.  Improper Dih.        LJ (SR)
+    3.04473e+03    8.39408e+03    5.77635e+03    1.30799e+02    3.42633e+04
+  Disper. corr.   Coulomb (SR)   Coul. recip.      Potential Pres. DC (bar)
+   -1.69588e+03    0.00000e+00    0.00000e+00    4.99133e+04    0.00000e+00
+ Pressure (bar)       dEkin/dl      dVcoul/dl       dVvdw/dl    dVbonded/dl
+   -1.68851e+02    0.00000e+00    0.00000e+00   -2.79243e+05    0.00000e+00
+ dVrestraint/dl   Constr. rmsd
+    0.00000e+00    2.26794e-06
+
+           Step           Time         Lambda
+             25       25.00000        0.00000
+
+   Energies (kJ/mol)
+        G96Bond       G96Angle    Proper Dih.  Improper Dih.        LJ (SR)
+    3.02351e+03    8.35113e+03    5.77289e+03    1.30182e+02    3.41456e+04
+  Disper. corr.   Coulomb (SR)   Coul. recip.      Potential Pres. DC (bar)
+   -1.69588e+03    0.00000e+00    0.00000e+00    4.97274e+04    0.00000e+00
+ Pressure (bar)       dEkin/dl      dVcoul/dl       dVvdw/dl    dVbonded/dl
+   -1.68862e+02    0.00000e+00    0.00000e+00   -2.78447e+05    0.00000e+00
+ dVrestraint/dl   Constr. rmsd
+    0.00000e+00    2.12765e-06
+
+           Step           Time         Lambda
+             26       26.00000        0.00000
+
+   Energies (kJ/mol)
+        G96Bond       G96Angle    Proper Dih.  Improper Dih.        LJ (SR)
+    3.13085e+03    8.36369e+03    5.77172e+03    1.30644e+02    3.39806e+04
+  Disper. corr.   Coulomb (SR)   Coul. recip.      Potential Pres. DC (bar)
+   -1.69588e+03    0.00000e+00    0.00000e+00    4.96817e+04    0.00000e+00
+ Pressure (bar)       dEkin/dl      dVcoul/dl       dVvdw/dl    dVbonded/dl
+   -1.68865e+02    0.00000e+00    0.00000e+00   -2.77364e+05    0.00000e+00
+ dVrestraint/dl   Constr. rmsd
+    0.00000e+00    2.34891e-06
+
+           Step           Time         Lambda
+             27       27.00000        0.00000
+
+   Energies (kJ/mol)
+        G96Bond       G96Angle    Proper Dih.  Improper Dih.        LJ (SR)
+    3.12610e+03    8.30825e+03    5.76766e+03    1.30048e+02    3.38614e+04
+  Disper. corr.   Coulomb (SR)   Coul. recip.      Potential Pres. DC (bar)
+   -1.69588e+03    0.00000e+00    0.00000e+00    4.94976e+04    0.00000e+00
+ Pressure (bar)       dEkin/dl      dVcoul/dl       dVvdw/dl    dVbonded/dl
+   -1.68880e+02    0.00000e+00    0.00000e+00   -2.76546e+05    0.00000e+00
+ dVrestraint/dl   Constr. rmsd
+    0.00000e+00    2.18788e-06
+
+           Step           Time         Lambda
+             28       28.00000        0.00000
+
+           Step           Time         Lambda
+             29       29.00000        0.00000
+
+   Energies (kJ/mol)
+        G96Bond       G96Angle    Proper Dih.  Improper Dih.        LJ (SR)
+    2.87978e+03    8.30505e+03    5.76742e+03    1.30105e+02    3.37808e+04
+  Disper. corr.   Coulomb (SR)   Coul. recip.      Potential Pres. DC (bar)
+   -1.69588e+03    0.00000e+00    0.00000e+00    4.91673e+04    0.00000e+00
+ Pressure (bar)       dEkin/dl      dVcoul/dl       dVvdw/dl    dVbonded/dl
+   -1.68883e+02    0.00000e+00    0.00000e+00   -2.76029e+05    0.00000e+00
+ dVrestraint/dl   Constr. rmsd
+    0.00000e+00    1.77664e-06
+
+           Step           Time         Lambda
+             30       30.00000        0.00000
+
+   Energies (kJ/mol)
+        G96Bond       G96Angle    Proper Dih.  Improper Dih.        LJ (SR)
+    3.24977e+03    8.23349e+03    5.75968e+03    1.28595e+02    3.33897e+04
+  Disper. corr.   Coulomb (SR)   Coul. recip.      Potential Pres. DC (bar)
+   -1.69588e+03    0.00000e+00    0.00000e+00    4.90654e+04    0.00000e+00
+ Pressure (bar)       dEkin/dl      dVcoul/dl       dVvdw/dl    dVbonded/dl
+   -1.68921e+02    0.00000e+00    0.00000e+00   -2.73445e+05    0.00000e+00
+ dVrestraint/dl   Constr. rmsd
+    0.00000e+00    2.34640e-06
+
+           Step           Time         Lambda
+             31       31.00000        0.00000
+
+   Energies (kJ/mol)
+        G96Bond       G96Angle    Proper Dih.  Improper Dih.        LJ (SR)
+    2.89498e+03    8.22739e+03    5.75973e+03    1.29402e+02    3.33050e+04
+  Disper. corr.   Coulomb (SR)   Coul. recip.      Potential Pres. DC (bar)
+   -1.69588e+03    0.00000e+00    0.00000e+00    4.86206e+04    0.00000e+00
+ Pressure (bar)       dEkin/dl      dVcoul/dl       dVvdw/dl    dVbonded/dl
+   -1.68925e+02    0.00000e+00    0.00000e+00   -2.72874e+05    0.00000e+00
+ dVrestraint/dl   Constr. rmsd
+    0.00000e+00    2.20818e-06
+
+           Step           Time         Lambda
+             32       32.00000        0.00000
+
+           Step           Time         Lambda
+             33       33.00000        0.00000
+
+   Energies (kJ/mol)
+        G96Bond       G96Angle    Proper Dih.  Improper Dih.        LJ (SR)
+    2.88222e+03    8.19804e+03    5.75674e+03    1.28694e+02    3.31877e+04
+  Disper. corr.   Coulomb (SR)   Coul. recip.      Potential Pres. DC (bar)
+   -1.69588e+03    0.00000e+00    0.00000e+00    4.84575e+04    0.00000e+00
+ Pressure (bar)       dEkin/dl      dVcoul/dl       dVvdw/dl    dVbonded/dl
+   -1.68938e+02    0.00000e+00    0.00000e+00   -2.72094e+05    0.00000e+00
+ dVrestraint/dl   Constr. rmsd
+    0.00000e+00    2.13175e-06
+
+           Step           Time         Lambda
+             34       34.00000        0.00000
+
+   Energies (kJ/mol)
+        G96Bond       G96Angle    Proper Dih.  Improper Dih.        LJ (SR)
+    2.94226e+03    8.19217e+03    5.75548e+03    1.29115e+02    3.30301e+04
+  Disper. corr.   Coulomb (SR)   Coul. recip.      Potential Pres. DC (bar)
+   -1.69588e+03    0.00000e+00    0.00000e+00    4.83533e+04    0.00000e+00
+ Pressure (bar)       dEkin/dl      dVcoul/dl       dVvdw/dl    dVbonded/dl
+   -1.68953e+02    0.00000e+00    0.00000e+00   -2.71050e+05    0.00000e+00
+ dVrestraint/dl   Constr. rmsd
+    0.00000e+00    2.22872e-06
+
+           Step           Time         Lambda
+             35       35.00000        0.00000
+
+   Energies (kJ/mol)
+        G96Bond       G96Angle    Proper Dih.  Improper Dih.        LJ (SR)
+    2.93056e+03    8.15484e+03    5.75197e+03    1.28444e+02    3.29141e+04
+  Disper. corr.   Coulomb (SR)   Coul. recip.      Potential Pres. DC (bar)
+   -1.69588e+03    0.00000e+00    0.00000e+00    4.81841e+04    0.00000e+00
+ Pressure (bar)       dEkin/dl      dVcoul/dl       dVvdw/dl    dVbonded/dl
+   -1.68968e+02    0.00000e+00    0.00000e+00   -2.70268e+05    0.00000e+00
+ dVrestraint/dl   Constr. rmsd
+    0.00000e+00    2.14996e-06
+
+           Step           Time         Lambda
+             36       36.00000        0.00000
+
+   Energies (kJ/mol)
+        G96Bond       G96Angle    Proper Dih.  Improper Dih.        LJ (SR)
+    3.05416e+03    8.16664e+03    5.75143e+03    1.29041e+02    3.27635e+04
+  Disper. corr.   Coulomb (SR)   Coul. recip.      Potential Pres. DC (bar)
+   -1.69588e+03    0.00000e+00    0.00000e+00    4.81689e+04    0.00000e+00
+ Pressure (bar)       dEkin/dl      dVcoul/dl       dVvdw/dl    dVbonded/dl
+   -1.68985e+02    0.00000e+00    0.00000e+00   -2.69273e+05    0.00000e+00
+ dVrestraint/dl   Constr. rmsd
+    0.00000e+00    1.81744e-06
+
+           Step           Time         Lambda
+             37       37.00000        0.00000
+
+   Energies (kJ/mol)
+        G96Bond       G96Angle    Proper Dih.  Improper Dih.        LJ (SR)
+    3.06863e+03    8.11832e+03    5.74725e+03    1.28433e+02    3.26477e+04
+  Disper. corr.   Coulomb (SR)   Coul. recip.      Potential Pres. DC (bar)
+   -1.69588e+03    0.00000e+00    0.00000e+00    4.80144e+04    0.00000e+00
+ Pressure (bar)       dEkin/dl      dVcoul/dl       dVvdw/dl    dVbonded/dl
+   -1.69000e+02    0.00000e+00    0.00000e+00   -2.68474e+05    0.00000e+00
+ dVrestraint/dl   Constr. rmsd
+    0.00000e+00    2.10368e-06
+
+           Step           Time         Lambda
+             38       38.00000        0.00000
+
+           Step           Time         Lambda
+             39       39.00000        0.00000
+
+   Energies (kJ/mol)
+        G96Bond       G96Angle    Proper Dih.  Improper Dih.        LJ (SR)
+    2.75994e+03    8.10965e+03    5.74731e+03    1.28497e+02    3.25727e+04
+  Disper. corr.   Coulomb (SR)   Coul. recip.      Potential Pres. DC (bar)
+   -1.69588e+03    0.00000e+00    0.00000e+00    4.76223e+04    0.00000e+00
+ Pressure (bar)       dEkin/dl      dVcoul/dl       dVvdw/dl    dVbonded/dl
+   -1.69009e+02    0.00000e+00    0.00000e+00   -2.67993e+05    0.00000e+00
+ dVrestraint/dl   Constr. rmsd
+    0.00000e+00    2.07751e-06
+
+           Step           Time         Lambda
+             40       40.00000        0.00000
+
+   Energies (kJ/mol)
+        G96Bond       G96Angle    Proper Dih.  Improper Dih.        LJ (SR)
+    3.24506e+03    8.04426e+03    5.73948e+03    1.26702e+02    3.21597e+04
+  Disper. corr.   Coulomb (SR)   Coul. recip.      Potential Pres. DC (bar)
+   -1.69588e+03    0.00000e+00    0.00000e+00    4.76193e+04    0.00000e+00
+ Pressure (bar)       dEkin/dl      dVcoul/dl       dVvdw/dl    dVbonded/dl
+   -1.69068e+02    0.00000e+00    0.00000e+00   -2.65274e+05    0.00000e+00
+ dVrestraint/dl   Constr. rmsd
+    0.00000e+00    2.51181e-06
+
+           Step           Time         Lambda
+             41       41.00000        0.00000
+
+   Energies (kJ/mol)
+        G96Bond       G96Angle    Proper Dih.  Improper Dih.        LJ (SR)
+    2.78713e+03    8.02754e+03    5.73987e+03    1.27699e+02    3.20839e+04
+  Disper. corr.   Coulomb (SR)   Coul. recip.      Potential Pres. DC (bar)
+   -1.69588e+03    0.00000e+00    0.00000e+00    4.70702e+04    0.00000e+00
+ Pressure (bar)       dEkin/dl      dVcoul/dl       dVvdw/dl    dVbonded/dl
+   -1.69076e+02    0.00000e+00    0.00000e+00   -2.64746e+05    0.00000e+00
+ dVrestraint/dl   Constr. rmsd
+    0.00000e+00    2.12947e-06
+
+           Step           Time         Lambda
+             42       42.00000        0.00000
+
+           Step           Time         Lambda
+             43       43.00000        0.00000
+
+   Energies (kJ/mol)
+        G96Bond       G96Angle    Proper Dih.  Improper Dih.        LJ (SR)
+    2.77929e+03    8.00461e+03    5.73683e+03    1.26973e+02    3.19672e+04
+  Disper. corr.   Coulomb (SR)   Coul. recip.      Potential Pres. DC (bar)
+   -1.69588e+03    0.00000e+00    0.00000e+00    4.69190e+04    0.00000e+00
+ Pressure (bar)       dEkin/dl      dVcoul/dl       dVvdw/dl    dVbonded/dl
+   -1.69090e+02    0.00000e+00    0.00000e+00   -2.63974e+05    0.00000e+00
+ dVrestraint/dl   Constr. rmsd
+    0.00000e+00    1.91852e-06
+
+           Step           Time         Lambda
+             44       44.00000        0.00000
+
+   Energies (kJ/mol)
+        G96Bond       G96Angle    Proper Dih.  Improper Dih.        LJ (SR)
+    2.84816e+03    7.99680e+03    5.73607e+03    1.27534e+02    3.18245e+04
+  Disper. corr.   Coulomb (SR)   Coul. recip.      Potential Pres. DC (bar)
+   -1.69588e+03    0.00000e+00    0.00000e+00    4.68371e+04    0.00000e+00
+ Pressure (bar)       dEkin/dl      dVcoul/dl       dVvdw/dl    dVbonded/dl
+   -1.69113e+02    0.00000e+00    0.00000e+00   -2.63019e+05    0.00000e+00
+ dVrestraint/dl   Constr. rmsd
+    0.00000e+00    2.28545e-06
+
+           Step           Time         Lambda
+             45       45.00000        0.00000
+
+   Energies (kJ/mol)
+        G96Bond       G96Angle    Proper Dih.  Improper Dih.        LJ (SR)
+    2.84723e+03    7.96691e+03    5.73245e+03    1.26852e+02    3.17106e+04
+  Disper. corr.   Coulomb (SR)   Coul. recip.      Potential Pres. DC (bar)
+   -1.69588e+03    0.00000e+00    0.00000e+00    4.66882e+04    0.00000e+00
+ Pressure (bar)       dEkin/dl      dVcoul/dl       dVvdw/dl    dVbonded/dl
+   -1.69129e+02    0.00000e+00    0.00000e+00   -2.62251e+05    0.00000e+00
+ dVrestraint/dl   Constr. rmsd
+    0.00000e+00    2.16381e-06
+
+           Step           Time         Lambda
+             46       46.00000        0.00000
+
+           Step           Time         Lambda
+             47       47.00000        0.00000
+
+   Energies (kJ/mol)
+        G96Bond       G96Angle    Proper Dih.  Improper Dih.        LJ (SR)
+    2.66962e+03    7.95534e+03    5.73235e+03    1.27001e+02    3.16399e+04
+  Disper. corr.   Coulomb (SR)   Coul. recip.      Potential Pres. DC (bar)
+   -1.69588e+03    0.00000e+00    0.00000e+00    4.64283e+04    0.00000e+00
+ Pressure (bar)       dEkin/dl      dVcoul/dl       dVvdw/dl    dVbonded/dl
+   -1.69138e+02    0.00000e+00    0.00000e+00   -2.61789e+05    0.00000e+00
+ dVrestraint/dl   Constr. rmsd
+    0.00000e+00    2.10922e-06
+
+           Step           Time         Lambda
+             48       48.00000        0.00000
+
+   Energies (kJ/mol)
+        G96Bond       G96Angle    Proper Dih.  Improper Dih.        LJ (SR)
+    2.90325e+03    7.89489e+03    5.72547e+03    1.25747e+02    3.12618e+04
+  Disper. corr.   Coulomb (SR)   Coul. recip.      Potential Pres. DC (bar)
+   -1.69588e+03    0.00000e+00    0.00000e+00    4.62152e+04    0.00000e+00
+ Pressure (bar)       dEkin/dl      dVcoul/dl       dVvdw/dl    dVbonded/dl
+   -1.69204e+02    0.00000e+00    0.00000e+00   -2.59290e+05    0.00000e+00
+ dVrestraint/dl   Constr. rmsd
+    0.00000e+00    2.46258e-06
+
+           Step           Time         Lambda
+             49       49.00000        0.00000
+
+   Energies (kJ/mol)
+        G96Bond       G96Angle    Proper Dih.  Improper Dih.        LJ (SR)
+    2.67230e+03    7.88199e+03    5.72551e+03    1.26408e+02    3.11843e+04
+  Disper. corr.   Coulomb (SR)   Coul. recip.      Potential Pres. DC (bar)
+   -1.69588e+03    0.00000e+00    0.00000e+00    4.58946e+04    0.00000e+00
+ Pressure (bar)       dEkin/dl      dVcoul/dl       dVvdw/dl    dVbonded/dl
+   -1.69211e+02    0.00000e+00    0.00000e+00   -2.58761e+05    0.00000e+00
+ dVrestraint/dl   Constr. rmsd
+    0.00000e+00    2.16788e-06
+
+           Step           Time         Lambda
+             50       50.00000        0.00000
+
+           Step           Time         Lambda
+             51       51.00000        0.00000
+
+   Energies (kJ/mol)
+        G96Bond       G96Angle    Proper Dih.  Improper Dih.        LJ (SR)
+    2.65811e+03    7.86166e+03    5.72294e+03    1.25930e+02    3.10765e+04
+  Disper. corr.   Coulomb (SR)   Coul. recip.      Potential Pres. DC (bar)
+   -1.69588e+03    0.00000e+00    0.00000e+00    4.57492e+04    0.00000e+00
+ Pressure (bar)       dEkin/dl      dVcoul/dl       dVvdw/dl    dVbonded/dl
+   -1.69227e+02    0.00000e+00    0.00000e+00   -2.58045e+05    0.00000e+00
+ dVrestraint/dl   Constr. rmsd
+    0.00000e+00    2.14202e-06
+
+           Step           Time         Lambda
+             52       52.00000        0.00000
+
+   Energies (kJ/mol)
+        G96Bond       G96Angle    Proper Dih.  Improper Dih.        LJ (SR)
+    2.69866e+03    7.84890e+03    5.72182e+03    1.26198e+02    3.09333e+04
+  Disper. corr.   Coulomb (SR)   Coul. recip.      Potential Pres. DC (bar)
+   -1.69588e+03    0.00000e+00    0.00000e+00    4.56330e+04    0.00000e+00
+ Pressure (bar)       dEkin/dl      dVcoul/dl       dVvdw/dl    dVbonded/dl
+   -1.69251e+02    0.00000e+00    0.00000e+00   -2.57090e+05    0.00000e+00
+ dVrestraint/dl   Constr. rmsd
+    0.00000e+00    2.15482e-06
+
+           Step           Time         Lambda
+             53       53.00000        0.00000
+
+   Energies (kJ/mol)
+        G96Bond       G96Angle    Proper Dih.  Improper Dih.        LJ (SR)
+    2.68333e+03    7.82372e+03    5.71886e+03    1.25771e+02    3.08264e+04
+  Disper. corr.   Coulomb (SR)   Coul. recip.      Potential Pres. DC (bar)
+   -1.69588e+03    0.00000e+00    0.00000e+00    4.54822e+04    0.00000e+00
+ Pressure (bar)       dEkin/dl      dVcoul/dl       dVvdw/dl    dVbonded/dl
+   -1.69269e+02    0.00000e+00    0.00000e+00   -2.56374e+05    0.00000e+00
+ dVrestraint/dl   Constr. rmsd
+    0.00000e+00    1.92826e-06
+
+           Step           Time         Lambda
+             54       54.00000        0.00000
+
+   Energies (kJ/mol)
+        G96Bond       G96Angle    Proper Dih.  Improper Dih.        LJ (SR)
+    2.77106e+03    7.82196e+03    5.71828e+03    1.26120e+02    3.06887e+04
+  Disper. corr.   Coulomb (SR)   Coul. recip.      Potential Pres. DC (bar)
+   -1.69588e+03    0.00000e+00    0.00000e+00    4.54303e+04    0.00000e+00
+ Pressure (bar)       dEkin/dl      dVcoul/dl       dVvdw/dl    dVbonded/dl
+   -1.69289e+02    0.00000e+00    0.00000e+00   -2.55453e+05    0.00000e+00
+ dVrestraint/dl   Constr. rmsd
+    0.00000e+00    2.39710e-06
+
+           Step           Time         Lambda
+             55       55.00000        0.00000
+
+   Energies (kJ/mol)
+        G96Bond       G96Angle    Proper Dih.  Improper Dih.        LJ (SR)
+    2.76641e+03    7.79024e+03    5.71479e+03    1.25772e+02    3.05812e+04
+  Disper. corr.   Coulomb (SR)   Coul. recip.      Potential Pres. DC (bar)
+   -1.69588e+03    0.00000e+00    0.00000e+00    4.52825e+04    0.00000e+00
+ Pressure (bar)       dEkin/dl      dVcoul/dl       dVvdw/dl    dVbonded/dl
+   -1.69308e+02    0.00000e+00    0.00000e+00   -2.54726e+05    0.00000e+00
+ dVrestraint/dl   Constr. rmsd
+    0.00000e+00    1.82110e-06
+
+           Step           Time         Lambda
+             56       56.00000        0.00000
+
+           Step           Time         Lambda
+             57       57.00000        0.00000
+
+   Energies (kJ/mol)
+        G96Bond       G96Angle    Proper Dih.  Improper Dih.        LJ (SR)
+    2.56341e+03    7.77877e+03    5.71476e+03    1.25774e+02    3.05129e+04
+  Disper. corr.   Coulomb (SR)   Coul. recip.      Potential Pres. DC (bar)
+   -1.69588e+03    0.00000e+00    0.00000e+00    4.49997e+04    0.00000e+00
+ Pressure (bar)       dEkin/dl      dVcoul/dl       dVvdw/dl    dVbonded/dl
+   -1.69319e+02    0.00000e+00    0.00000e+00   -2.54282e+05    0.00000e+00
+ dVrestraint/dl   Constr. rmsd
+    0.00000e+00    1.80790e-06
+
+           Step           Time         Lambda
+             58       58.00000        0.00000
+
+   Energies (kJ/mol)
+        G96Bond       G96Angle    Proper Dih.  Improper Dih.        LJ (SR)
+    2.86456e+03    7.72606e+03    5.70825e+03    1.24589e+02    3.01502e+04
+  Disper. corr.   Coulomb (SR)   Coul. recip.      Potential Pres. DC (bar)
+   -1.69588e+03    0.00000e+00    0.00000e+00    4.48778e+04    0.00000e+00
+ Pressure (bar)       dEkin/dl      dVcoul/dl       dVvdw/dl    dVbonded/dl
+   -1.69380e+02    0.00000e+00    0.00000e+00   -2.51892e+05    0.00000e+00
+ dVrestraint/dl   Constr. rmsd
+    0.00000e+00    2.49166e-06
+
+           Step           Time         Lambda
+             59       59.00000        0.00000
+
+   Energies (kJ/mol)
+        G96Bond       G96Angle    Proper Dih.  Improper Dih.        LJ (SR)
+    2.57983e+03    7.70882e+03    5.70848e+03    1.25245e+02    3.00778e+04
+  Disper. corr.   Coulomb (SR)   Coul. recip.      Potential Pres. DC (bar)
+   -1.69588e+03    0.00000e+00    0.00000e+00    4.45043e+04    0.00000e+00
+ Pressure (bar)       dEkin/dl      dVcoul/dl       dVvdw/dl    dVbonded/dl
+   -1.69390e+02    0.00000e+00    0.00000e+00   -2.51390e+05    0.00000e+00
+ dVrestraint/dl   Constr. rmsd
+    0.00000e+00    2.16284e-06
+
+           Step           Time         Lambda
+             60       60.00000        0.00000
+
+           Step           Time         Lambda
+             61       61.00000        0.00000
+
+   Energies (kJ/mol)
+        G96Bond       G96Angle    Proper Dih.  Improper Dih.        LJ (SR)
+    2.56352e+03    7.69151e+03    5.70596e+03    1.24806e+02    2.99737e+04
+  Disper. corr.   Coulomb (SR)   Coul. recip.      Potential Pres. DC (bar)
+   -1.69588e+03    0.00000e+00    0.00000e+00    4.43636e+04    0.00000e+00
+ Pressure (bar)       dEkin/dl      dVcoul/dl       dVvdw/dl    dVbonded/dl
+   -1.69404e+02    0.00000e+00    0.00000e+00   -2.50702e+05    0.00000e+00
+ dVrestraint/dl   Constr. rmsd
+    0.00000e+00    1.86994e-06
+
+           Step           Time         Lambda
+             62       62.00000        0.00000
+
+   Energies (kJ/mol)
+        G96Bond       G96Angle    Proper Dih.  Improper Dih.        LJ (SR)
+    2.62156e+03    7.67849e+03    5.70512e+03    1.25078e+02    2.98380e+04
+  Disper. corr.   Coulomb (SR)   Coul. recip.      Potential Pres. DC (bar)
+   -1.69588e+03    0.00000e+00    0.00000e+00    4.42724e+04    0.00000e+00
+ Pressure (bar)       dEkin/dl      dVcoul/dl       dVvdw/dl    dVbonded/dl
+   -1.69426e+02    0.00000e+00    0.00000e+00   -2.49792e+05    0.00000e+00
+ dVrestraint/dl   Constr. rmsd
+    0.00000e+00    2.10895e-06
+
+           Step           Time         Lambda
+             63       63.00000        0.00000
+
+   Energies (kJ/mol)
+        G96Bond       G96Angle    Proper Dih.  Improper Dih.        LJ (SR)
+    2.60253e+03    7.65718e+03    5.70214e+03    1.24741e+02    2.97349e+04
+  Disper. corr.   Coulomb (SR)   Coul. recip.      Potential Pres. DC (bar)
+   -1.69588e+03    0.00000e+00    0.00000e+00    4.41256e+04    0.00000e+00
+ Pressure (bar)       dEkin/dl      dVcoul/dl       dVvdw/dl    dVbonded/dl
+   -1.69441e+02    0.00000e+00    0.00000e+00   -2.49105e+05    0.00000e+00
+ dVrestraint/dl   Constr. rmsd
+    0.00000e+00    2.36865e-06
+
+           Step           Time         Lambda
+             64       64.00000        0.00000
+
+   Energies (kJ/mol)
+        G96Bond       G96Angle    Proper Dih.  Improper Dih.        LJ (SR)
+    2.72077e+03    7.65558e+03    5.70188e+03    1.25073e+02    2.96045e+04
+  Disper. corr.   Coulomb (SR)   Coul. recip.      Potential Pres. DC (bar)
+   -1.69588e+03    0.00000e+00    0.00000e+00    4.41119e+04    0.00000e+00
+ Pressure (bar)       dEkin/dl      dVcoul/dl       dVvdw/dl    dVbonded/dl
+   -1.69462e+02    0.00000e+00    0.00000e+00   -2.48228e+05    0.00000e+00
+ dVrestraint/dl   Constr. rmsd
+    0.00000e+00    2.44059e-06
+
+           Step           Time         Lambda
+             65       65.00000        0.00000
+
+   Energies (kJ/mol)
+        G96Bond       G96Angle    Proper Dih.  Improper Dih.        LJ (SR)
+    2.71428e+03    7.62871e+03    5.69836e+03    1.24880e+02    2.95011e+04
+  Disper. corr.   Coulomb (SR)   Coul. recip.      Potential Pres. DC (bar)
+   -1.69588e+03    0.00000e+00    0.00000e+00    4.39714e+04    0.00000e+00
+ Pressure (bar)       dEkin/dl      dVcoul/dl       dVvdw/dl    dVbonded/dl
+   -1.69476e+02    0.00000e+00    0.00000e+00   -2.47530e+05    0.00000e+00
+ dVrestraint/dl   Constr. rmsd
+    0.00000e+00    2.15339e-06
+
+           Step           Time         Lambda
+             66       66.00000        0.00000
+
+           Step           Time         Lambda
+             67       67.00000        0.00000
+
+   Energies (kJ/mol)
+        G96Bond       G96Angle    Proper Dih.  Improper Dih.        LJ (SR)
+    2.46384e+03    7.61279e+03    5.69850e+03    1.24799e+02    2.94362e+04
+  Disper. corr.   Coulomb (SR)   Coul. recip.      Potential Pres. DC (bar)
+   -1.69588e+03    0.00000e+00    0.00000e+00    4.36403e+04    0.00000e+00
+ Pressure (bar)       dEkin/dl      dVcoul/dl       dVvdw/dl    dVbonded/dl
+   -1.69485e+02    0.00000e+00    0.00000e+00   -2.47106e+05    0.00000e+00
+ dVrestraint/dl   Constr. rmsd
+    0.00000e+00    1.86170e-06
+
+           Step           Time         Lambda
+             68       68.00000        0.00000
+
+   Energies (kJ/mol)
+        G96Bond       G96Angle    Proper Dih.  Improper Dih.        LJ (SR)
+    2.86157e+03    7.56995e+03    5.69227e+03    1.23540e+02    2.90801e+04
+  Disper. corr.   Coulomb (SR)   Coul. recip.      Potential Pres. DC (bar)
+   -1.69588e+03    0.00000e+00    0.00000e+00    4.36315e+04    0.00000e+00
+ Pressure (bar)       dEkin/dl      dVcoul/dl       dVvdw/dl    dVbonded/dl
+   -1.69544e+02    0.00000e+00    0.00000e+00   -2.44772e+05    0.00000e+00
+ dVrestraint/dl   Constr. rmsd
+    0.00000e+00    2.73153e-06
+
+           Step           Time         Lambda
+             69       69.00000        0.00000
+
+   Energies (kJ/mol)
+        G96Bond       G96Angle    Proper Dih.  Improper Dih.        LJ (SR)
+    2.49813e+03    7.54394e+03    5.69271e+03    1.24243e+02    2.90136e+04
+  Disper. corr.   Coulomb (SR)   Coul. recip.      Potential Pres. DC (bar)
+   -1.69588e+03    0.00000e+00    0.00000e+00    4.31768e+04    0.00000e+00
+ Pressure (bar)       dEkin/dl      dVcoul/dl       dVvdw/dl    dVbonded/dl
+   -1.69547e+02    0.00000e+00    0.00000e+00   -2.44298e+05    0.00000e+00
+ dVrestraint/dl   Constr. rmsd
+    0.00000e+00    2.11508e-06
+
+           Step           Time         Lambda
+             70       70.00000        0.00000
+
+           Step           Time         Lambda
+             71       71.00000        0.00000
+
+   Energies (kJ/mol)
+        G96Bond       G96Angle    Proper Dih.  Improper Dih.        LJ (SR)
+    2.47918e+03    7.53166e+03    5.69017e+03    1.23830e+02    2.89119e+04
+  Disper. corr.   Coulomb (SR)   Coul. recip.      Potential Pres. DC (bar)
+   -1.69588e+03    0.00000e+00    0.00000e+00    4.30409e+04    0.00000e+00
+ Pressure (bar)       dEkin/dl      dVcoul/dl       dVvdw/dl    dVbonded/dl
+   -1.69561e+02    0.00000e+00    0.00000e+00   -2.43632e+05    0.00000e+00
+ dVrestraint/dl   Constr. rmsd
+    0.00000e+00    2.13488e-06
+
+           Step           Time         Lambda
+             72       72.00000        0.00000
+
+   Energies (kJ/mol)
+        G96Bond       G96Angle    Proper Dih.  Improper Dih.        LJ (SR)
+    2.55958e+03    7.51674e+03    5.68966e+03    1.24093e+02    2.87845e+04
+  Disper. corr.   Coulomb (SR)   Coul. recip.      Potential Pres. DC (bar)
+   -1.69588e+03    0.00000e+00    0.00000e+00    4.29787e+04    0.00000e+00
+ Pressure (bar)       dEkin/dl      dVcoul/dl       dVvdw/dl    dVbonded/dl
+   -1.69576e+02    0.00000e+00    0.00000e+00   -2.42772e+05    0.00000e+00
+ dVrestraint/dl   Constr. rmsd
+    0.00000e+00    2.07661e-06
+
+           Step           Time         Lambda
+             73       73.00000        0.00000
+
+   Energies (kJ/mol)
+        G96Bond       G96Angle    Proper Dih.  Improper Dih.        LJ (SR)
+    2.53705e+03    7.50153e+03    5.68664e+03    1.23862e+02    2.86844e+04
+  Disper. corr.   Coulomb (SR)   Coul. recip.      Potential Pres. DC (bar)
+   -1.69588e+03    0.00000e+00    0.00000e+00    4.28376e+04    0.00000e+00
+ Pressure (bar)       dEkin/dl      dVcoul/dl       dVvdw/dl    dVbonded/dl
+   -1.69590e+02    0.00000e+00    0.00000e+00   -2.42109e+05    0.00000e+00
+ dVrestraint/dl   Constr. rmsd
+    0.00000e+00    1.95191e-06
+
+           Step           Time         Lambda
+             74       74.00000        0.00000
+
+           Step           Time         Lambda
+             75       75.00000        0.00000
+
+   Energies (kJ/mol)
+        G96Bond       G96Angle    Proper Dih.  Improper Dih.        LJ (SR)
+    2.39009e+03    7.48505e+03    5.68662e+03    1.23810e+02    2.86218e+04
+  Disper. corr.   Coulomb (SR)   Coul. recip.      Potential Pres. DC (bar)
+   -1.69588e+03    0.00000e+00    0.00000e+00    4.26115e+04    0.00000e+00
+ Pressure (bar)       dEkin/dl      dVcoul/dl       dVvdw/dl    dVbonded/dl
+   -1.69598e+02    0.00000e+00    0.00000e+00   -2.41693e+05    0.00000e+00
+ dVrestraint/dl   Constr. rmsd
+    0.00000e+00    2.07083e-06
+
+           Step           Time         Lambda
+             76       76.00000        0.00000
+
+   Energies (kJ/mol)
+        G96Bond       G96Angle    Proper Dih.  Improper Dih.        LJ (SR)
+    2.59252e+03    7.44670e+03    5.68142e+03    1.23046e+02    2.83143e+04
+  Disper. corr.   Coulomb (SR)   Coul. recip.      Potential Pres. DC (bar)
+   -1.69588e+03    0.00000e+00    0.00000e+00    4.24621e+04    0.00000e+00
+ Pressure (bar)       dEkin/dl      dVcoul/dl       dVvdw/dl    dVbonded/dl
+   -1.69635e+02    0.00000e+00    0.00000e+00   -2.39673e+05    0.00000e+00
+ dVrestraint/dl   Constr. rmsd
+    0.00000e+00    2.18659e-06
+
+           Step           Time         Lambda
+             77       77.00000        0.00000
+
+   Energies (kJ/mol)
+        G96Bond       G96Angle    Proper Dih.  Improper Dih.        LJ (SR)
+    2.40448e+03    7.42623e+03    5.68154e+03    1.23378e+02    2.82455e+04
+  Disper. corr.   Coulomb (SR)   Coul. recip.      Potential Pres. DC (bar)
+   -1.69588e+03    0.00000e+00    0.00000e+00    4.21852e+04    0.00000e+00
+ Pressure (bar)       dEkin/dl      dVcoul/dl       dVvdw/dl    dVbonded/dl
+   -1.69644e+02    0.00000e+00    0.00000e+00   -2.39193e+05    0.00000e+00
+ dVrestraint/dl   Constr. rmsd
+    0.00000e+00    2.20982e-06
+
+           Step           Time         Lambda
+             78       78.00000        0.00000
+
+           Step           Time         Lambda
+             79       79.00000        0.00000
+
+   Energies (kJ/mol)
+        G96Bond       G96Angle    Proper Dih.  Improper Dih.        LJ (SR)
+    2.37910e+03    7.41437e+03    5.67947e+03    1.23152e+02    2.81531e+04
+  Disper. corr.   Coulomb (SR)   Coul. recip.      Potential Pres. DC (bar)
+   -1.69588e+03    0.00000e+00    0.00000e+00    4.20534e+04    0.00000e+00
+ Pressure (bar)       dEkin/dl      dVcoul/dl       dVvdw/dl    dVbonded/dl
+   -1.69655e+02    0.00000e+00    0.00000e+00   -2.38589e+05    0.00000e+00
+ dVrestraint/dl   Constr. rmsd
+    0.00000e+00    2.14026e-06
+
+           Step           Time         Lambda
+             80       80.00000        0.00000
+
+   Energies (kJ/mol)
+        G96Bond       G96Angle    Proper Dih.  Improper Dih.        LJ (SR)
+    2.43584e+03    7.39683e+03    5.67856e+03    1.23141e+02    2.80209e+04
+  Disper. corr.   Coulomb (SR)   Coul. recip.      Potential Pres. DC (bar)
+   -1.69588e+03    0.00000e+00    0.00000e+00    4.19594e+04    0.00000e+00
+ Pressure (bar)       dEkin/dl      dVcoul/dl       dVvdw/dl    dVbonded/dl
+   -1.69670e+02    0.00000e+00    0.00000e+00   -2.37701e+05    0.00000e+00
+ dVrestraint/dl   Constr. rmsd
+    0.00000e+00    2.24448e-06
+
+           Step           Time         Lambda
+             81       81.00000        0.00000
+
+   Energies (kJ/mol)
+        G96Bond       G96Angle    Proper Dih.  Improper Dih.        LJ (SR)
+    2.40280e+03    7.38288e+03    5.67612e+03    1.23088e+02    2.79277e+04
+  Disper. corr.   Coulomb (SR)   Coul. recip.      Potential Pres. DC (bar)
+   -1.69588e+03    0.00000e+00    0.00000e+00    4.18167e+04    0.00000e+00
+ Pressure (bar)       dEkin/dl      dVcoul/dl       dVvdw/dl    dVbonded/dl
+   -1.69680e+02    0.00000e+00    0.00000e+00   -2.37088e+05    0.00000e+00
+ dVrestraint/dl   Constr. rmsd
+    0.00000e+00    2.14428e-06
+
+           Step           Time         Lambda
+             82       82.00000        0.00000
+
+   Energies (kJ/mol)
+        G96Bond       G96Angle    Proper Dih.  Improper Dih.        LJ (SR)
+    2.51336e+03    7.37369e+03    5.67571e+03    1.23051e+02    2.78026e+04
+  Disper. corr.   Coulomb (SR)   Coul. recip.      Potential Pres. DC (bar)
+   -1.69588e+03    0.00000e+00    0.00000e+00    4.17925e+04    0.00000e+00
+ Pressure (bar)       dEkin/dl      dVcoul/dl       dVvdw/dl    dVbonded/dl
+   -1.69694e+02    0.00000e+00    0.00000e+00   -2.36244e+05    0.00000e+00
+ dVrestraint/dl   Constr. rmsd
+    0.00000e+00    2.43491e-06
+
+           Step           Time         Lambda
+             83       83.00000        0.00000
+
+   Energies (kJ/mol)
+        G96Bond       G96Angle    Proper Dih.  Improper Dih.        LJ (SR)
+    2.47682e+03    7.35639e+03    5.67284e+03    1.23198e+02    2.77087e+04
+  Disper. corr.   Coulomb (SR)   Coul. recip.      Potential Pres. DC (bar)
+   -1.69588e+03    0.00000e+00    0.00000e+00    4.16421e+04    0.00000e+00
+ Pressure (bar)       dEkin/dl      dVcoul/dl       dVvdw/dl    dVbonded/dl
+   -1.69702e+02    0.00000e+00    0.00000e+00   -2.35621e+05    0.00000e+00
+ dVrestraint/dl   Constr. rmsd
+    0.00000e+00    2.34827e-06
+
+           Step           Time         Lambda
+             84       84.00000        0.00000
+
+           Step           Time         Lambda
+             85       85.00000        0.00000
+
+   Energies (kJ/mol)
+        G96Bond       G96Angle    Proper Dih.  Improper Dih.        LJ (SR)
+    2.30471e+03    7.33972e+03    5.67283e+03    1.22944e+02    2.76476e+04
+  Disper. corr.   Coulomb (SR)   Coul. recip.      Potential Pres. DC (bar)
+   -1.69588e+03    0.00000e+00    0.00000e+00    4.13919e+04    0.00000e+00
+ Pressure (bar)       dEkin/dl      dVcoul/dl       dVvdw/dl    dVbonded/dl
+   -1.69708e+02    0.00000e+00    0.00000e+00   -2.35215e+05    0.00000e+00
+ dVrestraint/dl   Constr. rmsd
+    0.00000e+00    2.06185e-06
+
+           Step           Time         Lambda
+             86       86.00000        0.00000
+
+   Energies (kJ/mol)
+        G96Bond       G96Angle    Proper Dih.  Improper Dih.        LJ (SR)
+    2.56891e+03    7.30955e+03    5.66806e+03    1.22249e+02    2.73628e+04
+  Disper. corr.   Coulomb (SR)   Coul. recip.      Potential Pres. DC (bar)
+   -1.69588e+03    0.00000e+00    0.00000e+00    4.13357e+04    0.00000e+00
+ Pressure (bar)       dEkin/dl      dVcoul/dl       dVvdw/dl    dVbonded/dl
+   -1.69741e+02    0.00000e+00    0.00000e+00   -2.33354e+05    0.00000e+00
+ dVrestraint/dl   Constr. rmsd
+    0.00000e+00    2.42974e-06
+
+           Step           Time         Lambda
+             87       87.00000        0.00000
+
+   Energies (kJ/mol)
+        G96Bond       G96Angle    Proper Dih.  Improper Dih.        LJ (SR)
+    2.33655e+03    7.28517e+03    5.66829e+03    1.22494e+02    2.72978e+04
+  Disper. corr.   Coulomb (SR)   Coul. recip.      Potential Pres. DC (bar)
+   -1.69588e+03    0.00000e+00    0.00000e+00    4.10144e+04    0.00000e+00
+ Pressure (bar)       dEkin/dl      dVcoul/dl       dVvdw/dl    dVbonded/dl
+   -1.69745e+02    0.00000e+00    0.00000e+00   -2.32892e+05    0.00000e+00
+ dVrestraint/dl   Constr. rmsd
+    0.00000e+00    1.95221e-06
+
+           Step           Time         Lambda
+             88       88.00000        0.00000
+
+           Step           Time         Lambda
+             89       89.00000        0.00000
+
+   Energies (kJ/mol)
+        G96Bond       G96Angle    Proper Dih.  Improper Dih.        LJ (SR)
+    2.30280e+03    7.27558e+03    5.66622e+03    1.22322e+02    2.72092e+04
+  Disper. corr.   Coulomb (SR)   Coul. recip.      Potential Pres. DC (bar)
+   -1.69588e+03    0.00000e+00    0.00000e+00    4.08802e+04    0.00000e+00
+ Pressure (bar)       dEkin/dl      dVcoul/dl       dVvdw/dl    dVbonded/dl
+   -1.69752e+02    0.00000e+00    0.00000e+00   -2.32319e+05    0.00000e+00
+ dVrestraint/dl   Constr. rmsd
+    0.00000e+00    2.19599e-06
+
+           Step           Time         Lambda
+             90       90.00000        0.00000
+
+   Energies (kJ/mol)
+        G96Bond       G96Angle    Proper Dih.  Improper Dih.        LJ (SR)
+    2.37948e+03    7.25779e+03    5.66551e+03    1.22218e+02    2.70831e+04
+  Disper. corr.   Coulomb (SR)   Coul. recip.      Potential Pres. DC (bar)
+   -1.69588e+03    0.00000e+00    0.00000e+00    4.08122e+04    0.00000e+00
+ Pressure (bar)       dEkin/dl      dVcoul/dl       dVvdw/dl    dVbonded/dl
+   -1.69764e+02    0.00000e+00    0.00000e+00   -2.31470e+05    0.00000e+00
+ dVrestraint/dl   Constr. rmsd
+    0.00000e+00    2.27092e-06
+
+           Step           Time         Lambda
+             91       91.00000        0.00000
+
+   Energies (kJ/mol)
+        G96Bond       G96Angle    Proper Dih.  Improper Dih.        LJ (SR)
+    2.34644e+03    7.24720e+03    5.66301e+03    1.22315e+02    2.69917e+04
+  Disper. corr.   Coulomb (SR)   Coul. recip.      Potential Pres. DC (bar)
+   -1.69588e+03    0.00000e+00    0.00000e+00    4.06747e+04    0.00000e+00
+ Pressure (bar)       dEkin/dl      dVcoul/dl       dVvdw/dl    dVbonded/dl
+   -1.69772e+02    0.00000e+00    0.00000e+00   -2.30872e+05    0.00000e+00
+ dVrestraint/dl   Constr. rmsd
+    0.00000e+00    2.06341e-06
+
+           Step           Time         Lambda
+             92       92.00000        0.00000
+
+           Step           Time         Lambda
+             93       93.00000        0.00000
+
+   Energies (kJ/mol)
+        G96Bond       G96Angle    Proper Dih.  Improper Dih.        LJ (SR)
+    2.24091e+03    7.23117e+03    5.66285e+03    1.22104e+02    2.69326e+04
+  Disper. corr.   Coulomb (SR)   Coul. recip.      Potential Pres. DC (bar)
+   -1.69588e+03    0.00000e+00    0.00000e+00    4.04938e+04    0.00000e+00
+ Pressure (bar)       dEkin/dl      dVcoul/dl       dVvdw/dl    dVbonded/dl
+   -1.69777e+02    0.00000e+00    0.00000e+00   -2.30476e+05    0.00000e+00
+ dVrestraint/dl   Constr. rmsd
+    0.00000e+00    1.78563e-06
+
+           Step           Time         Lambda
+             94       94.00000        0.00000
+
+   Energies (kJ/mol)
+        G96Bond       G96Angle    Proper Dih.  Improper Dih.        LJ (SR)
+    2.37797e+03    7.20260e+03    5.65873e+03    1.21699e+02    2.66784e+04
+  Disper. corr.   Coulomb (SR)   Coul. recip.      Potential Pres. DC (bar)
+   -1.69588e+03    0.00000e+00    0.00000e+00    4.03435e+04    0.00000e+00
+ Pressure (bar)       dEkin/dl      dVcoul/dl       dVvdw/dl    dVbonded/dl
+   -1.69800e+02    0.00000e+00    0.00000e+00   -2.28813e+05    0.00000e+00
+ dVrestraint/dl   Constr. rmsd
+    0.00000e+00    2.35148e-06
+
+           Step           Time         Lambda
+             95       95.00000        0.00000
+
+   Energies (kJ/mol)
+        G96Bond       G96Angle    Proper Dih.  Improper Dih.        LJ (SR)
+    2.25426e+03    7.18248e+03    5.65866e+03    1.21731e+02    2.66117e+04
+  Disper. corr.   Coulomb (SR)   Coul. recip.      Potential Pres. DC (bar)
+   -1.69588e+03    0.00000e+00    0.00000e+00    4.01330e+04    0.00000e+00
+ Pressure (bar)       dEkin/dl      dVcoul/dl       dVvdw/dl    dVbonded/dl
+   -1.69805e+02    0.00000e+00    0.00000e+00   -2.28349e+05    0.00000e+00
+ dVrestraint/dl   Constr. rmsd
+    0.00000e+00    1.92196e-06
+
+           Step           Time         Lambda
+             96       96.00000        0.00000
+
+           Step           Time         Lambda
+             97       97.00000        0.00000
+
+   Energies (kJ/mol)
+        G96Bond       G96Angle    Proper Dih.  Improper Dih.        LJ (SR)
+    2.22197e+03    7.17335e+03    5.65695e+03    1.21674e+02    2.65317e+04
+  Disper. corr.   Coulomb (SR)   Coul. recip.      Potential Pres. DC (bar)
+   -1.69588e+03    0.00000e+00    0.00000e+00    4.00097e+04    0.00000e+00
+ Pressure (bar)       dEkin/dl      dVcoul/dl       dVvdw/dl    dVbonded/dl
+   -1.69810e+02    0.00000e+00    0.00000e+00   -2.27830e+05    0.00000e+00
+ dVrestraint/dl   Constr. rmsd
+    0.00000e+00    2.03034e-06
+
+           Step           Time         Lambda
+             98       98.00000        0.00000
+
+   Energies (kJ/mol)
+        G96Bond       G96Angle    Proper Dih.  Improper Dih.        LJ (SR)
+    2.27573e+03    7.15365e+03    5.65584e+03    1.21454e+02    2.63971e+04
+  Disper. corr.   Coulomb (SR)   Coul. recip.      Potential Pres. DC (bar)
+   -1.69588e+03    0.00000e+00    0.00000e+00    3.99078e+04    0.00000e+00
+ Pressure (bar)       dEkin/dl      dVcoul/dl       dVvdw/dl    dVbonded/dl
+   -1.69821e+02    0.00000e+00    0.00000e+00   -2.26929e+05    0.00000e+00
+ dVrestraint/dl   Constr. rmsd
+    0.00000e+00    2.06740e-06
+
+           Step           Time         Lambda
+             99       99.00000        0.00000
+
+   Energies (kJ/mol)
+        G96Bond       G96Angle    Proper Dih.  Improper Dih.        LJ (SR)
+    2.23120e+03    7.14317e+03    5.65386e+03    1.21598e+02    2.63152e+04
+  Disper. corr.   Coulomb (SR)   Coul. recip.      Potential Pres. DC (bar)
+   -1.69588e+03    0.00000e+00    0.00000e+00    3.97692e+04    0.00000e+00
+ Pressure (bar)       dEkin/dl      dVcoul/dl       dVvdw/dl    dVbonded/dl
+   -1.69826e+02    0.00000e+00    0.00000e+00   -2.26394e+05    0.00000e+00
+ dVrestraint/dl   Constr. rmsd
+    0.00000e+00    1.88959e-06
+
+           Step           Time         Lambda
+            100      100.00000        0.00000
+
+   Energies (kJ/mol)
+        G96Bond       G96Angle    Proper Dih.  Improper Dih.        LJ (SR)
+    2.33707e+03    7.13041e+03    5.65310e+03    1.21326e+02    2.61889e+04
+  Disper. corr.   Coulomb (SR)   Coul. recip.      Potential Pres. DC (bar)
+   -1.69588e+03    0.00000e+00    0.00000e+00    3.97349e+04    0.00000e+00
+ Pressure (bar)       dEkin/dl      dVcoul/dl       dVvdw/dl    dVbonded/dl
+   -1.69836e+02    0.00000e+00    0.00000e+00   -2.25544e+05    0.00000e+00
+ dVrestraint/dl   Constr. rmsd
+    0.00000e+00    1.91227e-06
+
+           Step           Time         Lambda
+            101      101.00000        0.00000
+
+   Energies (kJ/mol)
+        G96Bond       G96Angle    Proper Dih.  Improper Dih.        LJ (SR)
+    2.26406e+03    7.11669e+03    5.65085e+03    1.21666e+02    2.61072e+04
+  Disper. corr.   Coulomb (SR)   Coul. recip.      Potential Pres. DC (bar)
+   -1.69588e+03    0.00000e+00    0.00000e+00    3.95646e+04    0.00000e+00
+ Pressure (bar)       dEkin/dl      dVcoul/dl       dVvdw/dl    dVbonded/dl
+   -1.69841e+02    0.00000e+00    0.00000e+00   -2.25009e+05    0.00000e+00
+ dVrestraint/dl   Constr. rmsd
+    0.00000e+00    2.06240e-06
+
+           Step           Time         Lambda
+            102      102.00000        0.00000
+
+           Step           Time         Lambda
+            103      103.00000        0.00000
+
+   Energies (kJ/mol)
+        G96Bond       G96Angle    Proper Dih.  Improper Dih.        LJ (SR)
+    2.16996e+03    7.10223e+03    5.65063e+03    1.21328e+02    2.60453e+04
+  Disper. corr.   Coulomb (SR)   Coul. recip.      Potential Pres. DC (bar)
+   -1.69588e+03    0.00000e+00    0.00000e+00    3.93936e+04    0.00000e+00
+ Pressure (bar)       dEkin/dl      dVcoul/dl       dVvdw/dl    dVbonded/dl
+   -1.69846e+02    0.00000e+00    0.00000e+00   -2.24597e+05    0.00000e+00
+ dVrestraint/dl   Constr. rmsd
+    0.00000e+00    1.75415e-06
+
+           Step           Time         Lambda
+            104      104.00000        0.00000
+
+   Energies (kJ/mol)
+        G96Bond       G96Angle    Proper Dih.  Improper Dih.        LJ (SR)
+    2.29535e+03    7.08208e+03    5.64744e+03    1.21137e+02    2.58563e+04
+  Disper. corr.   Coulomb (SR)   Coul. recip.      Potential Pres. DC (bar)
+   -1.69588e+03    0.00000e+00    0.00000e+00    3.93064e+04    0.00000e+00
+ Pressure (bar)       dEkin/dl      dVcoul/dl       dVvdw/dl    dVbonded/dl
+   -1.69858e+02    0.00000e+00    0.00000e+00   -2.23365e+05    0.00000e+00
+ dVrestraint/dl   Constr. rmsd
+    0.00000e+00    2.06293e-06
+
+           Step           Time         Lambda
+            105      105.00000        0.00000
+
+   Energies (kJ/mol)
+        G96Bond       G96Angle    Proper Dih.  Improper Dih.        LJ (SR)
+    2.20117e+03    7.06452e+03    5.64729e+03    1.21045e+02    2.57861e+04
+  Disper. corr.   Coulomb (SR)   Coul. recip.      Potential Pres. DC (bar)
+   -1.69588e+03    0.00000e+00    0.00000e+00    3.91242e+04    0.00000e+00
+ Pressure (bar)       dEkin/dl      dVcoul/dl       dVvdw/dl    dVbonded/dl
+   -1.69862e+02    0.00000e+00    0.00000e+00   -2.22881e+05    0.00000e+00
+ dVrestraint/dl   Constr. rmsd
+    0.00000e+00    1.76797e-06
+
+           Step           Time         Lambda
+            106      106.00000        0.00000
+
+           Step           Time         Lambda
+            107      107.00000        0.00000
+
+   Energies (kJ/mol)
+        G96Bond       G96Angle    Proper Dih.  Improper Dih.        LJ (SR)
+    2.14327e+03    7.05447e+03    5.64581e+03    1.21032e+02    2.57191e+04
+  Disper. corr.   Coulomb (SR)   Coul. recip.      Potential Pres. DC (bar)
+   -1.69588e+03    0.00000e+00    0.00000e+00    3.89878e+04    0.00000e+00
+ Pressure (bar)       dEkin/dl      dVcoul/dl       dVvdw/dl    dVbonded/dl
+   -1.69866e+02    0.00000e+00    0.00000e+00   -2.22449e+05    0.00000e+00
+ dVrestraint/dl   Constr. rmsd
+    0.00000e+00    2.01043e-06
+
+           Step           Time         Lambda
+            108      108.00000        0.00000
+
+   Energies (kJ/mol)
+        G96Bond       G96Angle    Proper Dih.  Improper Dih.        LJ (SR)
+    2.24127e+03    7.03268e+03    5.64417e+03    1.20635e+02    2.55445e+04
+  Disper. corr.   Coulomb (SR)   Coul. recip.      Potential Pres. DC (bar)
+   -1.69588e+03    0.00000e+00    0.00000e+00    3.88873e+04    0.00000e+00
+ Pressure (bar)       dEkin/dl      dVcoul/dl       dVvdw/dl    dVbonded/dl
+   -1.69877e+02    0.00000e+00    0.00000e+00   -2.21291e+05    0.00000e+00
+ dVrestraint/dl   Constr. rmsd
+    0.00000e+00    2.43727e-06
+
+           Step           Time         Lambda
+            109      109.00000        0.00000
+
+   Energies (kJ/mol)
+        G96Bond       G96Angle    Proper Dih.  Improper Dih.        LJ (SR)
+    2.14199e+03    7.01921e+03    5.64243e+03    1.20887e+02    2.54777e+04
+  Disper. corr.   Coulomb (SR)   Coul. recip.      Potential Pres. DC (bar)
+   -1.69588e+03    0.00000e+00    0.00000e+00    3.87063e+04    0.00000e+00
+ Pressure (bar)       dEkin/dl      dVcoul/dl       dVvdw/dl    dVbonded/dl
+   -1.69881e+02    0.00000e+00    0.00000e+00   -2.20854e+05    0.00000e+00
+ dVrestraint/dl   Constr. rmsd
+    0.00000e+00    2.16785e-06
+
+           Step           Time         Lambda
+            110      110.00000        0.00000
+
+           Step           Time         Lambda
+            111      111.00000        0.00000
+
+   Energies (kJ/mol)
+        G96Bond       G96Angle    Proper Dih.  Improper Dih.        LJ (SR)
+    2.12293e+03    7.00774e+03    5.64179e+03    1.20623e+02    2.53987e+04
+  Disper. corr.   Coulomb (SR)   Coul. recip.      Potential Pres. DC (bar)
+   -1.69588e+03    0.00000e+00    0.00000e+00    3.85959e+04    0.00000e+00
+ Pressure (bar)       dEkin/dl      dVcoul/dl       dVvdw/dl    dVbonded/dl
+   -1.69885e+02    0.00000e+00    0.00000e+00   -2.20332e+05    0.00000e+00
+ dVrestraint/dl   Constr. rmsd
+    0.00000e+00    1.96714e-06
+
+           Step           Time         Lambda
+            112      112.00000        0.00000
+
+   Energies (kJ/mol)
+        G96Bond       G96Angle    Proper Dih.  Improper Dih.        LJ (SR)
+    2.14459e+03    6.99223e+03    5.63981e+03    1.20667e+02    2.52873e+04
+  Disper. corr.   Coulomb (SR)   Coul. recip.      Potential Pres. DC (bar)
+   -1.69588e+03    0.00000e+00    0.00000e+00    3.84887e+04    0.00000e+00
+ Pressure (bar)       dEkin/dl      dVcoul/dl       dVvdw/dl    dVbonded/dl
+   -1.69891e+02    0.00000e+00    0.00000e+00   -2.19603e+05    0.00000e+00
+ dVrestraint/dl   Constr. rmsd
+    0.00000e+00    2.02070e-06
+
+           Step           Time         Lambda
+            113      113.00000        0.00000
+
+   Energies (kJ/mol)
+        G96Bond       G96Angle    Proper Dih.  Improper Dih.        LJ (SR)
+    2.14233e+03    6.98090e+03    5.63917e+03    1.20483e+02    2.51985e+04
+  Disper. corr.   Coulomb (SR)   Coul. recip.      Potential Pres. DC (bar)
+   -1.69588e+03    0.00000e+00    0.00000e+00    3.83855e+04    0.00000e+00
+ Pressure (bar)       dEkin/dl      dVcoul/dl       dVvdw/dl    dVbonded/dl
+   -1.69895e+02    0.00000e+00    0.00000e+00   -2.19009e+05    0.00000e+00
+ dVrestraint/dl   Constr. rmsd
+    0.00000e+00    2.06949e-06
+
+           Step           Time         Lambda
+            114      114.00000        0.00000
+
+   Energies (kJ/mol)
+        G96Bond       G96Angle    Proper Dih.  Improper Dih.        LJ (SR)
+    2.16359e+03    6.96878e+03    5.63717e+03    1.20628e+02    2.51018e+04
+  Disper. corr.   Coulomb (SR)   Coul. recip.      Potential Pres. DC (bar)
+   -1.69588e+03    0.00000e+00    0.00000e+00    3.82961e+04    0.00000e+00
+ Pressure (bar)       dEkin/dl      dVcoul/dl       dVvdw/dl    dVbonded/dl
+   -1.69900e+02    0.00000e+00    0.00000e+00   -2.18376e+05    0.00000e+00
+ dVrestraint/dl   Constr. rmsd
+    0.00000e+00    2.08420e-06
+
+           Step           Time         Lambda
+            115      115.00000        0.00000
+
+   Energies (kJ/mol)
+        G96Bond       G96Angle    Proper Dih.  Improper Dih.        LJ (SR)
+    2.19948e+03    6.95924e+03    5.63675e+03    1.20466e+02    2.50072e+04
+  Disper. corr.   Coulomb (SR)   Coul. recip.      Potential Pres. DC (bar)
+   -1.69588e+03    0.00000e+00    0.00000e+00    3.82272e+04    0.00000e+00
+ Pressure (bar)       dEkin/dl      dVcoul/dl       dVvdw/dl    dVbonded/dl
+   -1.69905e+02    0.00000e+00    0.00000e+00   -2.17740e+05    0.00000e+00
+ dVrestraint/dl   Constr. rmsd
+    0.00000e+00    2.03245e-06
+
+           Step           Time         Lambda
+            116      116.00000        0.00000
+
+   Energies (kJ/mol)
+        G96Bond       G96Angle    Proper Dih.  Improper Dih.        LJ (SR)
+    2.22019e+03    6.94843e+03    5.63448e+03    1.20715e+02    2.49164e+04
+  Disper. corr.   Coulomb (SR)   Coul. recip.      Potential Pres. DC (bar)
+   -1.69588e+03    0.00000e+00    0.00000e+00    3.81443e+04    0.00000e+00
+ Pressure (bar)       dEkin/dl      dVcoul/dl       dVvdw/dl    dVbonded/dl
+   -1.69908e+02    0.00000e+00    0.00000e+00   -2.17146e+05    0.00000e+00
+ dVrestraint/dl   Constr. rmsd
+    0.00000e+00    2.10223e-06
+
+           Step           Time         Lambda
+            117      117.00000        0.00000
+
+           Step           Time         Lambda
+            118      118.00000        0.00000
+
+   Energies (kJ/mol)
+        G96Bond       G96Angle    Proper Dih.  Improper Dih.        LJ (SR)
+    2.05906e+03    6.93183e+03    5.63438e+03    1.20481e+02    2.48672e+04
+  Disper. corr.   Coulomb (SR)   Coul. recip.      Potential Pres. DC (bar)
+   -1.69588e+03    0.00000e+00    0.00000e+00    3.79170e+04    0.00000e+00
+ Pressure (bar)       dEkin/dl      dVcoul/dl       dVvdw/dl    dVbonded/dl
+   -1.69910e+02    0.00000e+00    0.00000e+00   -2.16819e+05    0.00000e+00
+ dVrestraint/dl   Constr. rmsd
+    0.00000e+00    1.73016e-06
+
+           Step           Time         Lambda
+            119      119.00000        0.00000
+
+   Energies (kJ/mol)
+        G96Bond       G96Angle    Proper Dih.  Improper Dih.        LJ (SR)
+    2.26575e+03    6.89655e+03    5.62932e+03    1.19583e+02    2.45238e+04
+  Disper. corr.   Coulomb (SR)   Coul. recip.      Potential Pres. DC (bar)
+   -1.69588e+03    0.00000e+00    0.00000e+00    3.77391e+04    0.00000e+00
+ Pressure (bar)       dEkin/dl      dVcoul/dl       dVvdw/dl    dVbonded/dl
+   -1.69931e+02    0.00000e+00    0.00000e+00   -2.14595e+05    0.00000e+00
+ dVrestraint/dl   Constr. rmsd
+    0.00000e+00    2.25663e-06
+
+           Step           Time         Lambda
+            120      120.00000        0.00000
+
+   Energies (kJ/mol)
+        G96Bond       G96Angle    Proper Dih.  Improper Dih.        LJ (SR)
+    2.08032e+03    6.86990e+03    5.62939e+03    1.19938e+02    2.44693e+04
+  Disper. corr.   Coulomb (SR)   Coul. recip.      Potential Pres. DC (bar)
+   -1.69588e+03    0.00000e+00    0.00000e+00    3.74730e+04    0.00000e+00
+ Pressure (bar)       dEkin/dl      dVcoul/dl       dVvdw/dl    dVbonded/dl
+   -1.69929e+02    0.00000e+00    0.00000e+00   -2.14199e+05    0.00000e+00
+ dVrestraint/dl   Constr. rmsd
+    0.00000e+00    1.84792e-06
+
+           Step           Time         Lambda
+            121      121.00000        0.00000
+
+           Step           Time         Lambda
+            122      122.00000        0.00000
+
+   Energies (kJ/mol)
+        G96Bond       G96Angle    Proper Dih.  Improper Dih.        LJ (SR)
+    2.04994e+03    6.86650e+03    5.62767e+03    1.19921e+02    2.43919e+04
+  Disper. corr.   Coulomb (SR)   Coul. recip.      Potential Pres. DC (bar)
+   -1.69588e+03    0.00000e+00    0.00000e+00    3.73601e+04    0.00000e+00
+ Pressure (bar)       dEkin/dl      dVcoul/dl       dVvdw/dl    dVbonded/dl
+   -1.69930e+02    0.00000e+00    0.00000e+00   -2.13702e+05    0.00000e+00
+ dVrestraint/dl   Constr. rmsd
+    0.00000e+00    1.95107e-06
+
+           Step           Time         Lambda
+            123      123.00000        0.00000
+
+   Energies (kJ/mol)
+        G96Bond       G96Angle    Proper Dih.  Improper Dih.        LJ (SR)
+    2.11660e+03    6.84765e+03    5.62694e+03    1.19849e+02    2.42782e+04
+  Disper. corr.   Coulomb (SR)   Coul. recip.      Potential Pres. DC (bar)
+   -1.69588e+03    0.00000e+00    0.00000e+00    3.72934e+04    0.00000e+00
+ Pressure (bar)       dEkin/dl      dVcoul/dl       dVvdw/dl    dVbonded/dl
+   -1.69935e+02    0.00000e+00    0.00000e+00   -2.12938e+05    0.00000e+00
+ dVrestraint/dl   Constr. rmsd
+    0.00000e+00    2.20607e-06
+
+           Step           Time         Lambda
+            124      124.00000        0.00000
+
+   Energies (kJ/mol)
+        G96Bond       G96Angle    Proper Dih.  Improper Dih.        LJ (SR)
+    2.06445e+03    6.84251e+03    5.62504e+03    1.20006e+02    2.42023e+04
+  Disper. corr.   Coulomb (SR)   Coul. recip.      Potential Pres. DC (bar)
+   -1.69588e+03    0.00000e+00    0.00000e+00    3.71585e+04    0.00000e+00
+ Pressure (bar)       dEkin/dl      dVcoul/dl       dVvdw/dl    dVbonded/dl
+   -1.69937e+02    0.00000e+00    0.00000e+00   -2.12451e+05    0.00000e+00
+ dVrestraint/dl   Constr. rmsd
+    0.00000e+00    2.33252e-06
+
+           Step           Time         Lambda
+            125      125.00000        0.00000
+
+           Step           Time         Lambda
+            126      126.00000        0.00000
+
+   Energies (kJ/mol)
+        G96Bond       G96Angle    Proper Dih.  Improper Dih.        LJ (SR)
+    2.00732e+03    6.82757e+03    5.62475e+03    1.19798e+02    2.41461e+04
+  Disper. corr.   Coulomb (SR)   Coul. recip.      Potential Pres. DC (bar)
+   -1.69588e+03    0.00000e+00    0.00000e+00    3.70296e+04    0.00000e+00
+ Pressure (bar)       dEkin/dl      dVcoul/dl       dVvdw/dl    dVbonded/dl
+   -1.69938e+02    0.00000e+00    0.00000e+00   -2.12075e+05    0.00000e+00
+ dVrestraint/dl   Constr. rmsd
+    0.00000e+00    1.99823e-06
+
+           Step           Time         Lambda
+            127      127.00000        0.00000
+
+   Energies (kJ/mol)
+        G96Bond       G96Angle    Proper Dih.  Improper Dih.        LJ (SR)
+    2.07475e+03    6.81151e+03    5.62212e+03    1.19700e+02    2.39790e+04
+  Disper. corr.   Coulomb (SR)   Coul. recip.      Potential Pres. DC (bar)
+   -1.69588e+03    0.00000e+00    0.00000e+00    3.69111e+04    0.00000e+00
+ Pressure (bar)       dEkin/dl      dVcoul/dl       dVvdw/dl    dVbonded/dl
+   -1.69946e+02    0.00000e+00    0.00000e+00   -2.10992e+05    0.00000e+00
+ dVrestraint/dl   Constr. rmsd
+    0.00000e+00    2.48313e-06
+
+           Step           Time         Lambda
+            128      128.00000        0.00000
+
+   Energies (kJ/mol)
+        G96Bond       G96Angle    Proper Dih.  Improper Dih.        LJ (SR)
+    2.02391e+03    6.79420e+03    5.62181e+03    1.19591e+02    2.39129e+04
+  Disper. corr.   Coulomb (SR)   Coul. recip.      Potential Pres. DC (bar)
+   -1.69588e+03    0.00000e+00    0.00000e+00    3.67766e+04    0.00000e+00
+ Pressure (bar)       dEkin/dl      dVcoul/dl       dVvdw/dl    dVbonded/dl
+   -1.69945e+02    0.00000e+00    0.00000e+00   -2.10542e+05    0.00000e+00
+ dVrestraint/dl   Constr. rmsd
+    0.00000e+00    1.92343e-06
+
+           Step           Time         Lambda
+            129      129.00000        0.00000
+
+   Energies (kJ/mol)
+        G96Bond       G96Angle    Proper Dih.  Improper Dih.        LJ (SR)
+    2.11090e+03    6.79206e+03    5.61954e+03    1.19791e+02    2.37960e+04
+  Disper. corr.   Coulomb (SR)   Coul. recip.      Potential Pres. DC (bar)
+   -1.69588e+03    0.00000e+00    0.00000e+00    3.67425e+04    0.00000e+00
+ Pressure (bar)       dEkin/dl      dVcoul/dl       dVvdw/dl    dVbonded/dl
+   -1.69948e+02    0.00000e+00    0.00000e+00   -2.09787e+05    0.00000e+00
+ dVrestraint/dl   Constr. rmsd
+    0.00000e+00    2.22801e-06
+
+           Step           Time         Lambda
+            130      130.00000        0.00000
+
+   Energies (kJ/mol)
+        G96Bond       G96Angle    Proper Dih.  Improper Dih.        LJ (SR)
+    2.08422e+03    6.77206e+03    5.61946e+03    1.19625e+02    2.37231e+04
+  Disper. corr.   Coulomb (SR)   Coul. recip.      Potential Pres. DC (bar)
+   -1.69588e+03    0.00000e+00    0.00000e+00    3.66226e+04    0.00000e+00
+ Pressure (bar)       dEkin/dl      dVcoul/dl       dVvdw/dl    dVbonded/dl
+   -1.69950e+02    0.00000e+00    0.00000e+00   -2.09283e+05    0.00000e+00
+ dVrestraint/dl   Constr. rmsd
+    0.00000e+00    1.90217e-06
+
+           Step           Time         Lambda
+            131      131.00000        0.00000
+
+           Step           Time         Lambda
+            132      132.00000        0.00000
+
+   Energies (kJ/mol)
+        G96Bond       G96Angle    Proper Dih.  Improper Dih.        LJ (SR)
+    1.96222e+03    6.76284e+03    5.61822e+03    1.19689e+02    2.36711e+04
+  Disper. corr.   Coulomb (SR)   Coul. recip.      Potential Pres. DC (bar)
+   -1.69588e+03    0.00000e+00    0.00000e+00    3.64382e+04    0.00000e+00
+ Pressure (bar)       dEkin/dl      dVcoul/dl       dVvdw/dl    dVbonded/dl
+   -1.69951e+02    0.00000e+00    0.00000e+00   -2.08956e+05    0.00000e+00
+ dVrestraint/dl   Constr. rmsd
+    0.00000e+00    1.70957e-06
+
+           Step           Time         Lambda
+            133      133.00000        0.00000
+
+   Energies (kJ/mol)
+        G96Bond       G96Angle    Proper Dih.  Improper Dih.        LJ (SR)
+    2.15119e+03    6.73096e+03    5.61546e+03    1.18722e+02    2.33984e+04
+  Disper. corr.   Coulomb (SR)   Coul. recip.      Potential Pres. DC (bar)
+   -1.69588e+03    0.00000e+00    0.00000e+00    3.63189e+04    0.00000e+00
+ Pressure (bar)       dEkin/dl      dVcoul/dl       dVvdw/dl    dVbonded/dl
+   -1.69961e+02    0.00000e+00    0.00000e+00   -2.07174e+05    0.00000e+00
+ dVrestraint/dl   Constr. rmsd
+    0.00000e+00    2.19040e-06
+
+           Step           Time         Lambda
+            134      134.00000        0.00000
+
+   Energies (kJ/mol)
+        G96Bond       G96Angle    Proper Dih.  Improper Dih.        LJ (SR)
+    1.95293e+03    6.71314e+03    5.61407e+03    1.19309e+02    2.33483e+04
+  Disper. corr.   Coulomb (SR)   Coul. recip.      Potential Pres. DC (bar)
+   -1.69588e+03    0.00000e+00    0.00000e+00    3.60519e+04    0.00000e+00
+ Pressure (bar)       dEkin/dl      dVcoul/dl       dVvdw/dl    dVbonded/dl
+   -1.69959e+02    0.00000e+00    0.00000e+00   -2.06844e+05    0.00000e+00
+ dVrestraint/dl   Constr. rmsd
+    0.00000e+00    2.15871e-06
+
+           Step           Time         Lambda
+            135      135.00000        0.00000
+
+           Step           Time         Lambda
+            136      136.00000        0.00000
+
+   Energies (kJ/mol)
+        G96Bond       G96Angle    Proper Dih.  Improper Dih.        LJ (SR)
+    1.96596e+03    6.70500e+03    5.61298e+03    1.19064e+02    2.32455e+04
+  Disper. corr.   Coulomb (SR)   Coul. recip.      Potential Pres. DC (bar)
+   -1.69588e+03    0.00000e+00    0.00000e+00    3.59526e+04    0.00000e+00
+ Pressure (bar)       dEkin/dl      dVcoul/dl       dVvdw/dl    dVbonded/dl
+   -1.69959e+02    0.00000e+00    0.00000e+00   -2.06171e+05    0.00000e+00
+ dVrestraint/dl   Constr. rmsd
+    0.00000e+00    2.05998e-06
+
+           Step           Time         Lambda
+            137      137.00000        0.00000
+
+   Energies (kJ/mol)
+        G96Bond       G96Angle    Proper Dih.  Improper Dih.        LJ (SR)
+    1.95289e+03    6.68996e+03    5.61174e+03    1.19236e+02    2.31728e+04
+  Disper. corr.   Coulomb (SR)   Coul. recip.      Potential Pres. DC (bar)
+   -1.69588e+03    0.00000e+00    0.00000e+00    3.58507e+04    0.00000e+00
+ Pressure (bar)       dEkin/dl      dVcoul/dl       dVvdw/dl    dVbonded/dl
+   -1.69961e+02    0.00000e+00    0.00000e+00   -2.05693e+05    0.00000e+00
+ dVrestraint/dl   Constr. rmsd
+    0.00000e+00    1.93719e-06
+
+           Step           Time         Lambda
+            138      138.00000        0.00000
+
+   Energies (kJ/mol)
+        G96Bond       G96Angle    Proper Dih.  Improper Dih.        LJ (SR)
+    1.99863e+03    6.68434e+03    5.61079e+03    1.19091e+02    2.30669e+04
+  Disper. corr.   Coulomb (SR)   Coul. recip.      Potential Pres. DC (bar)
+   -1.69588e+03    0.00000e+00    0.00000e+00    3.57838e+04    0.00000e+00
+ Pressure (bar)       dEkin/dl      dVcoul/dl       dVvdw/dl    dVbonded/dl
+   -1.69963e+02    0.00000e+00    0.00000e+00   -2.04999e+05    0.00000e+00
+ dVrestraint/dl   Constr. rmsd
+    0.00000e+00    2.00799e-06
+
+           Step           Time         Lambda
+            139      139.00000        0.00000
+
+   Energies (kJ/mol)
+        G96Bond       G96Angle    Proper Dih.  Improper Dih.        LJ (SR)
+    1.96948e+03    6.66760e+03    5.60937e+03    1.19224e+02    2.29959e+04
+  Disper. corr.   Coulomb (SR)   Coul. recip.      Potential Pres. DC (bar)
+   -1.69588e+03    0.00000e+00    0.00000e+00    3.56657e+04    0.00000e+00
+ Pressure (bar)       dEkin/dl      dVcoul/dl       dVvdw/dl    dVbonded/dl
+   -1.69963e+02    0.00000e+00    0.00000e+00   -2.04532e+05    0.00000e+00
+ dVrestraint/dl   Constr. rmsd
+    0.00000e+00    2.10373e-06
+
+           Step           Time         Lambda
+            140      140.00000        0.00000
+
+           Step           Time         Lambda
+            141      141.00000        0.00000
+
+   Energies (kJ/mol)
+        G96Bond       G96Angle    Proper Dih.  Improper Dih.        LJ (SR)
+    1.90637e+03    6.65994e+03    5.60900e+03    1.19130e+02    2.29430e+04
+  Disper. corr.   Coulomb (SR)   Coul. recip.      Potential Pres. DC (bar)
+   -1.69588e+03    0.00000e+00    0.00000e+00    3.55416e+04    0.00000e+00
+ Pressure (bar)       dEkin/dl      dVcoul/dl       dVvdw/dl    dVbonded/dl
+   -1.69964e+02    0.00000e+00    0.00000e+00   -2.04188e+05    0.00000e+00
+ dVrestraint/dl   Constr. rmsd
+    0.00000e+00    1.99642e-06
+
+           Step           Time         Lambda
+            142      142.00000        0.00000
+
+   Energies (kJ/mol)
+        G96Bond       G96Angle    Proper Dih.  Improper Dih.        LJ (SR)
+    1.98513e+03    6.63787e+03    5.60646e+03    1.18818e+02    2.27690e+04
+  Disper. corr.   Coulomb (SR)   Coul. recip.      Potential Pres. DC (bar)
+   -1.69588e+03    0.00000e+00    0.00000e+00    3.54214e+04    0.00000e+00
+ Pressure (bar)       dEkin/dl      dVcoul/dl       dVvdw/dl    dVbonded/dl
+   -1.69967e+02    0.00000e+00    0.00000e+00   -2.03057e+05    0.00000e+00
+ dVrestraint/dl   Constr. rmsd
+    0.00000e+00    2.17514e-06
+
+           Step           Time         Lambda
+            143      143.00000        0.00000
+
+   Energies (kJ/mol)
+        G96Bond       G96Angle    Proper Dih.  Improper Dih.        LJ (SR)
+    1.92054e+03    6.62776e+03    5.60618e+03    1.19017e+02    2.27076e+04
+  Disper. corr.   Coulomb (SR)   Coul. recip.      Potential Pres. DC (bar)
+   -1.69588e+03    0.00000e+00    0.00000e+00    3.52852e+04    0.00000e+00
+ Pressure (bar)       dEkin/dl      dVcoul/dl       dVvdw/dl    dVbonded/dl
+   -1.69967e+02    0.00000e+00    0.00000e+00   -2.02646e+05    0.00000e+00
+ dVrestraint/dl   Constr. rmsd
+    0.00000e+00    1.96969e-06
+
+           Step           Time         Lambda
+            144      144.00000        0.00000
+
+   Energies (kJ/mol)
+        G96Bond       G96Angle    Proper Dih.  Improper Dih.        LJ (SR)
+    2.02656e+03    6.61990e+03    5.60406e+03    1.18868e+02    2.25934e+04
+  Disper. corr.   Coulomb (SR)   Coul. recip.      Potential Pres. DC (bar)
+   -1.69588e+03    0.00000e+00    0.00000e+00    3.52669e+04    0.00000e+00
+ Pressure (bar)       dEkin/dl      dVcoul/dl       dVvdw/dl    dVbonded/dl
+   -1.69968e+02    0.00000e+00    0.00000e+00   -2.01902e+05    0.00000e+00
+ dVrestraint/dl   Constr. rmsd
+    0.00000e+00    2.13909e-06
+
+           Step           Time         Lambda
+            145      145.00000        0.00000
+
+   Energies (kJ/mol)
+        G96Bond       G96Angle    Proper Dih.  Improper Dih.        LJ (SR)
+    1.97862e+03    6.60836e+03    5.60406e+03    1.19203e+02    2.25249e+04
+  Disper. corr.   Coulomb (SR)   Coul. recip.      Potential Pres. DC (bar)
+   -1.69588e+03    0.00000e+00    0.00000e+00    3.51393e+04    0.00000e+00
+ Pressure (bar)       dEkin/dl      dVcoul/dl       dVvdw/dl    dVbonded/dl
+   -1.69968e+02    0.00000e+00    0.00000e+00   -2.01440e+05    0.00000e+00
+ dVrestraint/dl   Constr. rmsd
+    0.00000e+00    2.08698e-06
+
+           Step           Time         Lambda
+            146      146.00000        0.00000
+
+           Step           Time         Lambda
+            147      147.00000        0.00000
+
+   Energies (kJ/mol)
+        G96Bond       G96Angle    Proper Dih.  Improper Dih.        LJ (SR)
+    1.86877e+03    6.59524e+03    5.60286e+03    1.18975e+02    2.24751e+04
+  Disper. corr.   Coulomb (SR)   Coul. recip.      Potential Pres. DC (bar)
+   -1.69588e+03    0.00000e+00    0.00000e+00    3.49650e+04    0.00000e+00
+ Pressure (bar)       dEkin/dl      dVcoul/dl       dVvdw/dl    dVbonded/dl
+   -1.69968e+02    0.00000e+00    0.00000e+00   -2.01123e+05    0.00000e+00
+ dVrestraint/dl   Constr. rmsd
+    0.00000e+00    1.98621e-06
+
+           Step           Time         Lambda
+            148      148.00000        0.00000
+
+   Energies (kJ/mol)
+        G96Bond       G96Angle    Proper Dih.  Improper Dih.        LJ (SR)
+    2.04925e+03    6.57542e+03    5.60093e+03    1.18529e+02    2.22511e+04
+  Disper. corr.   Coulomb (SR)   Coul. recip.      Potential Pres. DC (bar)
+   -1.69588e+03    0.00000e+00    0.00000e+00    3.48993e+04    0.00000e+00
+ Pressure (bar)       dEkin/dl      dVcoul/dl       dVvdw/dl    dVbonded/dl
+   -1.69971e+02    0.00000e+00    0.00000e+00   -1.99671e+05    0.00000e+00
+ dVrestraint/dl   Constr. rmsd
+    0.00000e+00    2.01946e-06
+
+           Step           Time         Lambda
+            149      149.00000        0.00000
+
+   Energies (kJ/mol)
+        G96Bond       G96Angle    Proper Dih.  Improper Dih.        LJ (SR)
+    1.86707e+03    6.55379e+03    5.59955e+03    1.18671e+02    2.22027e+04
+  Disper. corr.   Coulomb (SR)   Coul. recip.      Potential Pres. DC (bar)
+   -1.69588e+03    0.00000e+00    0.00000e+00    3.46459e+04    0.00000e+00
+ Pressure (bar)       dEkin/dl      dVcoul/dl       dVvdw/dl    dVbonded/dl
+   -1.69969e+02    0.00000e+00    0.00000e+00   -1.99348e+05    0.00000e+00
+ dVrestraint/dl   Constr. rmsd
+    0.00000e+00    2.27470e-06
+
+           Step           Time         Lambda
+            150      150.00000        0.00000
+
+           Step           Time         Lambda
+            151      151.00000        0.00000
+
+   Energies (kJ/mol)
+        G96Bond       G96Angle    Proper Dih.  Improper Dih.        LJ (SR)
+    1.87055e+03    6.54927e+03    5.59874e+03    1.18653e+02    2.21156e+04
+  Disper. corr.   Coulomb (SR)   Coul. recip.      Potential Pres. DC (bar)
+   -1.69588e+03    0.00000e+00    0.00000e+00    3.45569e+04    0.00000e+00
+ Pressure (bar)       dEkin/dl      dVcoul/dl       dVvdw/dl    dVbonded/dl
+   -1.69969e+02    0.00000e+00    0.00000e+00   -1.98784e+05    0.00000e+00
+ dVrestraint/dl   Constr. rmsd
+    0.00000e+00    2.14852e-06
+
+           Step           Time         Lambda
+            152      152.00000        0.00000
+
+   Energies (kJ/mol)
+        G96Bond       G96Angle    Proper Dih.  Improper Dih.        LJ (SR)
+    1.87386e+03    6.53208e+03    5.59750e+03    1.18540e+02    2.20410e+04
+  Disper. corr.   Coulomb (SR)   Coul. recip.      Potential Pres. DC (bar)
+   -1.69588e+03    0.00000e+00    0.00000e+00    3.44671e+04    0.00000e+00
+ Pressure (bar)       dEkin/dl      dVcoul/dl       dVvdw/dl    dVbonded/dl
+   -1.69970e+02    0.00000e+00    0.00000e+00   -1.98292e+05    0.00000e+00
+ dVrestraint/dl   Constr. rmsd
+    0.00000e+00    2.31024e-06
+
+           Step           Time         Lambda
+            153      153.00000        0.00000
+
+   Energies (kJ/mol)
+        G96Bond       G96Angle    Proper Dih.  Improper Dih.        LJ (SR)
+    1.90489e+03    6.53120e+03    5.59683e+03    1.18759e+02    2.19492e+04
+  Disper. corr.   Coulomb (SR)   Coul. recip.      Potential Pres. DC (bar)
+   -1.69588e+03    0.00000e+00    0.00000e+00    3.44050e+04    0.00000e+00
+ Pressure (bar)       dEkin/dl      dVcoul/dl       dVvdw/dl    dVbonded/dl
+   -1.69969e+02    0.00000e+00    0.00000e+00   -1.97697e+05    0.00000e+00
+ dVrestraint/dl   Constr. rmsd
+    0.00000e+00    1.87820e-06
+
+           Step           Time         Lambda
+            154      154.00000        0.00000
+
+   Energies (kJ/mol)
+        G96Bond       G96Angle    Proper Dih.  Improper Dih.        LJ (SR)
+    1.90045e+03    6.51204e+03    5.59539e+03    1.18513e+02    2.18785e+04
+  Disper. corr.   Coulomb (SR)   Coul. recip.      Potential Pres. DC (bar)
+   -1.69588e+03    0.00000e+00    0.00000e+00    3.43090e+04    0.00000e+00
+ Pressure (bar)       dEkin/dl      dVcoul/dl       dVvdw/dl    dVbonded/dl
+   -1.69970e+02    0.00000e+00    0.00000e+00   -1.97226e+05    0.00000e+00
+ dVrestraint/dl   Constr. rmsd
+    0.00000e+00    2.03402e-06
+
+           Step           Time         Lambda
+            155      155.00000        0.00000
+
+   Energies (kJ/mol)
+        G96Bond       G96Angle    Proper Dih.  Improper Dih.        LJ (SR)
+    1.98620e+03    6.51837e+03    5.59501e+03    1.18999e+02    2.17854e+04
+  Disper. corr.   Coulomb (SR)   Coul. recip.      Potential Pres. DC (bar)
+   -1.69588e+03    0.00000e+00    0.00000e+00    3.43081e+04    0.00000e+00
+ Pressure (bar)       dEkin/dl      dVcoul/dl       dVvdw/dl    dVbonded/dl
+   -1.69968e+02    0.00000e+00    0.00000e+00   -1.96623e+05    0.00000e+00
+ dVrestraint/dl   Constr. rmsd
+    0.00000e+00    1.91297e-06
+
+           Step           Time         Lambda
+            156      156.00000        0.00000
+
+   Energies (kJ/mol)
+        G96Bond       G96Angle    Proper Dih.  Improper Dih.        LJ (SR)
+    1.97266e+03    6.49505e+03    5.59325e+03    1.18581e+02    2.17169e+04
+  Disper. corr.   Coulomb (SR)   Coul. recip.      Potential Pres. DC (bar)
+   -1.69588e+03    0.00000e+00    0.00000e+00    3.42006e+04    0.00000e+00
+ Pressure (bar)       dEkin/dl      dVcoul/dl       dVvdw/dl    dVbonded/dl
+   -1.69969e+02    0.00000e+00    0.00000e+00   -1.96159e+05    0.00000e+00
+ dVrestraint/dl   Constr. rmsd
+    0.00000e+00    1.93036e-06
+
+           Step           Time         Lambda
+            157      157.00000        0.00000
+
+           Step           Time         Lambda
+            158      158.00000        0.00000
+
+   Energies (kJ/mol)
+        G96Bond       G96Angle    Proper Dih.  Improper Dih.        LJ (SR)
+    1.80422e+03    6.48671e+03    5.59321e+03    1.18834e+02    2.16690e+04
+  Disper. corr.   Coulomb (SR)   Coul. recip.      Potential Pres. DC (bar)
+   -1.69588e+03    0.00000e+00    0.00000e+00    3.39761e+04    0.00000e+00
+ Pressure (bar)       dEkin/dl      dVcoul/dl       dVvdw/dl    dVbonded/dl
+   -1.69969e+02    0.00000e+00    0.00000e+00   -1.95859e+05    0.00000e+00
+ dVrestraint/dl   Constr. rmsd
+    0.00000e+00    2.03928e-06
+
+           Step           Time         Lambda
+            159      159.00000        0.00000
+
+           Step           Time         Lambda
+            160      160.00000        0.00000
+
+   Energies (kJ/mol)
+        G96Bond       G96Angle    Proper Dih.  Improper Dih.        LJ (SR)
+    1.83851e+03    6.46873e+03    5.59158e+03    1.18117e+02    2.15563e+04
+  Disper. corr.   Coulomb (SR)   Coul. recip.      Potential Pres. DC (bar)
+   -1.69588e+03    0.00000e+00    0.00000e+00    3.38773e+04    0.00000e+00
+ Pressure (bar)       dEkin/dl      dVcoul/dl       dVvdw/dl    dVbonded/dl
+   -1.69969e+02    0.00000e+00    0.00000e+00   -1.95135e+05    0.00000e+00
+ dVrestraint/dl   Constr. rmsd
+    0.00000e+00    2.26242e-06
+
+           Step           Time         Lambda
+            161      161.00000        0.00000
+
+   Energies (kJ/mol)
+        G96Bond       G96Angle    Proper Dih.  Improper Dih.        LJ (SR)
+    1.82306e+03    6.45962e+03    5.59127e+03    1.18508e+02    2.14879e+04
+  Disper. corr.   Coulomb (SR)   Coul. recip.      Potential Pres. DC (bar)
+   -1.69588e+03    0.00000e+00    0.00000e+00    3.37845e+04    0.00000e+00
+ Pressure (bar)       dEkin/dl      dVcoul/dl       dVvdw/dl    dVbonded/dl
+   -1.69969e+02    0.00000e+00    0.00000e+00   -1.94686e+05    0.00000e+00
+ dVrestraint/dl   Constr. rmsd
+    0.00000e+00    1.99708e-06
+
+           Step           Time         Lambda
+            162      162.00000        0.00000
+
+   Energies (kJ/mol)
+        G96Bond       G96Angle    Proper Dih.  Improper Dih.        LJ (SR)
+    1.85645e+03    6.44939e+03    5.58958e+03    1.18128e+02    2.14007e+04
+  Disper. corr.   Coulomb (SR)   Coul. recip.      Potential Pres. DC (bar)
+   -1.69588e+03    0.00000e+00    0.00000e+00    3.37184e+04    0.00000e+00
+ Pressure (bar)       dEkin/dl      dVcoul/dl       dVvdw/dl    dVbonded/dl
+   -1.69967e+02    0.00000e+00    0.00000e+00   -1.94119e+05    0.00000e+00
+ dVrestraint/dl   Constr. rmsd
+    0.00000e+00    1.97820e-06
+
+           Step           Time         Lambda
+            163      163.00000        0.00000
+
+   Energies (kJ/mol)
+        G96Bond       G96Angle    Proper Dih.  Improper Dih.        LJ (SR)
+    1.86556e+03    6.44254e+03    5.58943e+03    1.18645e+02    2.13258e+04
+  Disper. corr.   Coulomb (SR)   Coul. recip.      Potential Pres. DC (bar)
+   -1.69588e+03    0.00000e+00    0.00000e+00    3.36461e+04    0.00000e+00
+ Pressure (bar)       dEkin/dl      dVcoul/dl       dVvdw/dl    dVbonded/dl
+   -1.69967e+02    0.00000e+00    0.00000e+00   -1.93626e+05    0.00000e+00
+ dVrestraint/dl   Constr. rmsd
+    0.00000e+00    1.88509e-06
+
+           Step           Time         Lambda
+            164      164.00000        0.00000
+
+   Energies (kJ/mol)
+        G96Bond       G96Angle    Proper Dih.  Improper Dih.        LJ (SR)
+    1.90589e+03    6.43297e+03    5.58761e+03    1.18216e+02    2.12469e+04
+  Disper. corr.   Coulomb (SR)   Coul. recip.      Potential Pres. DC (bar)
+   -1.69588e+03    0.00000e+00    0.00000e+00    3.35957e+04    0.00000e+00
+ Pressure (bar)       dEkin/dl      dVcoul/dl       dVvdw/dl    dVbonded/dl
+   -1.69966e+02    0.00000e+00    0.00000e+00   -1.93111e+05    0.00000e+00
+ dVrestraint/dl   Constr. rmsd
+    0.00000e+00    2.08880e-06
+
+           Step           Time         Lambda
+            165      165.00000        0.00000
+
+   Energies (kJ/mol)
+        G96Bond       G96Angle    Proper Dih.  Improper Dih.        LJ (SR)
+    1.96920e+03    6.43165e+03    5.58773e+03    1.18923e+02    2.11685e+04
+  Disper. corr.   Coulomb (SR)   Coul. recip.      Potential Pres. DC (bar)
+   -1.69588e+03    0.00000e+00    0.00000e+00    3.35802e+04    0.00000e+00
+ Pressure (bar)       dEkin/dl      dVcoul/dl       dVvdw/dl    dVbonded/dl
+   -1.69965e+02    0.00000e+00    0.00000e+00   -1.92592e+05    0.00000e+00
+ dVrestraint/dl   Constr. rmsd
+    0.00000e+00    2.32320e-06
+
+           Step           Time         Lambda
+            166      166.00000        0.00000
+
+   Energies (kJ/mol)
+        G96Bond       G96Angle    Proper Dih.  Improper Dih.        LJ (SR)
+    2.02386e+03    6.42199e+03    5.58561e+03    1.18452e+02    2.10940e+04
+  Disper. corr.   Coulomb (SR)   Coul. recip.      Potential Pres. DC (bar)
+   -1.69588e+03    0.00000e+00    0.00000e+00    3.35480e+04    0.00000e+00
+ Pressure (bar)       dEkin/dl      dVcoul/dl       dVvdw/dl    dVbonded/dl
+   -1.69964e+02    0.00000e+00    0.00000e+00   -1.92099e+05    0.00000e+00
+ dVrestraint/dl   Constr. rmsd
+    0.00000e+00    2.13884e-06
+
+           Step           Time         Lambda
+            167      167.00000        0.00000
+
+           Step           Time         Lambda
+            168      168.00000        0.00000
+
+   Energies (kJ/mol)
+        G96Bond       G96Angle    Proper Dih.  Improper Dih.        LJ (SR)
+    1.75094e+03    6.40210e+03    5.58577e+03    1.18696e+02    2.10525e+04
+  Disper. corr.   Coulomb (SR)   Coul. recip.      Potential Pres. DC (bar)
+   -1.69588e+03    0.00000e+00    0.00000e+00    3.32141e+04    0.00000e+00
+ Pressure (bar)       dEkin/dl      dVcoul/dl       dVvdw/dl    dVbonded/dl
+   -1.69963e+02    0.00000e+00    0.00000e+00   -1.91834e+05    0.00000e+00
+ dVrestraint/dl   Constr. rmsd
+    0.00000e+00    1.91634e-06
+
+           Step           Time         Lambda
+            169      169.00000        0.00000
+
+           Step           Time         Lambda
+            170      170.00000        0.00000
+
+   Energies (kJ/mol)
+        G96Bond       G96Angle    Proper Dih.  Improper Dih.        LJ (SR)
+    1.82867e+03    6.38280e+03    5.58362e+03    1.17552e+02    2.08847e+04
+  Disper. corr.   Coulomb (SR)   Coul. recip.      Potential Pres. DC (bar)
+   -1.69588e+03    0.00000e+00    0.00000e+00    3.31015e+04    0.00000e+00
+ Pressure (bar)       dEkin/dl      dVcoul/dl       dVvdw/dl    dVbonded/dl
+   -1.69965e+02    0.00000e+00    0.00000e+00   -1.90782e+05    0.00000e+00
+ dVrestraint/dl   Constr. rmsd
+    0.00000e+00    1.97468e-06
+
+           Step           Time         Lambda
+            171      171.00000        0.00000
+
+   Energies (kJ/mol)
+        G96Bond       G96Angle    Proper Dih.  Improper Dih.        LJ (SR)
+    1.77594e+03    6.36529e+03    5.58353e+03    1.18091e+02    2.08312e+04
+  Disper. corr.   Coulomb (SR)   Coul. recip.      Potential Pres. DC (bar)
+   -1.69588e+03    0.00000e+00    0.00000e+00    3.29781e+04    0.00000e+00
+ Pressure (bar)       dEkin/dl      dVcoul/dl       dVvdw/dl    dVbonded/dl
+   -1.69962e+02    0.00000e+00    0.00000e+00   -1.90411e+05    0.00000e+00
+ dVrestraint/dl   Constr. rmsd
+    0.00000e+00    1.83672e-06
+
+           Step           Time         Lambda
+            172      172.00000        0.00000
+
+   Energies (kJ/mol)
+        G96Bond       G96Angle    Proper Dih.  Improper Dih.        LJ (SR)
+    1.86166e+03    6.36837e+03    5.58146e+03    1.17959e+02    2.07273e+04
+  Disper. corr.   Coulomb (SR)   Coul. recip.      Potential Pres. DC (bar)
+   -1.69588e+03    0.00000e+00    0.00000e+00    3.29609e+04    0.00000e+00
+ Pressure (bar)       dEkin/dl      dVcoul/dl       dVvdw/dl    dVbonded/dl
+   -1.69961e+02    0.00000e+00    0.00000e+00   -1.89745e+05    0.00000e+00
+ dVrestraint/dl   Constr. rmsd
+    0.00000e+00    2.14924e-06
+
+           Step           Time         Lambda
+            173      173.00000        0.00000
+
+   Energies (kJ/mol)
+        G96Bond       G96Angle    Proper Dih.  Improper Dih.        LJ (SR)
+    1.82906e+03    6.34864e+03    5.58165e+03    1.18354e+02    2.06663e+04
+  Disper. corr.   Coulomb (SR)   Coul. recip.      Potential Pres. DC (bar)
+   -1.69588e+03    0.00000e+00    0.00000e+00    3.28481e+04    0.00000e+00
+ Pressure (bar)       dEkin/dl      dVcoul/dl       dVvdw/dl    dVbonded/dl
+   -1.69960e+02    0.00000e+00    0.00000e+00   -1.89327e+05    0.00000e+00
+ dVrestraint/dl   Constr. rmsd
+    0.00000e+00    2.00913e-06
+
+           Step           Time         Lambda
+            174      174.00000        0.00000
+
+           Step           Time         Lambda
+            175      175.00000        0.00000
+
+   Energies (kJ/mol)
+        G96Bond       G96Angle    Proper Dih.  Improper Dih.        LJ (SR)
+    1.72267e+03    6.34159e+03    5.58058e+03    1.18184e+02    2.06205e+04
+  Disper. corr.   Coulomb (SR)   Coul. recip.      Potential Pres. DC (bar)
+   -1.69588e+03    0.00000e+00    0.00000e+00    3.26877e+04    0.00000e+00
+ Pressure (bar)       dEkin/dl      dVcoul/dl       dVvdw/dl    dVbonded/dl
+   -1.69959e+02    0.00000e+00    0.00000e+00   -1.89043e+05    0.00000e+00
+ dVrestraint/dl   Constr. rmsd
+    0.00000e+00    1.97939e-06
+
+           Step           Time         Lambda
+            176      176.00000        0.00000
+
+   Energies (kJ/mol)
+        G96Bond       G96Angle    Proper Dih.  Improper Dih.        LJ (SR)
+    1.87798e+03    6.31877e+03    5.57878e+03    1.17682e+02    2.04107e+04
+  Disper. corr.   Coulomb (SR)   Coul. recip.      Potential Pres. DC (bar)
+   -1.69588e+03    0.00000e+00    0.00000e+00    3.26081e+04    0.00000e+00
+ Pressure (bar)       dEkin/dl      dVcoul/dl       dVvdw/dl    dVbonded/dl
+   -1.69958e+02    0.00000e+00    0.00000e+00   -1.87688e+05    0.00000e+00
+ dVrestraint/dl   Constr. rmsd
+    0.00000e+00    2.16681e-06
+
+           Step           Time         Lambda
+            177      177.00000        0.00000
+
+   Energies (kJ/mol)
+        G96Bond       G96Angle    Proper Dih.  Improper Dih.        LJ (SR)
+    1.72474e+03    6.30438e+03    5.57765e+03    1.17988e+02    2.03651e+04
+  Disper. corr.   Coulomb (SR)   Coul. recip.      Potential Pres. DC (bar)
+   -1.69588e+03    0.00000e+00    0.00000e+00    3.23939e+04    0.00000e+00
+ Pressure (bar)       dEkin/dl      dVcoul/dl       dVvdw/dl    dVbonded/dl
+   -1.69956e+02    0.00000e+00    0.00000e+00   -1.87387e+05    0.00000e+00
+ dVrestraint/dl   Constr. rmsd
+    0.00000e+00    2.07575e-06
+
+           Step           Time         Lambda
+            178      178.00000        0.00000
+
+           Step           Time         Lambda
+            179      179.00000        0.00000
+
+   Energies (kJ/mol)
+        G96Bond       G96Angle    Proper Dih.  Improper Dih.        LJ (SR)
+    1.72302e+03    6.29812e+03    5.57696e+03    1.17899e+02    2.02919e+04
+  Disper. corr.   Coulomb (SR)   Coul. recip.      Potential Pres. DC (bar)
+   -1.69588e+03    0.00000e+00    0.00000e+00    3.23121e+04    0.00000e+00
+ Pressure (bar)       dEkin/dl      dVcoul/dl       dVvdw/dl    dVbonded/dl
+   -1.69956e+02    0.00000e+00    0.00000e+00   -1.86915e+05    0.00000e+00
+ dVrestraint/dl   Constr. rmsd
+    0.00000e+00    2.01785e-06
+
+           Step           Time         Lambda
+            180      180.00000        0.00000
+
+   Energies (kJ/mol)
+        G96Bond       G96Angle    Proper Dih.  Improper Dih.        LJ (SR)
+    1.73396e+03    6.28588e+03    5.57586e+03    1.17932e+02    2.02173e+04
+  Disper. corr.   Coulomb (SR)   Coul. recip.      Potential Pres. DC (bar)
+   -1.69588e+03    0.00000e+00    0.00000e+00    3.22351e+04    0.00000e+00
+ Pressure (bar)       dEkin/dl      dVcoul/dl       dVvdw/dl    dVbonded/dl
+   -1.69953e+02    0.00000e+00    0.00000e+00   -1.86431e+05    0.00000e+00
+ dVrestraint/dl   Constr. rmsd
+    0.00000e+00    1.92873e-06
+
+           Step           Time         Lambda
+            181      181.00000        0.00000
+
+   Energies (kJ/mol)
+        G96Bond       G96Angle    Proper Dih.  Improper Dih.        LJ (SR)
+    1.74711e+03    6.28110e+03    5.57525e+03    1.17982e+02    2.01419e+04
+  Disper. corr.   Coulomb (SR)   Coul. recip.      Potential Pres. DC (bar)
+   -1.69588e+03    0.00000e+00    0.00000e+00    3.21675e+04    0.00000e+00
+ Pressure (bar)       dEkin/dl      dVcoul/dl       dVvdw/dl    dVbonded/dl
+   -1.69953e+02    0.00000e+00    0.00000e+00   -1.85940e+05    0.00000e+00
+ dVrestraint/dl   Constr. rmsd
+    0.00000e+00    2.04234e-06
+
+           Step           Time         Lambda
+            182      182.00000        0.00000
+
+   Energies (kJ/mol)
+        G96Bond       G96Angle    Proper Dih.  Improper Dih.        LJ (SR)
+    1.76646e+03    6.26948e+03    5.57403e+03    1.17964e+02    2.00699e+04
+  Disper. corr.   Coulomb (SR)   Coul. recip.      Potential Pres. DC (bar)
+   -1.69588e+03    0.00000e+00    0.00000e+00    3.21019e+04    0.00000e+00
+ Pressure (bar)       dEkin/dl      dVcoul/dl       dVvdw/dl    dVbonded/dl
+   -1.69952e+02    0.00000e+00    0.00000e+00   -1.85471e+05    0.00000e+00
+ dVrestraint/dl   Constr. rmsd
+    0.00000e+00    2.10133e-06
+
+           Step           Time         Lambda
+            183      183.00000        0.00000
+
+   Energies (kJ/mol)
+        G96Bond       G96Angle    Proper Dih.  Improper Dih.        LJ (SR)
+    1.80296e+03    6.26761e+03    5.57363e+03    1.18167e+02    1.99952e+04
+  Disper. corr.   Coulomb (SR)   Coul. recip.      Potential Pres. DC (bar)
+   -1.69588e+03    0.00000e+00    0.00000e+00    3.20616e+04    0.00000e+00
+ Pressure (bar)       dEkin/dl      dVcoul/dl       dVvdw/dl    dVbonded/dl
+   -1.69950e+02    0.00000e+00    0.00000e+00   -1.84984e+05    0.00000e+00
+ dVrestraint/dl   Constr. rmsd
+    0.00000e+00    2.00303e-06
+
+           Step           Time         Lambda
+            184      184.00000        0.00000
+
+   Energies (kJ/mol)
+        G96Bond       G96Angle    Proper Dih.  Improper Dih.        LJ (SR)
+    1.84539e+03    6.25693e+03    5.57218e+03    1.18085e+02    1.99242e+04
+  Disper. corr.   Coulomb (SR)   Coul. recip.      Potential Pres. DC (bar)
+   -1.69588e+03    0.00000e+00    0.00000e+00    3.20208e+04    0.00000e+00
+ Pressure (bar)       dEkin/dl      dVcoul/dl       dVvdw/dl    dVbonded/dl
+   -1.69949e+02    0.00000e+00    0.00000e+00   -1.84517e+05    0.00000e+00
+ dVrestraint/dl   Constr. rmsd
+    0.00000e+00    1.96888e-06
+
+           Step           Time         Lambda
+            185      185.00000        0.00000
+
+           Step           Time         Lambda
+            186      186.00000        0.00000
+
+   Energies (kJ/mol)
+        G96Bond       G96Angle    Proper Dih.  Improper Dih.        LJ (SR)
+    1.66226e+03    6.24302e+03    5.57206e+03    1.18139e+02    1.98864e+04
+  Disper. corr.   Coulomb (SR)   Coul. recip.      Potential Pres. DC (bar)
+   -1.69588e+03    0.00000e+00    0.00000e+00    3.17860e+04    0.00000e+00
+ Pressure (bar)       dEkin/dl      dVcoul/dl       dVvdw/dl    dVbonded/dl
+   -1.69949e+02    0.00000e+00    0.00000e+00   -1.84275e+05    0.00000e+00
+ dVrestraint/dl   Constr. rmsd
+    0.00000e+00    1.96841e-06
+
+
+Steepest Descents converged to Fmax < 1000 in 187 steps
+Potential Energy  =  3.1785953e+04
+Maximum force     =  9.6179083e+02 on atom 771
+Norm of force     =  7.3453804e+01
+
+	M E G A - F L O P S   A C C O U N T I N G
+
+ NB=Group-cutoff nonbonded kernels    NxN=N-by-N cluster Verlet kernels
+ RF=Reaction-Field  VdW=Van der Waals  QSTab=quadratic-spline table
+ W3=SPC/TIP3p  W4=TIP4p (single or pairs)
+ V&F=Potential and force  V=Potential only  F=Force only
+
+ Computing:                               M-Number         M-Flops  % Flops
+-----------------------------------------------------------------------------
+ NB Free energy kernel               145995.769980      145995.770    65.8
+ Pair Search distance check             695.464104        6259.177     2.8
+ NxN QSTab Elec. + LJ [V&F]             986.033824       58175.996    26.2
+ 1,4 nonbonded interactions              14.629758        1316.678     0.6
+ Calc Weights                             6.795954         244.654     0.1
+ Spread Q Bspline                       489.308688         978.617     0.4
+ Gather F Bspline                       489.308688        2935.852     1.3
+ 3D-FFT                                 637.419420        5099.355     2.3
+ Solve PME                                0.191488          12.255     0.0
+ Shift-X                                  2.265318          13.592     0.0
+ Bonds                                    0.789514          46.581     0.0
+ Angles                                   0.863192         145.016     0.1
+ Propers                                  0.732292         167.695     0.1
+ Impropers                                0.032538           6.768     0.0
+ Virial                                   2.273733          40.927     0.0
+ Lincs                                    0.031416           1.885     0.0
+ Constraint-Vir                           0.015708           0.377     0.0
+ Settle                                   0.957440         309.253     0.1
+-----------------------------------------------------------------------------
+ Total                                                  221750.450   100.0
+-----------------------------------------------------------------------------
+
+
+     R E A L   C Y C L E   A N D   T I M E   A C C O U N T I N G
+
+On 1 MPI rank
+
+ Computing:          Num   Num      Call    Wall time         Giga-Cycles
+                     Ranks Threads  Count      (s)         total sum    %
+-----------------------------------------------------------------------------
+ Neighbor search        1    1        187       7.716         41.044   7.3
+ Force                  1    1        187      44.913        238.925  42.3
+ PME mesh               1    1        187       0.313          1.667   0.3
+ NB X/F buffer ops.     1    1        187       0.007          0.038   0.0
+ Constraints            1    1        373       0.076          0.402   0.1
+ Rest                                          53.128        282.624  50.0
+-----------------------------------------------------------------------------
+ Total                                        106.153        564.700 100.0
+-----------------------------------------------------------------------------
+ Breakdown of PME mesh computation
+-----------------------------------------------------------------------------
+ PME spread/gather      1    1        374       0.070          0.373   0.1
+ PME 3D-FFT             1    1        374       0.107          0.569   0.1
+ PME solve Elec         1    1        187       0.136          0.724   0.1
+-----------------------------------------------------------------------------
+
+               Core t (s)   Wall t (s)        (%)
+       Time:      106.153      106.153      100.0
+               (steps/hour)
+Performance:         6341.8
+Finished mdrun on rank 0 Fri Dec  9 14:47:21 2016

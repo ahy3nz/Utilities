@@ -1,0 +1,18 @@
+
+; Include force field parameters
+#include "gromos53a6.ff/forcefield.itp" 
+#include "~/Programs/setup/FF/gromos53a6/ff.itp"
+
+
+; Include SPC water topology
+#include "gromos53a6.ff/spc.itp" 
+
+[ system ]
+; Name 
+Lipid Bilayer System
+
+[ molecules ]
+;  Compound      #mols
+DPPC       128       
+SOL        2560      
+

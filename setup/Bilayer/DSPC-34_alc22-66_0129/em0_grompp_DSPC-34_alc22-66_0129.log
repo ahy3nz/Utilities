@@ -1,0 +1,75 @@
+                  :-) GROMACS - gmx grompp, VERSION 5.1.2 (-:
+
+                            GROMACS is written by:
+     Emile Apol      Rossen Apostolov  Herman J.C. Berendsen    Par Bjelkmar   
+ Aldert van Buuren   Rudi van Drunen     Anton Feenstra   Sebastian Fritsch 
+  Gerrit Groenhof   Christoph Junghans   Anca Hamuraru    Vincent Hindriksen
+ Dimitrios Karkoulis    Peter Kasson        Jiri Kraus      Carsten Kutzner  
+    Per Larsson      Justin A. Lemkul   Magnus Lundborg   Pieter Meulenhoff 
+   Erik Marklund      Teemu Murtola       Szilard Pall       Sander Pronk   
+   Roland Schulz     Alexey Shvetsov     Michael Shirts     Alfons Sijbers  
+   Peter Tieleman    Teemu Virolainen  Christian Wennberg    Maarten Wolf   
+                           and the project leaders:
+        Mark Abraham, Berk Hess, Erik Lindahl, and David van der Spoel
+
+Copyright (c) 1991-2000, University of Groningen, The Netherlands.
+Copyright (c) 2001-2015, The GROMACS development team at
+Uppsala University, Stockholm University and
+the Royal Institute of Technology, Sweden.
+check out http://www.gromacs.org for more information.
+
+GROMACS is free software; you can redistribute it and/or modify it
+under the terms of the GNU Lesser General Public License
+as published by the Free Software Foundation; either version 2.1
+of the License, or (at your option) any later version.
+
+GROMACS:      gmx grompp, VERSION 5.1.2
+Executable:   /usr/local/gromacs/bin//gmx
+Data prefix:  /usr/local/gromacs
+Command line:
+  gmx grompp -f em0.mdp -c DSPC-34_alc22-66_0129.gro -p DSPC-34_alc22-66_0129.top -o em0_DSPC-34_alc22-66_0129.tpr -maxwarn 1
+
+
+Back Off! I just backed up mdout.mdp to ./#mdout.mdp.34#
+
+NOTE 1 [file em0.mdp]:
+  With Verlet lists the optimal nstlist is >= 10, with GPUs >= 20. Note
+  that with the Verlet scheme, nstlist has no effect on the accuracy of
+  your simulation.
+
+Setting the LD random seed to 2859828783
+Generated 222 of the 1653 non-bonded parameter combinations
+Generating 1-4 interactions: fudge = 1
+Generated 168 of the 1653 1-4 parameter combinations
+Excluding 2 bonded neighbours molecule type 'DSPC'
+Excluding 2 bonded neighbours molecule type 'alc22'
+Excluding 2 bonded neighbours molecule type 'SOL'
+Coupling 2688 copies of molecule type 'system'
+Removing all charge groups because cutoff-scheme=Verlet
+Number of degrees of freedom in T-Coupling group rest is 28449.00
+
+WARNING 1 [file em0.mdp]:
+  You are using full electrostatics treatment PME for a system without
+  charges.
+  This costs a lot of performance for just processing zeros, consider using
+  Cut-off instead.
+
+
+Estimate for the relative computational load of the PME mesh part: 0.10
+
+There was 1 note
+
+There was 1 warning
+
+gcq#23: "I Caught It In the Face" (P.J. Harvey)
+
+turning H bonds into constraints...
+turning H bonds into constraints...
+turning H bonds into constraints...
+Analysing residue names:
+There are:   128      Other residues
+There are:  2560      Water residues
+Analysing residues not classified as Protein/DNA/RNA/Water and splitting into groups...
+Calculating fourier grid dimensions for X Y Z
+Using a fourier grid of 36x36x96, spacing 0.118 0.118 0.112
+This run will generate roughly 1 Mb of data
