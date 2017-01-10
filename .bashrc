@@ -5,6 +5,7 @@ export FILEY='ahy3nz@filey.vuse.vanderbilt.edu'
 export CORI='ahy3nz@cori.nersc.gov'
 export EDISON='ahy3nz@edison.nersc.gov'
 export TITAN='ahy3nz@titan.ccs.ornl.gov'
+export ACCRE='yangah@login.accre.vanderbilt.edu'
 export RAHMAN='ahy3nz@rahman.vuse.vanderbilt.edu'
 export PYTHONPATH="/users/ahy3nz/Programs/groupy2_alex/groupy2":$PYTHONPATH
 export PYTHONPATH="/users/ahy3nz/Programs/Analysis/permeability":$PYTHONPATH
