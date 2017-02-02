@@ -1,4 +1,5 @@
 import numpy as np
+import pdb
 import os
 import sys
 import matplotlib
@@ -62,7 +63,10 @@ for i in range(n_columns):
     for j in range(time):
         ylist.append(data[j][i+1])
         xlist.append(data[j][0])
-    plt.plot(xlist, ylist, label=legend[i])
+    if legend:
+        plt.plot(xlist, ylist, label=legend[i])
+    else:
+        plt.plot(xlist, ylist)
 plt.xlabel(xlabel)
 plt.title(title)
 plt.ylabel(ylabel)
