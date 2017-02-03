@@ -13,7 +13,11 @@ do
     if [ "$first" = true ];
     then
         echo "$line"
-        jobid=$(qsub "$line""$extension"pbs.pbs)
+        # Below is to start the dependency chain
+        #jobid=$(qsub "$line""$extension"pbs.pbs)
+
+        # Below is to continue the dependency chain
+        jobid=$(qsub -W depend=afterany:8736 "$line""$extension"pbs.pbs)
         first=false
     else
         echo "$line"
