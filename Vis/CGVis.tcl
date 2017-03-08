@@ -22,6 +22,10 @@ mol color ColorID 1
 mol representation VDW 1.000000 12.000000
 #mol selection resid 129 to 768
 #mol modrep 2 0
+mol smoothrep 0 1 5
+mol smoothrep 0 0 5
+mol smoothrep 0 2 5
+
 display resetview
 rotate x to 90.000000
 scale to 0.02
