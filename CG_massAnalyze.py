@@ -41,7 +41,7 @@ for i, val in enumerate(filenames):
             ## trjconv and remove jumping in the raw trajectory based on atom 53
             #os.system("echo '8 0' | gmx trjconv -f md_{}.xtc -s {}.gro -pbc nojump -o nojump.xtc -center -n index.ndx".format(val, val))
             # trjconv and pbc mol to move everything into box
-            os.system("echo '0' | gmx trjconv -f nojump.xtc -s md_{}.tpr -pbc mol -dt 100 -o nopbc.xtc".format(val))
+            os.system("echo '0' | gmx trjconv -f md_{0}.xtc -s md_{0}.tpr -pbc mol -dt 100 -o nopbc.xtc".format(val))
             
             #os.system("echo '1 0' | gmx trjconv -f md_{}.xtc -s md_{}.tpr -pbc nojump -center -dt 20 -o nopbc".format(val,val))
             # truncate last 100 ns 
