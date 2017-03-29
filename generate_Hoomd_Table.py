@@ -14,6 +14,7 @@ table_energy [=] 0.1 kcal/mol
 table_dist [=] 6 angstrom
 table_force [=] table_energy/table_dist
 specify f, c6, c12
+Martini cutoff at 1.1nm
 """
 # These are conversion factors to convert from gromacs 
 # units (kJ mol-1, nm, kj mol-1  nm-1) to table units
@@ -47,7 +48,7 @@ def convert_unit(value=0, tag=None):
         sys.exit("Specify a tag (energy, force, distance) for unit conversion")
     return converted_unit
 
-def calc_LJ_energy(r = 1, c12 = 0, c6 = 0):
+def calc_LJ_energy(r = 1, c12 = 0, c6 = 0, rcut = 9999999):
     """ Compute energy according to LJ potential
 
     Parameters
@@ -71,7 +72,7 @@ def calc_LJ_energy(r = 1, c12 = 0, c6 = 0):
     
     """
     # Exception for r = 0
-    if r == 0:
+    if r == 0 or r >= rcut:
         return 0
     r12 = r ** 12
     r6 = r ** 6
@@ -148,7 +149,8 @@ if options.c12 == 0.00:
 
 # Perform all calculations using gromacs units, convert at the end
 distances = np.linspace(0, 1.2, num = 121)
-energies = [calc_LJ_energy(r = r, c6 = c6, c12 = c12) for r in distances]
+rcut = 1.1
+energies = [calc_LJ_energy(r = r, c6 = c6, c12 = c12, rcut = rcut) for r in distances]
 forces = [calc_LJ_force(r = r, c6 = c6, c12 = c12) for r in distances]
 energies = interpolate_r0(values = energies, distances = distances)
 forces = interpolate_r0(values = forces, distances = distances)
