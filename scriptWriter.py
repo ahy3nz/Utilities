@@ -219,7 +219,7 @@ class scriptWriter():
         cont_file.write("export CRAY_CUDA_MPS=1\n")
         cont_file.write("export OMP_NUM_THREADS=2\n")
         cont_file.write("cd $MEMBERWORK/mat149/Trajectories/{}\n".format(filename))
-        cont_file.write("aprun -N 8 -n 16 gmx_mpi -gpu_id 00000000 mdrun -append \\\n")
+        cont_file.write("aprun -N 8 -n 16 gmx_mpi mdrun -gpu_id 00000000 -append \\\n")
         if STrun:
             cont_file.write("-s ST_{}.tpr \\\n".format(filename))
             cont_file.write("-cpi ST_{}.cpt \\\n".format(filename))
