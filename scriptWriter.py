@@ -175,7 +175,7 @@ class scriptWriter():
             sys.exit("Specify ST or MD")
         init_file.write("#!/bin/sh -l\n")
         init_file.write("#PBS -N {}\n".format(filename))
-        init_file.write("#PBS -l nodes=8\n")
+        init_file.write("#PBS -l nodes=2\n")
         if STrun:
             init_file.write("#PBS -l walltime=02:00:00\n")
         elif MDrun:
@@ -190,11 +190,12 @@ class scriptWriter():
         init_file.write("echo `cat $PBS_NODEFILE`\n")
         init_file.write("module load gromacs/5.1.0\n")
         init_file.write("export CRAY_CUDA_MPS=1\n")
+        init_file.write("export OMP_NUM_THREADS=2\n")
         init_file.write("cd $MEMBERWORK/mat149/Trajectories/{}\n".format(filename))
         if STrun:
-            init_file.write("aprun -n 64 -N 8 gmx_mpi mdrun -gpu_id 00000000 -deffnm ST_{} >& out.log\n".format(filename))
+            init_file.write("aprun -n 16 -N 8 gmx_mpi mdrun -gpu_id 00000000 -deffnm ST_{} >& out.log\n".format(filename))
         elif MDrun:
-            init_file.write("aprun -n 64 -N 8 gmx_mpi mdrun -gpu_id 00000000 -deffnm md_{} >& out.log\n".format(filename))
+            init_file.write("aprun -n 16 -N 8 gmx_mpi mdrun -gpu_id 00000000 -deffnm md_{} >& out.log\n".format(filename))
         else:
             pass
         init_file.close()
@@ -207,7 +208,7 @@ class scriptWriter():
             sys.exit("Specify ST or MD")
         cont_file.write("#!/bin/sh -l \n")
         cont_file.write("#PBS -N {}\n".format(filename))
-        cont_file.write("#PBS -l nodes=8\n")
+        cont_file.write("#PBS -l nodes=2\n")
         cont_file.write("#PBS -l walltime=02:00:00\n")
         cont_file.write("#PBS -j oe\n")
         cont_file.write("#PBS -A MAT149\n")
@@ -216,8 +217,9 @@ class scriptWriter():
         cont_file.write("echo `cat $PBS_NODEFILE`\n")
         cont_file.write("module load gromacs/5.1.0\n")
         cont_file.write("export CRAY_CUDA_MPS=1\n")
+        cont_file.write("export OMP_NUM_THREADS=2\n")
         cont_file.write("cd $MEMBERWORK/mat149/Trajectories/{}\n".format(filename))
-        cont_file.write("aprun -n 64 -N 8 gmx_mpi -gpuid 00000000 mdrun -append \\\n")
+        cont_file.write("aprun -N 8 -n 16 gmx_mpi -gpu_id 00000000 mdrun -append \\\n")
         if STrun:
             cont_file.write("-s ST_{}.tpr \\\n".format(filename))
             cont_file.write("-cpi ST_{}.cpt \\\n".format(filename))
