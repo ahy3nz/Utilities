@@ -208,7 +208,7 @@ class scriptWriter():
             sys.exit("Specify ST or MD")
         cont_file.write("#!/bin/sh -l \n")
         cont_file.write("#PBS -N {}\n".format(filename))
-        cont_file.write("#PBS -l nodes=2\n")
+        cont_file.write("#PBS -l nodes=8\n")
         cont_file.write("#PBS -l walltime=02:00:00\n")
         cont_file.write("#PBS -j oe\n")
         cont_file.write("#PBS -A MAT149\n")
@@ -245,3 +245,100 @@ class scriptWriter():
             repeat_file.write('do\n')
             repeat_file.write("     item=$(qsub -W depend=afterany:$item {}STTitancont.pbs) \n".format(filename))
             repeat_file.write('done\n')
+
+
+def write_Accre_script(self, STrun = False, MDrun = False):
+        filename = self._filename
+        if STrun:
+            init_file = open((filename + 'STAccresbatch.sbatch'),'w')
+        elif MDrun:
+            init_file = open((filename + 'MDAccresbatch.sbatch'),'w')
+        else:
+            sys.exit("Specify ST or MD")
+        init_file.write('#!/bin/bash \n')
+        init_file.write('#SBATCH --nodes=1\n')
+        init_file.write('#SBATCH --acount==mccabe_gpu\n')
+        init_file.write('#SBATCH --ntasks-per-node=12\n')
+        init_file.write('#SBATCH --partition=maxwell\n')
+        init_file.write('#SBATCH --gres=gpu:4\n')
+        if STrun:
+            init_file.write('#SBATCH --time 60:00:00\n')
+        elif MDrun:
+            init_file.write('#SBATCH --time 60:00:00\n')
+        else:
+            pass
+        init_file.write('#SBATCH --output=my.stdout\n')
+        init_file.write('#SBATCH --mail-type=ALL\n')
+        init_file.write('#SBATCH --mail-user=alexander.h.yang@vanderbilt.edu\n')
+        init_file.write('setpkgs -a gromacs_5.1.2_roce\n')
+        init_file.write('cd ~/Trajectories/{}/ \n'.format(filename))
+        init_file.write('export OMP_NUM_THREADS=2\n')
+        if STrun:
+            init_file.write('srun -n 6 gmx_mpi mdrun -gpu_id 001123 -deffnm ST_{} >& out.log\n'.format(filename))
+        elif MDrun:
+            init_file.write('srun -n 6 gmx_mpi mdrun -gpu_id 001123 -deffnm md_{} >& out.log\n'.format(filename))
+        else:
+            pass
+            
+        init_file.close()
+        
+        # Write continue script
+        if STrun:
+            cont_file = open((filename + 'STAccrecont.sbatch'),'w')
+        elif MDrun:
+            cont_file = open((filename + 'MDAccrecont.sbatch'),'w')
+        else:
+            sys.exit("Specify ST or MD")
+        cont_file.write('#!/bin/bash \n')
+        cont_file.write('#SBATCH --nodes=1\n')
+        cont_file.write('#SBATCH --account=mccabe_gpu\n')
+        cont_file.write('#SBATCH --ntasks-per-node=12\n')
+        cont_file.write('#SBATCH --partition=maxwell\n')
+        cont_file.write('#SBATCH --gres=gpu:4\n')
+        if STrun:
+            cont_file.write('#SBATCH --time 60:00:00\n')
+        elif MDrun:
+            cont_file.write('#SBATCH --time 60:00:00\n')
+        else:
+            pass
+        cont_file.write('#SBATCH --output=my.stdout\n')
+        cont_file.write('#SBATCH --mail-type=ALL\n')
+        cont_file.write('#SBATCH --mail-user=alexander.h.yang@vanderbilt.edu\n')
+        cont_file.write('setpkgs -a gromacs_5.1.2_roce\n')
+        cont_file.write('cd ~/Trajectories/{}/ \n'.format(filename))
+        cont_file.write('export OMP_NUM_THREADS=2\n')
+        if STrun:
+            cont_file.write('srun -n 6 gmx_mpi mdrun -gpu_id 001123 -append -cpi ST_{}.cpt \\\n'.format(filename))
+            cont_file.write('-s ST_{}.tpr \\\n'.format(filename))
+            cont_file.write('-deffnm ST_{} >& out.log\n'.format(filename))
+        elif MDrun:
+            cont_file.write('srun -n 6 gmx_mpi mdrun -gpu_id 001123 -append -cpi md_{}.cpt \\\n'.format(filename))
+            cont_file.write('-s md_{}.tpr \\\n'.format(filename))
+            cont_file.write('-deffnm md_{} >& out.log\n'.format(filename))
+        else:
+            pass
+        
+        cont_file.close()
+        
+        
+        # Write repeat script
+        if STrun:
+            repeat_file = open((filename + 'STrepeat.sh'),'w')
+            repeat_file.write('export item=`sbatch {}STAccresbatch.sbatch` \n'.format(filename))
+            repeat_file.write('#export item=`sbatch --dependency=afterany:2418639 {}STAccrecont.sbatch`\n'.format(filename))
+            repeat_file.write('for i in {0..0}\n')
+            repeat_file.write('do\n')
+            repeat_file.write('	item=$(sbatch --dependency=afterany:${{item:20:7}} {}STAccrecont.sbatch)\n'.format(filename))
+            repeat_file.write('done')
+        elif MDrun:
+            repeat_file = open((filename + 'MDrepeat.sh'),'w')
+            repeat_file.write('export item=`sbatch {}MDAccresbatch.sbatch` \n'.format(filename))
+            repeat_file.write('#export item=`sbatch --dependency=afterany:2418639 {}MDAccrecont.sbatch`\n'.format(filename))
+            repeat_file.write('for i in {0..0}\n')
+            repeat_file.write('do\n')
+            repeat_file.write('	item=$(sbatch --dependency=afterany:${{item:20:7}} {}MDAccrecont.sbatch)\n'.format(filename))
+            repeat_file.write('done')
+        else:
+            pass
+        repeat_file.close()
+
