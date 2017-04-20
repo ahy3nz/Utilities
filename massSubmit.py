@@ -12,17 +12,18 @@ parser.add_option("--MD", action="store_true", dest ="MDrun")
 
 inputfile = open(options.filename,'r')
 filenames = inputfile.readlines()
+workingdir = os.getcwd()
 for i, val in enumerate(filenames):
     if "#" not in val and val.rstrip():
         val = val.strip()
         print('*********************************')
         print('{:^20s}'.format(val))
         print('*********************************')
-	os.chdir('/global/cscratch1/sd/ahy3nz/Trajectories/{}'.format(val))
+	os.chdir('{}/{}'.format(workingdir,val))
 	if options.STrun:
-		os.system('sbatch {}STsbatch.sbatch'.format(val))
+		os.system('sbatch {}STAccresbatch.sbatch'.format(val))
 	elif options.MDrun:
-		os.system('sbatch {}MDsbatch.sbatch'.format(val))
+		os.system('sbatch {}MDAccresbatch.sbatch'.format(val))
 	else:
 		pass
 
