@@ -18,7 +18,7 @@ parser.add_option("--ST", action = "store_true", dest = "ST")
 
 inputfile = open(options.filename,'r')
 filenames = inputfile.readlines()
-#filenames = ['90_WVTR_3-31c']
+#filenames = ['50_WVTR_4-10a']
 for i, val in enumerate(filenames):
     if "#" not in val and val.rstrip():
         val = val.strip()
@@ -33,14 +33,11 @@ for i, val in enumerate(filenames):
             os.system("echo ' [a_53]' > newindex.ndx")
             os.system("echo ' 53 ' >> newindex.ndx")
             os.system("cat index.ndx >> newindex.ndx")
-            #os.system("echo ' [a_53]' >> index.ndx")
-            #os.system("echo ' 53 ' >> index.ndx")
             # trjconv and remove jumping in the raw trajectory based on atom 53
             os.system("echo '0 1' | gmx trjconv -f ST_{}.xtc -s {}.gro -pbc nojump -o nojump.xtc -center -n newindex.ndx".format(val, val))
             # trjconv and pbc mol to move everything into box
-            os.system("echo '0' | gmx trjconv -f nojump.xtc -s ST_{}.tpr -pbc mol -dt 20 -o st.xtc".format(val))
+            os.system("echo '0' | gmx trjconv -f nojump.xtc -s ST_{}.tpr -pbc mol -dt 20 -b 10000 -e 50000 -o st.xtc".format(val))
             os.system('cp ~/Programs/Analysis/Bilayers/noblockAnalyzeBilayer.py .')
-            #os.system('python noblockAnalyzeBilayer.py -f st.xtc -c ST_{}.gro -o st'.format(val))
             os.system('python noblockAnalyzeBilayer.py -f ST_{}.xtc -c ST_{}.gro -o st'.format(val,val))
             os.system("rm nojump.xtc")
         else:
@@ -51,15 +48,12 @@ for i, val in enumerate(filenames):
             os.system("echo ' [a_53]' > newindex.ndx")
             os.system("echo ' 53 ' >> newindex.ndx")
             os.system("cat index.ndx >> newindex.ndx")
-            #os.system("echo ' [a_53]' >> index.ndx")
-            #os.system("echo ' 53 ' >> index.ndx")
             # trjconv and remove jumping in the raw trajectory based on atom 53
             os.system("echo '0 1' | gmx trjconv -f md_{}.xtc -s {}.gro -pbc nojump -o nojump.xtc -center -n newindex.ndx".format(val, val))
             # trjconv and pbc mol to move everything into box
             os.system("echo '0' | gmx trjconv -f nojump.xtc -s md_{}.tpr -pbc mol -dt 20 -o nopbc.xtc".format(val))
             os.system("echo '0' | gmx trjconv -f nojump.xtc -s md_{}.tpr -pbc mol -b 80000 -e 100000 -dt 20 -o last20.xtc".format(val))
             
-            #os.system("echo '1 0' | gmx trjconv -f md_{}.xtc -s md_{}.tpr -pbc nojump -center -dt 20 -o nopbc".format(val,val))
             # truncate last 20 ns 
             #os.system("echo '0' | gmx trjconv -f nopbc.xtc -s md_{}.tpr -dt 20 -b 480000 -e 500000 -o last20".format(val,val))
             #os.system("echo '0' | gmx trjconv -f nopbc.xtc -s md_{}.tpr -dt 20 -b 480000 -e 500000 -o last20".format(val,val))
