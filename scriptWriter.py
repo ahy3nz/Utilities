@@ -19,9 +19,9 @@ class scriptWriter():
     def write_Cori_script(self, STrun = False, MDrun = False):
         filename = self._filename
         if STrun:
-            init_file = open((filename + 'STsbatch.sbatch'),'w')
+            init_file = open((filename + 'STCorisbatch.sbatch'),'w')
         elif MDrun:
-            init_file = open((filename + 'MDsbatch.sbatch'),'w')
+            init_file = open((filename + 'MDCorisbatch.sbatch'),'w')
         else:
             sys.exit("Specify ST or MD")
         init_file.write('#!/bin/bash -l\n')
@@ -50,9 +50,9 @@ class scriptWriter():
         
         # Write continue script
         if STrun:
-            cont_file = open((filename + 'STcont.sbatch'),'w')
+            cont_file = open((filename + 'STCoricont.sbatch'),'w')
         elif MDrun:
-            cont_file = open((filename + 'MDcont.sbatch'),'w')
+            cont_file = open((filename + 'MDCoricont.sbatch'),'w')
         else:
             sys.exit("Specify ST or MD")
         cont_file.write('#!/bin/bash -l\n')
@@ -86,20 +86,20 @@ class scriptWriter():
         
         # Write repeat script
         if STrun:
-            repeat_file = open((filename + 'STrepeat.sh'),'w')
-            repeat_file.write('export item=`sbatch {}STsbatch.sbatch` \n'.format(filename))
-            repeat_file.write('#export item=`sbatch --dependency=afterany:2418639 {}STcont.sbatch`\n'.format(filename))
+            repeat_file = open((filename + 'STCorirepeat.sh'),'w')
+            repeat_file.write('export item=`sbatch {}STCorisbatch.sbatch` \n'.format(filename))
+            repeat_file.write('#export item=`sbatch --dependency=afterany:2418639 {}STCoricont.sbatch`\n'.format(filename))
             repeat_file.write('for i in {0..0}\n')
             repeat_file.write('do\n')
-            repeat_file.write('	item=$(sbatch --dependency=afterany:${{item:20:7}} {}STcont.sbatch)\n'.format(filename))
+            repeat_file.write('	item=$(sbatch --dependency=afterany:${{item:20:7}} {}STCoricont.sbatch)\n'.format(filename))
             repeat_file.write('done')
         elif MDrun:
-            repeat_file = open((filename + 'MDrepeat.sh'),'w')
-            repeat_file.write('export item=`sbatch {}MDsbatch.sbatch` \n'.format(filename))
-            repeat_file.write('#export item=`sbatch --dependency=afterany:2418639 {}MDcont.sbatch`\n'.format(filename))
+            repeat_file = open((filename + 'MDCorirepeat.sh'),'w')
+            repeat_file.write('export item=`sbatch {}MDCorisbatch.sbatch` \n'.format(filename))
+            repeat_file.write('#export item=`sbatch --dependency=afterany:2418639 {}MDCoricont.sbatch`\n'.format(filename))
             repeat_file.write('for i in {0..0}\n')
             repeat_file.write('do\n')
-            repeat_file.write('	item=$(sbatch --dependency=afterany:${{item:20:7}} {}MDcont.sbatch)\n'.format(filename))
+            repeat_file.write('	item=$(sbatch --dependency=afterany:${{item:20:7}} {}MDCoricont.sbatch)\n'.format(filename))
             repeat_file.write('done')
         else:
             pass
@@ -247,7 +247,7 @@ class scriptWriter():
             repeat_file.write('done\n')
 
 
-    def write_Accre_script(self, STrun = False, MDrun = False):
+def write_Accre_script(self, STrun = False, MDrun = False):
         filename = self._filename
         if STrun:
             init_file = open((filename + 'STAccresbatch.sbatch'),'w')
@@ -257,7 +257,7 @@ class scriptWriter():
             sys.exit("Specify ST or MD")
         init_file.write('#!/bin/bash \n')
         init_file.write('#SBATCH --nodes=1\n')
-        init_file.write('#SBATCH --account=mccabe_gpu\n')
+        init_file.write('#SBATCH --acount==mccabe_gpu\n')
         init_file.write('#SBATCH --ntasks-per-node=12\n')
         init_file.write('#SBATCH --partition=maxwell\n')
         init_file.write('#SBATCH --gres=gpu:4\n')
@@ -272,11 +272,11 @@ class scriptWriter():
         init_file.write('#SBATCH --mail-user=alexander.h.yang@vanderbilt.edu\n')
         init_file.write('setpkgs -a gromacs_5.1.2_roce\n')
         init_file.write('cd ~/Trajectories/{}/ \n'.format(filename))
-        init_file.write('export OMP_NUM_THREADS=1\n')
+        init_file.write('export OMP_NUM_THREADS=2\n')
         if STrun:
-            init_file.write('srun -n 12 gmx_mpi mdrun -ntomp 1 -gpu_id 000111222333 -deffnm ST_{} >& out.log\n'.format(filename))
+            init_file.write('srun -n 6 gmx_mpi mdrun -gpu_id 001123 -deffnm ST_{} >& out.log\n'.format(filename))
         elif MDrun:
-            init_file.write('srun -n 12 gmx_mpi mdrun -ntomp 1 -gpu_id 000111222333 -deffnm md_{} >& out.log\n'.format(filename))
+            init_file.write('srun -n 6 gmx_mpi mdrun -gpu_id 001123 -deffnm md_{} >& out.log\n'.format(filename))
         else:
             pass
             
@@ -306,13 +306,13 @@ class scriptWriter():
         cont_file.write('#SBATCH --mail-user=alexander.h.yang@vanderbilt.edu\n')
         cont_file.write('setpkgs -a gromacs_5.1.2_roce\n')
         cont_file.write('cd ~/Trajectories/{}/ \n'.format(filename))
-        cont_file.write('export OMP_NUM_THREADS=1\n')
+        cont_file.write('export OMP_NUM_THREADS=2\n')
         if STrun:
-            cont_file.write('srun -n 12 gmx_mpi mdrun -ntomp 1 -gpu_id 000111222333 -append -cpi ST_{}.cpt \\\n'.format(filename))
+            cont_file.write('srun -n 6 gmx_mpi mdrun -gpu_id 001123 -append -cpi ST_{}.cpt \\\n'.format(filename))
             cont_file.write('-s ST_{}.tpr \\\n'.format(filename))
             cont_file.write('-deffnm ST_{} >& out.log\n'.format(filename))
         elif MDrun:
-            cont_file.write('srun -n 12 gmx_mpi mdrun -ntomp 1 -gpu_id 000111222333 -append -cpi md_{}.cpt \\\n'.format(filename))
+            cont_file.write('srun -n 6 gmx_mpi mdrun -gpu_id 001123 -append -cpi md_{}.cpt \\\n'.format(filename))
             cont_file.write('-s md_{}.tpr \\\n'.format(filename))
             cont_file.write('-deffnm md_{} >& out.log\n'.format(filename))
         else:
