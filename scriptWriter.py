@@ -257,7 +257,7 @@ def write_Accre_script(self, STrun = False, MDrun = False):
             sys.exit("Specify ST or MD")
         init_file.write('#!/bin/bash \n')
         init_file.write('#SBATCH --nodes=1\n')
-        init_file.write('#SBATCH --acount==mccabe_gpu\n')
+        init_file.write('#SBATCH --account=mccabe_gpu\n')
         init_file.write('#SBATCH --ntasks-per-node=12\n')
         init_file.write('#SBATCH --partition=maxwell\n')
         init_file.write('#SBATCH --gres=gpu:4\n')
@@ -272,11 +272,11 @@ def write_Accre_script(self, STrun = False, MDrun = False):
         init_file.write('#SBATCH --mail-user=alexander.h.yang@vanderbilt.edu\n')
         init_file.write('setpkgs -a gromacs_5.1.2_roce\n')
         init_file.write('cd ~/Trajectories/{}/ \n'.format(filename))
-        init_file.write('export OMP_NUM_THREADS=2\n')
+        init_file.write('export OMP_NUM_THREADS=1\n')
         if STrun:
-            init_file.write('srun -n 6 gmx_mpi mdrun -gpu_id 001123 -deffnm ST_{} >& out.log\n'.format(filename))
+            init_file.write('srun -n 12 gmx_mpi mdrun -ntomp 1 -gpu_id 000111222333 -deffnm ST_{} >& out.log\n'.format(filename))
         elif MDrun:
-            init_file.write('srun -n 6 gmx_mpi mdrun -gpu_id 001123 -deffnm md_{} >& out.log\n'.format(filename))
+            init_file.write('srun -n 12 gmx_mpi mdrun -ntomp 1 -gpu_id 000111222333 -deffnm md_{} >& out.log\n'.format(filename))
         else:
             pass
             
@@ -306,13 +306,13 @@ def write_Accre_script(self, STrun = False, MDrun = False):
         cont_file.write('#SBATCH --mail-user=alexander.h.yang@vanderbilt.edu\n')
         cont_file.write('setpkgs -a gromacs_5.1.2_roce\n')
         cont_file.write('cd ~/Trajectories/{}/ \n'.format(filename))
-        cont_file.write('export OMP_NUM_THREADS=2\n')
+        cont_file.write('export OMP_NUM_THREADS=1\n')
         if STrun:
-            cont_file.write('srun -n 6 gmx_mpi mdrun -gpu_id 001123 -append -cpi ST_{}.cpt \\\n'.format(filename))
+            cont_file.write('srun -n 12 gmx_mpi mdrun -ntomp 1 -gpu_id 000111222333 -append -cpi ST_{}.cpt \\\n'.format(filename))
             cont_file.write('-s ST_{}.tpr \\\n'.format(filename))
             cont_file.write('-deffnm ST_{} >& out.log\n'.format(filename))
         elif MDrun:
-            cont_file.write('srun -n 6 gmx_mpi mdrun -gpu_id 001123 -append -cpi md_{}.cpt \\\n'.format(filename))
+            cont_file.write('srun -n 12 gmx_mpi mdrun -ntomp 1 -gpu_id 000111222333 -append -cpi md_{}.cpt \\\n'.format(filename))
             cont_file.write('-s md_{}.tpr \\\n'.format(filename))
             cont_file.write('-deffnm md_{} >& out.log\n'.format(filename))
         else:
