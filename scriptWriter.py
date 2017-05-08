@@ -115,11 +115,11 @@ class scriptWriter():
             sys.exit("Specify ST or MD")
         init_file.write('#!/bin/bash -l\n')
         init_file.write('#SBATCH -p regular\n')
-        init_file.write('#SBATCH -N 2\n')
+        init_file.write('#SBATCH -N 1\n')
         if STrun:
-            init_file.write('#SBATCH -t 18:00:00\n')
+            init_file.write('#SBATCH -t 01:00:00\n')
         elif MDrun:
-            init_file.write('#SBATCH -t 18:00:00\n')
+            init_file.write('#SBATCH -t 01:00:00\n')
         else:
             pass
         init_file.write('#SBATCH -J {}\n'.format(filename))
@@ -129,9 +129,9 @@ class scriptWriter():
         init_file.write('module load gromacs/5.1.2\n')
         init_file.write('export OMP_NUM_THREADS=1\n')
         if STrun:
-            init_file.write('srun -n 96 -c 1 mdrun_mpi_sp -ntomp 1 -deffnm $SCRATCH/Trajectories/{}/ST_{} >& out.log\n'.format(filename,filename))
+            init_file.write('srun -n 48 -c 1 mdrun_mpi_sp -ntomp 1 -deffnm $SCRATCH/Trajectories/{}/ST_{} >& out.log\n'.format(filename,filename))
         elif MDrun:
-            init_file.write('srun -n 96 -c 1 mdrun_mpi_sp -ntomp 1 -deffnm $SCRATCH/Trajectories/{}/md_{} >& out.log\n'.format(filename,filename))
+            init_file.write('srun -n 48 -c 1 mdrun_mpi_sp -ntomp 1 -deffnm $SCRATCH/Trajectories/{}/md_{} >& out.log\n'.format(filename,filename))
         else:
             pass
             
@@ -146,11 +146,11 @@ class scriptWriter():
             sys.exit("Specify ST or MD")
         cont_file.write('#!/bin/bash -l\n')
         cont_file.write('#SBATCH -p regular\n')
-        cont_file.write('#SBATCH -N 2\n')
+        cont_file.write('#SBATCH -N 1\n')
         if STrun:
-            cont_file.write('#SBATCH -t 07:00:00\n')
+            cont_file.write('#SBATCH -t 01:00:00\n')
         elif MDrun:
-            cont_file.write('#SBATCH -t 09:00:00\n')
+            cont_file.write('#SBATCH -t 01:00:00\n')
         else:
             pass
         cont_file.write('#SBATCH -J {}\n'.format(filename))
@@ -160,7 +160,7 @@ class scriptWriter():
         cont_file.write('module load gromacs/5.1.2\n')
         cont_file.write('export OMP_NUM_THREADS=1\n')
         if STrun:
-            cont_file.write('srun -n 96 -c 1 mdrun_mpi_sp -ntomp 1 -append -cpi $SCRATCH/Trajectories/{}/ST_{}.cpt \\\n'.format(filename,filename))
+            cont_file.write('srun -n 48 -c 1 mdrun_mpi_sp -ntomp 1 -append -cpi $SCRATCH/Trajectories/{}/ST_{}.cpt \\\n'.format(filename,filename))
             cont_file.write('-s $SCRATCH/Trajectories/{}/ST_{}.tpr \\\n'.format(filename,filename))
             cont_file.write('-deffnm $SCRATCH/Trajectories/{}/ST_{} >& out.log\n'.format(filename,filename))
         elif MDrun:
@@ -178,7 +178,7 @@ class scriptWriter():
             repeat_file = open((filename + 'STEdisonrepeat.sh'),'w')
             repeat_file.write('export item=`sbatch {}STEdisonsbatch.sbatch` \n'.format(filename))
             repeat_file.write('#export item=`sbatch --dependency=afterany:2418639 {}STEdisoncont.sbatch`\n'.format(filename))
-            repeat_file.write('for i in {0..0}\n')
+            repeat_file.write('for i in {0..20}\n')
             repeat_file.write('do\n')
             repeat_file.write('	item=$(sbatch --dependency=afterany:${{item:20:7}} {}STEdisoncont.sbatch)\n'.format(filename))
             repeat_file.write('done')
@@ -186,7 +186,7 @@ class scriptWriter():
             repeat_file = open((filename + 'MDEdisonrepeat.sh'),'w')
             repeat_file.write('export item=`sbatch {}MDEdisonsbatch.sbatch` \n'.format(filename))
             repeat_file.write('#export item=`sbatch --dependency=afterany:2418639 {}MDEdisoncont.sbatch`\n'.format(filename))
-            repeat_file.write('for i in {0..0}\n')
+            repeat_file.write('for i in {0..20}\n')
             repeat_file.write('do\n')
             repeat_file.write('	item=$(sbatch --dependency=afterany:${{item:20:7}} {}MDEdisoncont.sbatch)\n'.format(filename))
             repeat_file.write('done')
@@ -242,14 +242,14 @@ class scriptWriter():
         cont_file.write("echo `cat $PBS_NODEFILE`\n")
         cont_file.write("module load gromacs/5.1.0\n")
         cont_file.write("cd ~/Trajectories/{}\n".format(filename))
-        cont_file.write("gmx mdrun -ntomp 8 -gpu_id 0 -append \\\n")
+        cont_file.write("gmx mdrun -ntomp 8 -gpu_id 0 -append \ \n")
         if STrun:
-            cont_file.write("-s ST_{}.tpr \\\n".format(filename))
-            cont_file.write("-cpi ST_{}.cpt \\\n".format(filename))
+            cont_file.write("-s ST_{}.tpr \ \n".format(filename))
+            cont_file.write("-cpi ST_{}.cpt \ \n".format(filename))
             cont_file.write("-deffnm ST_{}\n".format(filename))
         elif MDrun:
-            cont_file.write("-s md_{}.tpr \\\n".format(filename))
-            cont_file.write("-cpi md_{}.cpt \\\n".format(filename))
+            cont_file.write("-s md_{}.tpr \ \n".format(filename))
+            cont_file.write("-cpi md_{}.cpt \ \n".format(filename))
             cont_file.write("-deffnm md_{}\n".format(filename))
         else:
             pass
