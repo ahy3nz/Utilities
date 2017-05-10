@@ -115,7 +115,7 @@ class scriptWriter():
             sys.exit("Specify ST or MD")
         init_file.write('#!/bin/bash -l\n')
         init_file.write('#SBATCH -p regular\n')
-        init_file.write('#SBATCH -N 2\n')
+        init_file.write('#SBATCH -N 1\n')
         if STrun:
             init_file.write('#SBATCH -t 01:00:00\n')
         elif MDrun:
@@ -127,11 +127,11 @@ class scriptWriter():
         init_file.write('#SBATCH --mail-user=alexander.h.yang@vanderbilt.edu\n')
         init_file.write('#SBATCH -L SCRATCH\n')
         init_file.write('module load gromacs/5.1.2\n')
-        init_file.write('export OMP_NUM_THREADS=2\n')
+        init_file.write('export OMP_NUM_THREADS=1\n')
         if STrun:
-            init_file.write('srun -n 48 -c 2 mdrun_mpi_sp -ntomp 2 -deffnm $SCRATCH/Trajectories/{}/ST_{} >& out.log\n'.format(filename,filename))
+            init_file.write('srun -n 48 -c 1 mdrun_mpi_sp -ntomp 1 -deffnm $SCRATCH/Trajectories/{}/ST_{} >& out.log\n'.format(filename,filename))
         elif MDrun:
-            init_file.write('srun -n 48 -c 2 mdrun_mpi_sp -ntomp 2 -deffnm $SCRATCH/Trajectories/{}/md_{} >& out.log\n'.format(filename,filename))
+            init_file.write('srun -n 48 -c 1 mdrun_mpi_sp -ntomp 1 -deffnm $SCRATCH/Trajectories/{}/md_{} >& out.log\n'.format(filename,filename))
         else:
             pass
             
@@ -146,7 +146,7 @@ class scriptWriter():
             sys.exit("Specify ST or MD")
         cont_file.write('#!/bin/bash -l\n')
         cont_file.write('#SBATCH -p regular\n')
-        cont_file.write('#SBATCH -N 2\n')
+        cont_file.write('#SBATCH -N 1\n')
         if STrun:
             cont_file.write('#SBATCH -t 01:00:00\n')
         elif MDrun:
@@ -158,13 +158,13 @@ class scriptWriter():
         cont_file.write('#SBATCH --mail-user=alexander.h.yang@vanderbilt.edu\n')
         cont_file.write('#SBATCH -L SCRATCH\n')
         cont_file.write('module load gromacs/5.1.2\n')
-        cont_file.write('export OMP_NUM_THREADS=2\n')
+        cont_file.write('export OMP_NUM_THREADS=1\n')
         if STrun:
-            cont_file.write('srun -n 48 -c 2 mdrun_mpi_sp -ntomp 2 -notunepme -append -cpi $SCRATCH/Trajectories/{}/ST_{}.cpt \\\n'.format(filename,filename))
+            cont_file.write('srun -n 48 -c 1 mdrun_mpi_sp -ntomp 1 -notunepme -append -cpi $SCRATCH/Trajectories/{}/ST_{}.cpt \\\n'.format(filename,filename))
             cont_file.write('-s $SCRATCH/Trajectories/{}/ST_{}.tpr \\\n'.format(filename,filename))
             cont_file.write('-deffnm $SCRATCH/Trajectories/{}/ST_{} >& out.log\n'.format(filename,filename))
         elif MDrun:
-            cont_file.write('srun -n 48 -c 2 mdrun_mpi_sp -ntomp 2 -append -notunepme -cpi $SCRATCH/Trajectories/{}/md_{}.cpt \\\n'.format(filename,filename))
+            cont_file.write('srun -n 48 -c 1 mdrun_mpi_sp -ntomp 1 -append -notunepme -cpi $SCRATCH/Trajectories/{}/md_{}.cpt \\\n'.format(filename,filename))
             cont_file.write('-s $SCRATCH/Trajectories/{}/md_{}.tpr \\\n'.format(filename,filename))
             cont_file.write('-deffnm $SCRATCH/Trajectories/{}/md_{} >& out.log\n'.format(filename,filename))
         else:
