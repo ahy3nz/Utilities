@@ -103,6 +103,7 @@ class scriptWriter():
             repeat_file.write('done')
         else:
             pass
+        repeat_file.write('echo "Submit chain finished at $(date)" >> out.log')
         repeat_file.close()
     
     def write_Edison_script(self, STrun = False, MDrun = False):
@@ -192,6 +193,7 @@ class scriptWriter():
             repeat_file.write('done')
         else:
             pass
+        repeat_file.write('echo "Submit chain finished at $(date)" >> out.log')
         repeat_file.close()
 
 
@@ -335,6 +337,8 @@ class scriptWriter():
             repeat_file.write('do\n')
             repeat_file.write("     item=$(qsub -W depend=afterany:$item {}STTitancont.pbs) \n".format(filename))
             repeat_file.write('done\n')
+        repeat_file.write('echo "Submit chain finished at $(date)" >> out.log')
+        repeat_file.close()
 
 
     def write_Accre_script(self, STrun = False, MDrun = False):
@@ -413,7 +417,7 @@ class scriptWriter():
         
         # Write repeat script
         if STrun:
-            repeat_file = open((filename + 'STrepeat.sh'),'w')
+            repeat_file = open((filename + 'STAccrerepeat.sh'),'w')
             repeat_file.write('export item=`sbatch {}STAccresbatch.sbatch` \n'.format(filename))
             repeat_file.write('#export item=`sbatch --dependency=afterany:2418639 {}STAccrecont.sbatch`\n'.format(filename))
             repeat_file.write('for i in {0..0}\n')
@@ -421,7 +425,7 @@ class scriptWriter():
             repeat_file.write('	item=$(sbatch --dependency=afterany:${{item:20:7}} {}STAccrecont.sbatch)\n'.format(filename))
             repeat_file.write('done')
         elif MDrun:
-            repeat_file = open((filename + 'MDrepeat.sh'),'w')
+            repeat_file = open((filename + 'MDAccrerepeat.sh'),'w')
             repeat_file.write('export item=`sbatch {}MDAccresbatch.sbatch` \n'.format(filename))
             repeat_file.write('#export item=`sbatch --dependency=afterany:2418639 {}MDAccrecont.sbatch`\n'.format(filename))
             repeat_file.write('for i in {0..0}\n')
@@ -430,5 +434,6 @@ class scriptWriter():
             repeat_file.write('done')
         else:
             pass
+        repeat_file.write('echo "Submit chain finished at $(date)" >> out.log')
         repeat_file.close()
 
