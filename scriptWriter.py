@@ -103,7 +103,7 @@ class scriptWriter():
             repeat_file.write('done')
         else:
             pass
-        repeat_file.write('echo "Submit chain finished at $(date)" >> out.log')
+        repeat_file.write('echo "Last job:${{item:20:7}}" >> out.log')
         repeat_file.close()
     
     def write_Edison_script(self, STrun = False, MDrun = False):
@@ -193,7 +193,7 @@ class scriptWriter():
             repeat_file.write('done')
         else:
             pass
-        repeat_file.write('echo "Submit chain finished at $(date)" >> out.log')
+        repeat_file.write('echo "Last job: ${{item:20:7}}" >> out.log')
         repeat_file.close()
 
 
@@ -337,7 +337,7 @@ class scriptWriter():
             repeat_file.write('do\n')
             repeat_file.write("     item=$(qsub -W depend=afterany:$item {}STTitancont.pbs) \n".format(filename))
             repeat_file.write('done\n')
-        repeat_file.write('echo "Submit chain finished at $(date)" >> out.log')
+        repeat_file.write('echo "Last job: $item" >> out.log')
         repeat_file.close()
 
 
@@ -434,6 +434,6 @@ class scriptWriter():
             repeat_file.write('done')
         else:
             pass
-        repeat_file.write('echo "Submit chain finished at $(date)" >> out.log')
+        repeat_file.write('echo "Last job: ${{item:20:7}}" >> out.log')
         repeat_file.close()
 
