@@ -190,10 +190,10 @@ class scriptWriter():
             repeat_file.write('for i in {0..10}\n')
             repeat_file.write('do\n')
             repeat_file.write('	item=$(sbatch --dependency=afterany:${{item:20:7}} {}MDEdisoncont.sbatch)\n'.format(filename))
-            repeat_file.write('done')
+            repeat_file.write('done\n')
         else:
             pass
-        repeat_file.write('echo "Last job: ${{item:20:7}}" >> out.log')
+        repeat_file.write('echo "$(date): ${item:20:7}" >> JobChain.log')
         repeat_file.close()
 
 
