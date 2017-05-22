@@ -8,7 +8,7 @@ import sys
 scriptWriter class 
 stores information about the filename
 has methods to write submission scipts (initial, continue, and repeat files) 
-for Cori, Titan, and Rahman clusters
+for Cori, Edison, Accre, Titan, and Rahman clusters
 """
 
 class scriptWriter():
@@ -337,7 +337,7 @@ class scriptWriter():
             repeat_file.write('do\n')
             repeat_file.write("     item=$(qsub -W depend=afterany:$item {}STTitancont.pbs) \n".format(filename))
             repeat_file.write('done\n')
-        repeat_file.write('echo "Last job: $item" >> out.log')
+        repeat_file.write('echo "$(date): $item" >> JobChain.log')
         repeat_file.close()
 
 
