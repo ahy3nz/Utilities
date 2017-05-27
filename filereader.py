@@ -88,7 +88,7 @@ def read_data_file(filename = "default.dat"):
     tilt_angle_avg = np.mean(tilt_angle)
     tilt_angle_std = np.std(tilt_angle)
     idig_avg = np.mean(idig)
-    idig_std = np.mean(idig)
+    idig_std = np.std(idig)
     offsets_avg = np.mean(offsets, axis=1)
     offsets_std = np.std(offsets, axis=1)
 
