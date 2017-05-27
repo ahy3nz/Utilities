@@ -17,7 +17,7 @@ class bilayer():
         self._height = height
         self._height_std = height_std
         self._offsets = offsets
-        sefl._offsets_std = offsets_std
+        self._offsets_std = offsets_std
         self._tilt_angle = tilt_angle
         self._tilt_angle_std = tilt_angle_std
         self._idig = idig
@@ -83,6 +83,7 @@ class bilayer():
     @apl.setter
     def apl(self, apl):
         self._apl = apl
+        print("you called a setter!")
 
     @apl_std.setter
     def apl_std(self, apl):

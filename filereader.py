@@ -1,10 +1,12 @@
 import os 
 import numpy as np
+from bilayer import *
 
-def _determine_components(filename = filename):
+def _determine_components(filename = ""):
     """ Based on the filename return the number of components"""
     prefix = filename.split("_")
-    n_components = len(prefix)
+    n_components = len(prefix[0])
+    return n_components
 
 
 def read_data_file(filename = "default.dat"):
@@ -53,7 +55,7 @@ def read_data_file(filename = "default.dat"):
 
     # Compute average and standard errors
     apl_avg = np.mean(apl)
-    apt_std = np.std(apl)
+    apl_std = np.std(apl)
     apt_avg = np.mean(apt)
     apt_std = np.std(apt)
     height_avg = np.mean(height)
