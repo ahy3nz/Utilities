@@ -33,25 +33,50 @@ def read_data_file(filename = "default.dat"):
     col4+n_components-1: interdigitation
     """
 
-    data = np.loadtxt(filename)
+    try:
+        data = np.loadtxt(filename, ndmin = 2)
+    except ValueError:
+        print("Error reading file: {}".format(filename))
     name = filename[:-4]
 
     n_components = determine_components(filename = filename)
 
     # Gather properties from each line
-    apl = data[:, 0]
-    apt = data[:, 1]
-    height = data[:, 2]
-    tilt_angle = data[:, 3]
 
-    idig_col = 4 + n_components - 1
-    idig = data[:, idig_col]
+    # Exception if only one data entry
+    if(data.ndim == 1):
+        apl = data[0, 0]
+        apt = data[0, 1]
+        height = data[0, 2]
+        tilt_angle = data[0, 3]
 
-    # Create a matrix of all the offsets, where each row is a single simulation
-    # And each column is a component
-    offsets = []
-    for i in np.arange(4, idig_col):
-        offsets.append(data[:, i])
+        idig_col = 4 + n_components - 1
+        try:
+            idig = data[0, idig_col]
+        except IndexError:
+            print("Error reading file: {}".format(filename))
+
+        # Create a matrix of all the offsets, where each row is a single simulation
+        # And each column is a component
+        offsets = []
+        for i in np.arange(4, idig_col):
+            offsets.append(data[0, i])
+
+
+    else:
+        apl = data[:, 0]
+        apt = data[:, 1]
+        height = data[:, 2]
+        tilt_angle = data[:, 3]
+
+        idig_col = 4 + n_components - 1
+        idig = data[:, idig_col]
+
+        # Create a matrix of all the offsets, where each row is a single simulation
+        # And each column is a component
+        offsets = []
+        for i in np.arange(4, idig_col):
+            offsets.append(data[:, i])
 
     # Compute average and standard errors
     apl_avg = np.mean(apl)
@@ -90,5 +115,5 @@ def collect_data_files(curr_path = ""):
         List of paths to data files 
         """
 
-    data_files = [os.path.join(curr_path,f) for f in os.listdir(curr_path) if '.dat' in f]
+    data_files = [f for f in os.listdir(curr_path) if '.dat' in f]
     return data_files
