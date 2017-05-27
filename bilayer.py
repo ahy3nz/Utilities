@@ -8,7 +8,7 @@ class bilayer():
     OH, FFA, etc etc """
     def __init__(self, name = "" , apl = 0, apl_std = 0, apt = 0, apt_std =0, height = 0,
             height_std = 0 , offsets = 0 , offsets_std = 0, tilt_angle =0,
-            tilt_angle_std = 0, idig = 0, idig_std = 0):
+            tilt_angle_std = 0, idig = 0, idig_std = 0, n_components = 0):
         self._name = name
         self._apl = apl
         self._apl_std = apl_std
@@ -22,6 +22,7 @@ class bilayer():
         self._tilt_angle_std = tilt_angle_std
         self._idig = idig
         self._idig_std = idig_std
+        self._n_components = n_components
 
     @property
     def name(self):
@@ -75,6 +76,10 @@ class bilayer():
     @property
     def idig_std(self):
         return self._idig_std
+
+    @property
+    def n_components(self):
+        return self._ncomponents
 
     @name.setter
     def name(self, name):
@@ -131,3 +136,21 @@ class bilayer():
     @idig_std.setter
     def idig_std(self,idig):
         self._idig_std = idig
+
+    @n_components.setter
+    def n_components(self, n_components):
+        self._n_components = n_components
+
+    def is_composition(self, n_components = 0, DSPC_fraction = 0, group = ""):
+        """ Return true if this bilayer satisifes the criteria """
+        n_component_criteria = self._n_components == n_components 
+        group_criteria = group in self._name
+        prefix = self._name.split("_")[0]
+        DSPC_char = int(prefix[0])
+        total = sum([int(char) for char in prefix])
+        DSPC_fraction_criteria = round(DSPC_fraction,3) == round(DSPC_char/total,3)
+        return (n_component_criteria and group_criteria and DSPC_fraction_criteria)
+
+        
+
+

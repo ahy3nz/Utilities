@@ -97,7 +97,7 @@ def read_data_file(filename = "default.dat"):
             apt = apt_avg, apt_std = apt_std, height = height_avg, height_std = height_std,
             tilt_angle = tilt_angle_avg, tilt_angle_std = tilt_angle_std, 
             idig = idig_avg, idig_std = idig_std, offsets = offsets_avg, 
-            offsets_std = offsets_std)
+            offsets_std = offsets_std, n_components = n_components)
 
     return bilayer_mixture
 
