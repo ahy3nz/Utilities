@@ -141,14 +141,19 @@ class bilayer():
     def n_components(self, n_components):
         self._n_components = n_components
 
-    def is_composition(self, n_components = 0, DSPC_fraction = 0, group = ""):
+    def is_composition(self, n_components = 0, DSPC_fraction = 0, groups = None):
         """ Return true if this bilayer satisifes the criteria """
+        # Check if number of components match
         n_component_criteria = self._n_components == n_components 
-        group_criteria = group in self._name
+
+        # Check if the all the groups are contained in the name
+        group_criteria = all(group in self._name for group in groups)
+        #group_criteria = group in self._name
+
         prefix = self._name.split("_")[0]
         DSPC_char = int(prefix[0])
         total = sum([int(char) for char in prefix])
-        DSPC_fraction_criteria = round(DSPC_fraction,3) == round(DSPC_char/total,3)
+        DSPC_fraction_criteria = round(DSPC_fraction,2) == round(DSPC_char/total,2)
         return (n_component_criteria and group_criteria and DSPC_fraction_criteria)
 
         
