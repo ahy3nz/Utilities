@@ -2,7 +2,7 @@ import os
 import numpy as np
 from bilayer import *
 
-def _determine_components(filename = ""):
+def determine_components(filename = ""):
     """ Based on the filename return the number of components"""
     prefix = filename.split("_")
     n_components = len(prefix[0])
@@ -36,7 +36,7 @@ def read_data_file(filename = "default.dat"):
     data = np.loadtxt(filename)
     name = filename[:-4]
 
-    n_components = _determine_components(filename = filename)
+    n_components = determine_components(filename = filename)
 
     # Gather properties from each line
     apl = data[:, 0]
@@ -75,3 +75,20 @@ def read_data_file(filename = "default.dat"):
             offsets_std = offsets_std)
 
     return bilayer_mixture
+
+def collect_data_files(curr_path = ""):
+    """ Given a directory, obtain all the .dat files
+
+    Parameters
+    =======--
+    curr_path : str
+        Path to search for data files
+
+    Returns
+    -------
+    data_files : list
+        List of paths to data files 
+        """
+
+    data_files = [os.path.join(curr_path,f) for f in os.listdir(curr_path) if '.dat' in f]
+    return data_files
