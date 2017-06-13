@@ -9,7 +9,7 @@ mol representation Points 1.000000
 mol selection name P4 or name BP4
 #mol material BrushedMetal
 mol addrep 0
-mol modselect 1 0 not water
+mol modselect 1 0 not name P4 and not name BP4
 mol modmaterial 1 0 Opaque
 mol modstyle 1 0 Licorice 0.300000 10.000000 10.000000
 mol color Name
