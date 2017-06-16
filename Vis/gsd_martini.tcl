@@ -11,9 +11,9 @@ mol selection name P4 or name BP4
 mol addrep 0
 mol modselect 1 0 not name P4 and not name BP4
 mol modmaterial 1 0 Opaque
-mol modstyle 1 0 Licorice 0.300000 10.000000 10.000000
+mol modstyle 1 0 Licorice 0.200000 10.000000 10.000000
 mol color Name
-mol representation Licorice 0.300000 10.000000 10.000000
+mol representation Licorice 0.200000 10.000000 10.000000
 mol selection not name P4 and not name BP4
 mol material Opaque
 mol modrep 1 0
@@ -25,6 +25,7 @@ axes location off
 display projection Orthographic
 pbc box -center origin
 pbc unwrap
+pbc join connected
 scale to 0.2
 animate goto 5
 # VMD for WIN32, version 1.9.3beta1 (July 21, 2016)
