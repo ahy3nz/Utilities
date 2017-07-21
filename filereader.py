@@ -1,9 +1,10 @@
 import os 
 import numpy as np
-from bilayer import *
+from Utilities.bilayer import *
 
 def determine_components(filename = ""):
     """ Based on the filename return the number of components"""
+    #simulation = filename.split("/")[-1]
     prefix = filename.split("_")
     n_components = len(prefix[0])
     return n_components
@@ -37,6 +38,8 @@ def read_data_file(filename = "default.dat"):
         data = np.loadtxt(filename, ndmin = 2)
     except ValueError:
         print("Error reading file: {}".format(filename))
+    filename = filename.split("/")
+    filename = filename[-1]
     name = filename[:-4]
 
     n_components = determine_components(filename = filename)
