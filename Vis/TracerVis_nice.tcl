@@ -13,7 +13,8 @@ set Trace8 2299
 
 mol addrep 0
 mol modselect 0 0 water
-mol modstyle 0 0 Points 1.000000
+#mol modstyle 0 0 Points 1.000000
+mol modstyle 0 0 CPK 2.500000 0.300000 12.000000 12.000000
 mol modmaterial 0 0 AOShiny
 mol color Name
 #mol representation Points 1.000000
