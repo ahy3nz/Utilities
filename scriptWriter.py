@@ -352,25 +352,31 @@ class scriptWriter():
         init_file.write('#!/bin/bash \n')
         init_file.write('#SBATCH --nodes=1\n')
         init_file.write('#SBATCH --account=mccabe_gpu\n')
-        init_file.write('#SBATCH --ntasks-per-node=12\n')
-        init_file.write('#SBATCH --partition=maxwell\n')
+        init_file.write('#SBATCH --ntasks-per-node=8\n')
+        init_file.write('#SBATCH --partition=pascal\n')
         init_file.write('#SBATCH --gres=gpu:4\n')
         if STrun:
-            init_file.write('#SBATCH --time 60:00:00\n')
+            init_file.write('#SBATCH --time=60:00:00\n')
         elif MDrun:
-            init_file.write('#SBATCH --time 60:00:00\n')
+            init_file.write('#SBATCH --time=60:00:00\n')
         else:
             pass
         init_file.write('#SBATCH --output=my.stdout\n')
         init_file.write('#SBATCH --mail-type=ALL\n')
         init_file.write('#SBATCH --mail-user=alexander.h.yang@vanderbilt.edu\n')
-        init_file.write('setpkgs -a gromacs_5.1.2_roce\n')
-        init_file.write('cd ~/Trajectories/{}/ \n'.format(filename))
-        init_file.write('export OMP_NUM_THREADS=1\n')
+        init_file.write('#SBATCH --job-name= {}\n'.format(filename))
+        init_file.write('#setpkgs -a gromacs_5.1.2_roce\n')
+        init_file.write('module restore gromacs-CUDA-1-10-3-RoCE')
+        init_file.write('#module restore hoomd-GCC-5-4-0')
+        init_file.write('#cd ~/Trajectories/{}/ \n'.format(filename))
+        init_file.write('cd /scratch/yangah/{} \n'.format(filename))
+        init_file.write('#export OMP_NUM_THREADS=1\n')
         if STrun:
             init_file.write('srun -n 12 gmx_mpi mdrun -ntomp 1 -gpu_id 000111222333 -deffnm ST_{} >& out.log\n'.format(filename))
+            init_file.write('gmx_mpi mdrun -deffnm ST_{} >& out.log\n'.format(filename))
         elif MDrun:
-            init_file.write('srun -n 12 gmx_mpi mdrun -ntomp 1 -gpu_id 000111222333 -deffnm md_{} >& out.log\n'.format(filename))
+            #init_file.write('srun -n 12 gmx_mpi mdrun -ntomp 1 -gpu_id 000111222333 -deffnm md_{} >& out.log\n'.format(filename))
+            init_file.write('gmx_mpi mdrun -deffnm md_{} >& out.log\n'.format(filename))
         else:
             pass
             
@@ -386,27 +392,31 @@ class scriptWriter():
         cont_file.write('#!/bin/bash \n')
         cont_file.write('#SBATCH --nodes=1\n')
         cont_file.write('#SBATCH --account=mccabe_gpu\n')
-        cont_file.write('#SBATCH --ntasks-per-node=12\n')
-        cont_file.write('#SBATCH --partition=maxwell\n')
+        cont_file.write('#SBATCH --ntasks-per-node=8\n')
+        cont_file.write('#SBATCH --partition=pascal\n')
         cont_file.write('#SBATCH --gres=gpu:4\n')
         if STrun:
-            cont_file.write('#SBATCH --time 60:00:00\n')
+            cont_file.write('#SBATCH --time=60:00:00\n')
         elif MDrun:
-            cont_file.write('#SBATCH --time 60:00:00\n')
+            cont_file.write('#SBATCH --time-60:00:00\n')
         else:
             pass
         cont_file.write('#SBATCH --output=my.stdout\n')
         cont_file.write('#SBATCH --mail-type=ALL\n')
         cont_file.write('#SBATCH --mail-user=alexander.h.yang@vanderbilt.edu\n')
-        cont_file.write('setpkgs -a gromacs_5.1.2_roce\n')
-        cont_file.write('cd ~/Trajectories/{}/ \n'.format(filename))
-        cont_file.write('export OMP_NUM_THREADS=1\n')
+        cont_file.write('#SBATCH --job-name={}\n'.format(filename))
+        cont_file.write('#setpkgs -a gromacs_5.1.2_roce\n')
+        cont_file.write('module restore gromacs-CUDA-1-10-3-RoCE')
+        cont_file.write('#module restore hoomd-GCC-5-4-0')
+        cont_file.write('#cd ~/Trajectories/{}/ \n'.format(filename))
+        cont_file.write('cd /scratch/yangah/{} \n'.format(filename))
+        cont_file.write('#export OMP_NUM_THREADS=1\n')
         if STrun:
-            cont_file.write('srun -n 12 gmx_mpi mdrun -ntomp 1 -gpu_id 000111222333 -append -cpi ST_{}.cpt \\\n'.format(filename))
+            cont_file.write('gmx_mpi mdrun -append -cpi ST_{}.cpt \\\n'.format(filename))
             cont_file.write('-s ST_{}.tpr \\\n'.format(filename))
             cont_file.write('-deffnm ST_{} >& out.log\n'.format(filename))
         elif MDrun:
-            cont_file.write('srun -n 12 gmx_mpi mdrun -ntomp 1 -gpu_id 000111222333 -append -cpi md_{}.cpt \\\n'.format(filename))
+            cont_file.write('gmx_mpi mdrun -append -cpi md_{}.cpt \\\n'.format(filename))
             cont_file.write('-s md_{}.tpr \\\n'.format(filename))
             cont_file.write('-deffnm md_{} >& out.log\n'.format(filename))
         else:
