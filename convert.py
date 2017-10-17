@@ -51,12 +51,13 @@ def _update_coordinates(system, correct_system, scale_units):
 
     i = 0
     for gbb in system.gbbs:
-        for xyz_i in gbb.xyz:
+        for j, xyz_j in enumerate(gbb.xyz):
             if scale_units: 
                 new_xyz = [10*coord - (5*length) for coord,length in zip(correct_system.xyz[i], correct_system.periodicity)]
             else:
                 new_xyz = [coord - (length/2) for coord,length in zip(correct_system.xyz[i], correct_system.periodicity)]
-            xyz_i = new_xyz
+            #xyz_i = new_xyz
+            gbb.xyz[j] = new_xyz
             i +=1
     return system
 
@@ -68,14 +69,14 @@ if __name__ == "__main__":
     
     # Use mbuild to extract coordinates and box information
     correct_structure = 'Stage4_Eq0.pdb'
-    if 'gro' in correct_structure:
+    if 'gro' in correct_structure or 'pdb' in correct_structure:
         scale_units = True
     else:
         scale_units = False
     correct_system = mb.load(correct_structure)
     
     # Create a groupy box
-    correct_box = Box(lengths=correct_system.periodicity)
+    correct_box = Box(lengths=10*correct_system.periodicity)
     
     # Create the Bilayer in groupy
     dspc = Gbb(xml_prototype=base_path+'DSPC.xml',name='dspc')
