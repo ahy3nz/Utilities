@@ -1,6 +1,5 @@
 LS_COLORS=$LS_COLORS:'di=1;36:fi=1;35:ex=1;37:'; export LS_COLORS
-alias ls='ls -h'
-alias python2='/usr/bin/python'
+alias ls='ls -h --color=yes'
 export WHITBY='yangah@whitby.vuse.vanderbilt.edu'
 export PERCUS='ahy3nz@percus.vuse.vanderbilt.edu'
 export FILEY='ahy3nz@filey.vuse.vanderbilt.edu'
@@ -18,7 +17,7 @@ export PYTHONPATH="/raid6/homes/ahy3nz/Programs/permeability/permeability":$PYTH
 export PYTHONPATH="/raid6/homes/ahy3nz/Programs/Analysis/Bilayers":$PYTHONPATH
 export PYTHONPATH="/raid6/homes/ahy3nz/Programs/cg_mapping":$PYTHONPATH
 #export PYTHONPATH="/raid6/homes/ahy3nz/Programs/setup/Bilayer/":$PYTHONPATH
-export PYTHONPATH="/raid6/software/hoomd/hoomd_1.3.3/lib/hoomd/python-module/":$PYTHONPATH
+#export PYTHONPATH="/raid6/software/hoomd/hoomd_1.3.3/lib/hoomd/python-module/":$PYTHONPATH
 #export PYTHONPATH="/raid6/homes/ahy3nz/Programs/setup/CoarseGraining/":$PYTHONPATH
 #export PYTHONPATH="/raid6/homes/ahy3nz/anaconda3/envs/hack35/lib/python3.5/site-packages":$PYTHONPATH
 # Default hoomd
