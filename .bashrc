@@ -1,5 +1,5 @@
 LS_COLORS=$LS_COLORS:'di=1;36:fi=1;35:ex=1;37:'; export LS_COLORS
-alias ls='ls -h --color=yes'
+alias ls='ls -h -G'
 export WHITBY='yangah@whitby.vuse.vanderbilt.edu'
 export PERCUS='ahy3nz@percus.vuse.vanderbilt.edu'
 export FILEY='ahy3nz@filey.vuse.vanderbilt.edu'
