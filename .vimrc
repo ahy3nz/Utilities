@@ -7,14 +7,16 @@ let mysyntaxfile = "~/.vim/mysyntax.vim"
 syntax on
 filetype plugin on
 filetype indent plugin on
+"set background=dark
+"colorscheme koehler
 
-highlight Normal ctermbg=black ctermfg=grey
+"highlight Normal ctermbg=black ctermfg=grey
 set ruler
 set expandtab 
 set shiftwidth=4
 set showcmd
 set tabstop=4
-set wrapmargin=2
+"set wrapmargin=2
 set ignorecase
 set guioptions=agirLM"mT 
 set vb t_vb= 
