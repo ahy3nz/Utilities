@@ -23,7 +23,7 @@ set vb t_vb=
 "set mouse=a
 set autoindent 
 set nu
- 
+set cursorline 
 imap <S-Tab> <C-d>
 imap <Tab> <C-t>
 imap ;; <Esc>

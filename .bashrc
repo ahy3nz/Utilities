@@ -3,6 +3,7 @@ alias mountresearch='sudo mount -t vboxsf -o uid=$UID,gid=$(id -g) Research ~/Re
 alias ls='ls -hGp'
 #export WHITBY='yangah@whitby.vuse.vanderbilt.edu'
 export WHITBY='yangah@129.59.37.111'
+export DRIFFIELD='yangah@driffield.vuse.vanderbilt.edu'
 export PERCUS='ahy3nz@percus.vuse.vanderbilt.edu'
 export FILEY='ahy3nz@filey.vuse.vanderbilt.edu'
 export CORI='ahy3nz@cori.nersc.gov'
