@@ -14,7 +14,6 @@ def write_rahman_script(f, jobname="JOBNAME", body=""):
 #PBS -m abe
 #PBS -M ayang41@gmail.com
 module load gromacs/5.1.4
-export OMP_NUM_THREADS=1
 {body}
 """.format(jobname=jobname, body=body))
     return f
