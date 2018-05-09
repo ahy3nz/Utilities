@@ -19,7 +19,7 @@ module load gromacs/5.1.4
     return f
 
 
-def write_edison_script(f, jobname="JOBNAME", N="2", t="10:00:00", body=""):
+def write_edison_script(f, jobname="JOBNAME", N="1", t="24:00:00", body=""):
     """ Write edison slurm script
 
     Parameters
@@ -31,7 +31,8 @@ def write_edison_script(f, jobname="JOBNAME", N="2", t="10:00:00", body=""):
 #SBATCH -N {N}
 #SBATCH -t {t}
 #SBATCH -J {jobname}
-#SBATCH -o {jobname}
+#SBATCH -o {jobname}.out
+#SBATCH -e {jobname}.err
 #SBATCH --mail-type=ALL
 #SBATCH --mail-user=alexander.h.yang@vanderbilt.edu
 #SBATCH -L SCRATCH
