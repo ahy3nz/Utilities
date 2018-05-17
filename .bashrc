@@ -1,8 +1,11 @@
 LS_COLORS=$LS_COLORS:'di=1;36:fi=1;35:ex=1;37:'; export LS_COLORS
+export DESKTOP_PATH="/home/ayang41/Desktop"
 alias mountresearch='sudo mount -t vboxsf -o uid=$UID,gid=$(id -g) Research ~/Research'
+alias mendeley='/home/ayang41/Programs/mendeleydesktop-1.18-linux-x86_64/bin/mendeleydesktop'
 alias ls='ls -hGp'
 #export WHITBY='yangah@whitby.vuse.vanderbilt.edu'
-export WHITBY='yangah@129.59.37.111'
+export HULK='ssh ahy3nz@129.59.37.206'
+export WHITBY='yangah@filey.vuse.vanderbilt.edu'
 export DRIFFIELD='yangah@driffield.vuse.vanderbilt.edu'
 export PERCUS='ahy3nz@percus.vuse.vanderbilt.edu'
 export FILEY='ahy3nz@filey.vuse.vanderbilt.edu'
@@ -143,5 +146,6 @@ if ! shopt -oq posix; then
   fi
 fi
 
-# added by Anaconda3 4.3.1 installer
+
+# added by Anaconda3 installer
 export PATH="/home/ayang41/anaconda3/bin:$PATH"
