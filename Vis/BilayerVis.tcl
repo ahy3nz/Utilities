@@ -11,12 +11,12 @@ mol representation Points 1.000000
 mol selection water
 #mol material BrushedMetal
 mol addrep 0
-mol modselect 1 0 not water and not hydrogen
+mol modselect 1 0 {not water and not hydrogen}
 mol modmaterial 1 0 Opaque
 mol modstyle 1 0 Licorice 0.500000 15.000000 12.000000
 mol color Name
 mol representation Licorice 0.500000 15.000000 12.000000
-mol selection not water
+mol selection {not water and not hydrogen}
 mol material Opaque
 mol modrep 1 0
 mol smoothrep 0 1 2
