@@ -4,7 +4,7 @@ alias mountresearch='sudo mount -t vboxsf -o uid=$UID,gid=$(id -g) Research ~/Re
 alias mendeley='/home/ayang41/Programs/mendeleydesktop-1.18-linux-x86_64/bin/mendeleydesktop'
 alias ls='ls -hGp'
 #export WHITBY='yangah@whitby.vuse.vanderbilt.edu'
-export HULK='ssh ahy3nz@129.59.37.206'
+export HULK='ahy3nz@129.59.37.206'
 export WHITBY='yangah@filey.vuse.vanderbilt.edu'
 export DRIFFIELD='yangah@driffield.vuse.vanderbilt.edu'
 export PERCUS='ahy3nz@percus.vuse.vanderbilt.edu'
