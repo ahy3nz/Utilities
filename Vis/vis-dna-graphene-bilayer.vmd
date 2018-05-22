@@ -1,4 +1,4 @@
-mol new generated-files/bilayer-graphene-dna-water-ions.gro
+#mol new generated-files/bilayer-graphene-dna-water-ions.gro
 #mol addfile traj_comp.xtc autobonds off waitfor all
 
 axes location off
