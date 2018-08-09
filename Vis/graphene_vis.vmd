@@ -26,10 +26,48 @@ set rep 0
 
 # show DNA
 mol addrep top
-mol modselect ${rep} 0 "resname DG DT DC DA"
+mol modselect ${rep} 0 "index 1009 to 1326"
 mol modstyle ${rep} 0 Licorice 0.3 20.0
 mol modmaterial ${rep} 0 AOEdgy
-#mol modcolor 0 0 ColorID 2
+mol modcolor ${rep} 0 ColorID 1
+#
+incr rep
+mol addrep top
+mol modselect ${rep} 0 "index 1327 to 1644"
+mol modstyle ${rep} 0 Licorice 0.3 20.0
+mol modmaterial ${rep} 0 AOEdgy
+mol modcolor ${rep} 0 ColorID 2
+
+incr rep
+mol addrep top
+mol modselect ${rep} 0 "index 1645 to 1962"
+mol modstyle ${rep} 0 Licorice 0.3 20.0
+mol modmaterial ${rep} 0 AOEdgy
+mol modcolor ${rep} 0 ColorID 3
+
+incr rep
+mol addrep top
+mol modselect ${rep} 0 "index 1963 to 2280"
+mol modstyle ${rep} 0 Licorice 0.3 20.0
+mol modmaterial ${rep} 0 AOEdgy
+mol modcolor ${rep} 0 ColorID 11
+
+incr rep
+mol addrep top
+mol modselect ${rep} 0 "index 2281 to 2598"
+mol modstyle ${rep} 0 Licorice 0.3 20.0
+mol modmaterial ${rep} 0 AOEdgy
+mol modcolor ${rep} 0 ColorID 16
+
+incr rep
+mol addrep top
+mol modselect ${rep} 0 "index 2599 to 2916"
+mol modstyle ${rep} 0 Licorice 0.3 20.0
+mol modmaterial ${rep} 0 AOEdgy
+mol modcolor ${rep} 0 ColorID 24
+
+
+
 
 # show ions
 incr rep
@@ -79,3 +117,4 @@ color Name C gray
 # gromacs writes that to the trajectory anyway; just use the gro file 
 # for the topology information
 #animate delete beg 0 end 0
+rotate x by -90
