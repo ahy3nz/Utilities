@@ -26,10 +26,10 @@ set rep 0
 
 # show DNA
 mol addrep top
-mol modselect ${rep} 0 "resname DG"
+mol modselect ${rep} 0 "resname DG DT DC DA"
 mol modstyle ${rep} 0 Licorice 0.3 20.0
 mol modmaterial ${rep} 0 AOEdgy
-#mol modcolor 0 0 ColorID 2
+mol modcolor ${rep} 0 ColorID 3
 
 # show ions
 incr rep
@@ -37,14 +37,17 @@ mol addrep top
 mol modselect ${rep} 0 "resname NA"
 mol modstyle ${rep} 0 VDW 0.6 20.0
 mol modmaterial ${rep} 0 AOEdgy
+mol showrep 0 ${rep} 0
 
 # graphene
 incr rep
 mol addrep top
 mol modselect ${rep} 0 {resname "GR.*"}
-mol modstyle ${rep} 0 Lines 
+#mol modstyle ${rep} 0 Lines 
+mol modstyle ${rep} 0 VDW 0.6 20.0
 mol modmaterial ${rep} 0 AOEdgy
-mol modcolor ${rep} 0 ColorID 6
+#mol modcolor ${rep} 0 ColorID 6
+mol modcolor ${rep} 0 ColorID 16
 
 # PC lipids
 incr rep
