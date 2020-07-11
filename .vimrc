@@ -8,7 +8,7 @@ syntax on
 filetype plugin on
 filetype indent plugin on
 "set background=dark
-"colorscheme koehler
+colorscheme koehler
 
 "highlight Normal ctermbg=black ctermfg=grey
 set ruler
@@ -71,3 +71,4 @@ vnoremap > >gv
 
 set pastetoggle=<F2>
 set clipboard=unnamed
+set laststatus=2
